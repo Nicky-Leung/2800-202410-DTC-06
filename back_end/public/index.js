@@ -28,8 +28,6 @@ async function createMap() {
                     {
                         'type': 'Feature',
                         'properties': {
-                            'description':
-                                '<strong>QE Park</strong><p>3v3 basketball</p>',
                             'icon': 'basketball'
                         },
                         'geometry': {
