@@ -5,7 +5,7 @@
         <div class="relative w-full bg-cover bg-center p-6 md:p-12 shadow-md">
             <div class="absolute inset-0 bg-cover bg-center" style="background-image: url('/images/background.jpg');">
                 <!-- Img is placeholder can change if needed -->
-                <div class="absolute inset-0 bg-black opacity-50"></div>
+                <div class="absolute inset-0 bg-black opacity-50"></div> <!--overlay to darken image-->
             </div>
             <div class="relative p-6 md:p-12 rounded-lg bg-cover bg-center">
                 <h1 class="text-3xl md:text-5xl font-bold text-center text-white">Game Set Match</h1>
@@ -26,7 +26,8 @@
 
         <div class="max-w-screen-lg mx-auto mt-8 px-4 md:px-0"><!--This is the card section/things under header-->
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <div class="bg-red-500 rounded-lg overflow-hidden shadow-md text-white"><!--card num 1 for what-->
+                <div class="rounded-lg overflow-hidden shadow-md text-white" style="background-color: #d62839;">
+                    <!--card num 1 for what app is-->
                     <div class="p-7">
                         <h2 class="text-2xl md:text-3xl font-bold text-center  mb-6">What is Game Set match?</h2>
                         <p class="text-lg leading-relaxed">Game Set Match is an app where users can find similarly
@@ -34,8 +35,31 @@
                             with and track their progression via ranks.</p>
                     </div>
                 </div>
+                <div class="rounded-lg overflow-hidden shadow-md text-white" style="background-color: #175676;">
+                    <!--card num 2 for how it works-->
+                    <div class="p-7">
+                        <h2 class="text-2xl md:text-3xl font-bold text-center  mb-6">How does it work?</h2>
+                        <p class="text-lg leading-relaxed">
+                        <p class="text-lg leading-relaxed">Users can easily create or join matches, while their ranks
+                            are tracked on
+                            leaderboards and Elo/MMR systems.</p>
+                        </p>
+                    </div>
+                </div>
+                <div class="rounded-lg overflow-hidden shadow-md text-white" style="background-color: #d62839;;">
+                    <!--card num 3 for how matchmaking works-->
+                    <div class="p-7">
+                        <h2 class="text-2xl md:text-3xl font-bold text-center mb-6">How does matchmaking work?</h2>
+                        <p class="text-lg leading-relaxed">Users can book locations to create matches based on their
+                            skill level. Others can
+                            join using the "Find Match" button if their rank is similar.</p>
+
+                        </p>
+                    </div>
+                </div>
             </div>
         </div>
+
     </body>
 
     </html>
