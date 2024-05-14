@@ -63,6 +63,9 @@ async function createMap() {
             .then(response => response.text())
             .then(html => {
               const element = document.getElementById('overlay');
+              //clear the html
+              element.innerHTML = "";
+              //add the new html
               element.innerHTML = html;
             });
 
