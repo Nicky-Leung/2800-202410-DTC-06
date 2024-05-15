@@ -2,7 +2,6 @@ const express = require('express')
 const app = express()
 const path = require('path')
 app.set('view engine', 'ejs')
-app.set('views', path.join(__dirname, 'views'));
 var session = require('express-session');
 require('dotenv').config();
 var mongoDBStore = require('connect-mongodb-session')(session);
@@ -45,6 +44,20 @@ const usersSchema = new mongoose.Schema({
 });
 
 const usersModel = mongoose.model('gameSetMatch.user', usersSchema);
+
+const createdMatchSchema = new mongoose.Schema({
+    sport: String,
+    location: String,
+    length: Number,
+    time: String,
+    date: String,
+    players: Number,
+    skill: String,
+    description: String
+
+});
+const sessionModel = mongoose.model('gameSetMatch.current_matches', createdMatchSchema);
+
 
 app.use(session({
   secret: process.env.SESSION_SECRET,
@@ -113,8 +126,8 @@ app.post('/signup', async (req, res) => {
   }
 });
 
-    res.render('welcomepage')
-});// put welcome page here later
+   
+    // put welcome page here later
 
 app.get('/index', (req, res) => {
     res.render('index')
@@ -225,6 +238,13 @@ app.post('/resetPassword', isUserAuthenticated, async (req, res) => {
   }
 });
 
+app.post('/creatematch', async (req, res) => {
+
+
+
+
+
+});
 
 
 app.listen(3000, () => {

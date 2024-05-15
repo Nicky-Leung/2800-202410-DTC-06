@@ -10,9 +10,15 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "connect-mongodb-session": "^5.0.0",
+    "crypto": "^1.0.1",
+    "dotenv": "^16.4.5",
     "ejs": "^3.1.10",
     "express": "^4.19.2",
+    "express-session": "^1.18.0",
+    "joi": "^17.13.1",
     "maplibre-gl": "^4.2.0",
+    "mongoose": "^8.3.5",
     "tailwindcss": "^3.4.3"
   }
 }
