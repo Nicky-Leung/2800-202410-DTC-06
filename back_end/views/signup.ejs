@@ -10,23 +10,28 @@
 </head>
 
 <body>
-  <div class="container">
-
-    <div class="row justify-content-center">
-      <div class="col-12 col-md-8 col-lg-6">
-        <h1>Sign Up</h1>
+  <div class="container d-flex justify-content-center align-items-center mt-5">
+    <div class="card border border-dark">
+      <div class="card-body">
+        <h1 class="card-title text-center">Sign-up</h1>
         <!-- user signs up with name email and password-->
         <form action="/signup" method="post">
-          <input type="text" name="name" placeholder="Name" />
-          <input type="text" name="email" placeholder="Email" />
-          <input type="password" name="password" placeholder="Password" />
+          <div class="mb-3">
+            <input type="text" name="name" placeholder="Name" class="form-control" />
+          </div>
+          <div class="mb-3">
+            <input type="email" name="email" placeholder="Email" class="form-control" />
+          </div>
+          <div class="mb-3">
+            <input type="password" name="password" placeholder="Password" class="form-control" />
+          </div>
           <input type="submit" />
+          <button onclick="location.href='/home'" type="button">Go home</button>
         </form>
-        <button onclick="location.href='/home'" type="button">Go home</button>
       </div>
     </div>
-
   </div>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <!-- Include Bootstrap JS -->
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
