@@ -1,0 +1,43 @@
+<%- include ('templates/header') %>
+
+<div class="flex justify-center flex-col text-center">
+
+<p> Recreation Center</p>
+
+<br>
+
+<form action="/creatematch" method="POST">
+    <div class="flex flex-col items-center justify-center">
+        <label for="location">Location</label>
+        <input type="text" name="location" id="location" required>
+    </div>
+    <div class="flex flex-col items-center justify-center">
+        <label for="sport">Sport</label>
+        <input type="text" name="sport" id="sport" required>
+    </div>
+    <div class="flex flex-col items-center justify-center">
+        <label for="time">Time</label>
+        <input type="text" name="time" id="time" required>
+    </div>
+    <div class="flex flex-col items-center justify-center">
+        <label for="date">Date</label>
+        <input type="text" name="date" id="date" required>
+    </div>
+    <div class="flex flex-col items-center justify-center">
+        <label for="maxPlayers">Max Players</label>
+        <input type="text" name="maxPlayers" id="maxPlayers" required>
+    </div>
+    <div class="flex flex-col items-center justify-center">
+        <label for="description">Description</label>
+        <input type="text" name="description" id="description" required>
+    </div>
+    <div class="flex flex-col items-center justify-center">
+        <button type="submit">Create Match</button>
+    </div>
+
+</div>
+
+
+
+
+<%- include ('templates/footer') %>
