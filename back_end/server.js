@@ -21,8 +21,6 @@ function hashPassword(password) {
 }
 const mongoose = require('mongoose');
 
-
-
 async function main() {
   try {
     await mongoose.connect(`mongodb+srv://${process.env.DB_User}:${process.env.DB_Password}@cluster0.9kdinuu.mongodb.net/`);
@@ -138,10 +136,6 @@ app.get('/information', (req, res) => {
 
     res.render('information')
 });
-
-app.listen(3000, () => {
-    console.log('Server is running on port 3000')
-}); // put later in main func with db connection
 
 
 // log the user in
