@@ -56,6 +56,7 @@ app.use(session({
 
 // home page
 app.get('/', (req, res) => {
+
   res.render('home.ejs', { passwordUpdated: req.query.passwordUpdated })
 })
 
@@ -111,6 +112,24 @@ app.post('/signup', async (req, res) => {
     res.status(500).send('Internal Server Error');
   }
 });
+
+    res.render('welcomepage')
+});// put welcome page here later
+
+app.get('/index', (req, res) => {
+    res.render('index')
+}
+);
+
+app.get('/information', (req, res) => {
+
+    res.render('information')
+});
+
+app.listen(3000, () => {
+    console.log('Server is running on port 3000')
+}); // put later in main func with db connection
+
 
 // log the user in
 app.post('/login', async (req, res) => {
