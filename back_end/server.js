@@ -113,21 +113,21 @@ app.post('/signup', async (req, res) => {
   }
 });
 
-    res.render('welcomepage')
-});// put welcome page here later
+res.render('welcomepage')
+  ;// put welcome page here later
 
 app.get('/index', (req, res) => {
-    res.render('index')
+  res.render('index')
 }
 );
 
 app.get('/information', (req, res) => {
 
-    res.render('information')
+  res.render('information')
 });
 
 app.listen(3000, () => {
-    console.log('Server is running on port 3000')
+  console.log('Server is running on port 3000')
 }); // put later in main func with db connection
 
 
