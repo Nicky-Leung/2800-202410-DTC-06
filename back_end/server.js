@@ -56,7 +56,7 @@ const createdMatchSchema = new mongoose.Schema({
     description: String
 
 });
-const sessionModel = mongoose.model('gameSetMatch.current_matches', createdMatchSchema);
+const matchModel = mongoose.model('gameSetMatch.current_matches', createdMatchSchema);
 
 
 app.use(session({
@@ -240,9 +240,16 @@ app.post('/resetPassword', isUserAuthenticated, async (req, res) => {
 
 app.post('/creatematch', async (req, res) => {
 
-
-
-
+    const { sport, location, length, time, date, players, skill, description } = req.body;
+    try {
+        const newMatch = new matchModel({ sport, location, length, time, date, players, skill, description });
+        await newMatch.save();
+        console.log('Match created:', newMatch);
+        res.redirect('/index');
+    } catch (error) {
+        console.error('Error during match creation:', error);
+        res.status(500).send('Internal Server Error');
+    }
 
 });
 
