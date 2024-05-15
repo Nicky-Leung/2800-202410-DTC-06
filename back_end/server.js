@@ -23,7 +23,7 @@ const mongoose = require('mongoose');
 
 async function main() {
   try {
-    await mongoose.connect(`mongodb+srv://${process.env.DB_User}:${process.env.DB_Password}@cluster0.9kdinuu.mongodb.net/`);
+    await mongoose.connect(`mongodb+srv://${process.env.DB_User}:${process.env.DB_Password}@cluster0.9kdinuu.mongodb.net/${process.env.DB_Name}?retryWrites=true&w=majority`);
     console.log('Connected to MongoDB');
   }
   catch (err) {
@@ -54,7 +54,7 @@ const createdMatchSchema = new mongoose.Schema({
     description: String
 
 });
-const matchModel = mongoose.model('gameSetMatch.current_matches', createdMatchSchema);
+const matchModel = mongoose.model('current_matches', createdMatchSchema);
 
 
 app.use(session({
@@ -230,6 +230,10 @@ app.post('/resetPassword', isUserAuthenticated, async (req, res) => {
   } catch (error) {
     console.error('Error during password reset:', error);
   }
+});
+
+app.get('/creatematch', (req, res) => {
+    res.render('creatematch');
 });
 
 app.post('/creatematch', async (req, res) => {
