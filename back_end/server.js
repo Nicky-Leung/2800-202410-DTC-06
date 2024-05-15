@@ -70,6 +70,9 @@ app.get('/', (req, res) => {
 
   res.render('home.ejs', { passwordUpdated: req.query.passwordUpdated })
 })
+app.get('/home', (req, res) => {
+  res.render('welcomepage.ejs')
+});
 
 // log in page
 app.get('/login', (req, res) => {
