@@ -1,5 +1,4 @@
 //Please put routes in routes file instead of server.js so that the code is more organized and easier to read.
-
 const express = require('express')
 const app = express()
 const path = require('path')
