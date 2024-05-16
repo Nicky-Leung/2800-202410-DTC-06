@@ -1,12 +1,30 @@
 const starting_minutes = 60;
 let time = starting_minutes * 60
+let isPaused = false;
 HomeScore = 0;
 AwayScore = 0;
 
+const pauseButton = document.getElementById('pause');
+
+
+pauseButton.addEventListener('click', function() {
+    if (isPaused) {
+        pauseButton.innerHTML = 'Pause';
+        isPaused = false;
+    } else {
+        pauseButton.innerHTML = 'Resume';
+        isPaused = true;
+        console.log('paused');
+    }
+});
 
 const countdownElement = document.getElementById('countdown');
 
-setInterval(updateCountdown, 1000);
+setInterval(function() {
+    if (!isPaused) {
+        updateCountdown();
+    }
+}, 1000);
 
 function updateCountdown() {
     let minutes = Math.floor(time / 60);
@@ -19,6 +37,8 @@ function updateCountdown() {
     countdownElement.innerHTML = `${minutes}:${seconds}`;
     time--;
 }
+
+
 
 const homeScoreElement = document.getElementById('home-score');
 const awayScoreElement = document.getElementById('away-score');
