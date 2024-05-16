@@ -44,14 +44,14 @@ const usersSchema = new mongoose.Schema({
 const usersModel = mongoose.model('gameSetMatch.user', usersSchema);
 
 const createdMatchSchema = new mongoose.Schema({
-    sport: String,
-    location: String,
-    length: Number,
-    time: String,
-    date: String,
-    players: Number,
-    skill: String,
-    description: String
+  sport: String,
+  location: String,
+  length: Number,
+  time: String,
+  date: String,
+  players: Number,
+  skill: String,
+  description: String
 
 });
 const matchModel = mongoose.model('current_matches', createdMatchSchema);
@@ -70,6 +70,9 @@ app.get('/', (req, res) => {
 
   res.render('home.ejs', { passwordUpdated: req.query.passwordUpdated })
 })
+app.get('/home', (req, res) => {
+  res.render('welcomepage.ejs')
+});
 
 // log in page
 app.get('/login', (req, res) => {
@@ -124,11 +127,11 @@ app.post('/signup', async (req, res) => {
   }
 });
 
-   
-    // put welcome page here later
+
+// put welcome page here later
 
 app.get('/index', (req, res) => {
-    res.render('index')
+  res.render('index')
 }
 );
 
@@ -238,16 +241,16 @@ app.get('/creatematch', (req, res) => {
 
 app.post('/creatematch', async (req, res) => {
 
-    const { sport, location, length, time, date, players, skill, description } = req.body;
-    try {
-        const newMatch = new matchModel({ sport, location, length, time, date, players, skill, description });
-        await newMatch.save();
-        console.log('Match created:', newMatch);
-        res.redirect('/index');
-    } catch (error) {
-        console.error('Error during match creation:', error);
-        res.status(500).send('Internal Server Error');
-    }
+  const { sport, location, length, time, date, players, skill, description } = req.body;
+  try {
+    const newMatch = new matchModel({ sport, location, length, time, date, players, skill, description });
+    await newMatch.save();
+    console.log('Match created:', newMatch);
+    res.redirect('/index');
+  } catch (error) {
+    console.error('Error during match creation:', error);
+    res.status(500).send('Internal Server Error');
+  }
 
 });
 
