@@ -2,12 +2,12 @@
 <div class="bg-rose">
 <div class="bg-sky-blue pt-10 bg-pacific rounded-b-3xl #4BA3C3">
         <div class="mx-3 bg-dark-blue my-3 py-2 flex flex-row justify-between px-6 rounded-3xl text-2xl">
-            <div class="rounded-3xl  bg-baby-blue py-1 px-5">Local</div>
-            <div id="regionalBoard" class="rounded-3xl py-1 px-3">Regional</div>
-            <div id="globalBoard" class="rounded-3xl py-1 px-4">Global</div>
+            <div id="localBoard" class="  bg-baby-blue rounded-3xl py-1 px-4">Local</div>
+            <div id="regionalBoard" class="rounded-3xl ml-2 py-1 px-4">Regional</div>
+            <div id="globalBoard"class="rounded-3xl py-1 px-4">Global</div>
         </div>
         <div class="flex flex-row pt-10">
-            <button id="backButton" class="ml-5 bg-baby-blue mt-2 w-22 h-20 border-2 rounded-full">
+            <button id="backButton" class="ml-5 mr-1 bg-baby-blue mt-2 w-22 h-20 border-2 rounded-full">
                 <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-chevron-left pr-2"
                     width="80" height="65" viewBox="0 0 24 24" stroke-width="1.5" stroke="#000000" fill="none"
                     stroke-linecap="round" stroke-linejoin="round">
@@ -16,7 +16,7 @@
                 </svg>
             </button>
 
-            <div class="ml-11 h-32 w-32 rounded-full bg-black flex-none"></div>
+            <div class="ml-14 h-32 w-32 rounded-full bg-black flex-none"></div>
         </div>
         <div class="flex flex-row justify-between px-9">
             <div class="flex flex-col text-center items-center">
@@ -33,8 +33,8 @@
                     <path stroke="none" d="M0 0h24v24H0z" fill="none" />
                     <path d="M12 6l4 6l5 -4l-2 10h-14l-2 -10l5 4z" />
                 </svg>
-                <div class="h-8 w-8 rounded-full mb-1 text-xl bg-baby-blue text-center -translate-x-40 -translate-y-11">2</div>
-                <div class="h-8 w-8 rounded-full text-xl text-center bg-baby-blue translate-x-20 -translate-y-20">3</div>
+                <div class="h-8 w-8 rounded-full mb-1 text-xl bg-baby-blue text-center -translate-x-48 -translate-y-11">2</div>
+                <div class="h-8 w-8 rounded-full text-xl text-center bg-baby-blue translate-x-32 -translate-y-20">3</div>
             </div>
             <div class="flex flex-col text-center items-center">
             <div class="h-28 w-28 rounded-full bg-black flex-none"></div>
@@ -74,6 +74,7 @@
         <div class="text-2xl font-bold">1000</div>
     </div>
 
-
+    <%- include('templates/footer') %>
 
 </div>
+
