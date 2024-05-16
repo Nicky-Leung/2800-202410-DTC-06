@@ -116,6 +116,10 @@ app.get('/regionalleaderboard', (req, res) => {
   res.render('leaderboard_regional.ejs')
 });
 
+app.get('/match', (req, res) => {
+  res.render('match.ejs')
+});
+
 // user profile
 app.get('/profile', isUserAuthenticated, (req, res) => {
   res.render('profile.ejs', { name: req.session.name, email: req.session.email, type: req.session.type })
