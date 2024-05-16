@@ -1,3 +1,5 @@
+//Please put routes in routes file instead of server.js so that the code is more organized and easier to read.
+
 const express = require('express')
 const app = express()
 const path = require('path')
@@ -11,14 +13,6 @@ var store = new mongoDBStore({
   collection: 'mySessions'
 });
 
-const crypto = require('crypto');
-
-// encrypt password to be stored in the database
-function hashPassword(password) {
-  const hash = crypto.createHash('sha256');
-  hash.update(password);
-  return hash.digest('hex');
-}
 const mongoose = require('mongoose');
 
 async function main() {
@@ -33,12 +27,8 @@ async function main() {
 
 main().catch(err => console.log(err));
 
-// every user had name email password and type (admin or not admin)
-
-
 const usersModel = require('./models/userModel');
 const matchModel = require('./models/matchModel');
-
 
 app.use(session({
   secret: process.env.SESSION_SECRET,
@@ -47,6 +37,10 @@ app.use(session({
   cookie: { maxAge: 3600000 },
   store: store,
 }));
+
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
+app.use(express.static('public'));
 
 // home page
 app.get('/', (req, res) => {
@@ -58,57 +52,9 @@ app.get('/home', (req, res) => {
 });
 
 // log in page
-app.get('/login', (req, res) => {
-  res.render('login.ejs')
-});
+// reset user while logged in
 
 // this is where user creates an account
-app.get('/signup', (req, res) => {
-  res.render('signup.ejs')
-});
-
-app.use(express.urlencoded({ extended: true }));
-app.use(express.json());
-app.use(express.static('public'));
-
-const Joi = require('joi');
-const { type } = require('os');
-
-// enforce requirements for name password and email
-const signUpSchema = Joi.object({
-  name: Joi.string().required().messages({
-    'string.empty': `Name is required. Please try again. <button onclick="location.href='/signup'" type="button">Sign Up</button>`,
-    'any.required': `Name is required. Please try again. <button onclick="location.href='/signup'" type="button">Sign Up</button>`
-  }),
-  email: Joi.string().email().required().messages({
-    'string.email': `Email must be a valid email address. Please try again. <button onclick="location.href='/signup'" type="button">Sign Up</button>`,
-    'string.empty': `Email is required. Please try again. <button onclick="location.href='/signup'" type="button">Sign Up</button>`,
-    'any.required': `Email is required. Please try again. <button onclick="location.href='/signup'" type="button">Sign Up</button>`
-  }),
-  password: Joi.string().min(8).max(12).required().messages({
-    'string.min': `Password must be at least 8 characters long. Please try again. <button onclick="location.href='/signup'" type="button">Sign Up</button>`,
-    'string.max': `Password must less than 13 characters long. Please try again. <button onclick="location.href='/signup'" type="button">Sign Up</button>`,
-    'string.empty': `Password is required. Please try again. <button onclick="location.href='/signup'" type="button">Sign Up</button>`,
-    'any.required': `Password is required. Please try again. <button onclick="location.href='/signup'" type="button">Sign Up</button>`
-  })
-});
-
-// create a new user and save to the database
-app.post('/signup', async (req, res) => {
-  const { error } = signUpSchema.validate(req.body);
-  if (error) return res.status(400).send(error.details[0].message);
-  const { name, email, password } = req.body;
-  const hashedPassword = hashPassword(password);
-  try {
-    const newUser = new usersModel({ name, email, password: hashedPassword, type: 'non-administrator' });
-    await newUser.save();
-    console.log('User created:', newUser);
-    res.redirect('/login');
-  } catch (error) {
-    console.error('Error during signup:', error);
-    res.status(500).send('Internal Server Error');
-  }
-});
 
 
 // put welcome page here later
@@ -123,48 +69,6 @@ app.get('/information', (req, res) => {
     res.render('components/information')
 });
 
-
-// log the user in
-app.post('/login', async (req, res) => {
-  console.log('Login request received');
-  try {
-    const hashedPassword = hashPassword(req.body.password);
-    const result = await usersModel.findOne({ email: req.body.email, password: hashedPassword });
-    console.log('Query result:', result);
-    if (result) {
-      req.session.authenticated = true;
-      req.session.type = result.type;
-      req.session.name = result.name;
-      req.session.email = result.email;
-      return res.redirect('/protectedRoute');
-    }
-    console.log('Access denied');
-    res.render('notLoggedIn.ejs', { message: 'Email and/or password not found. Please try again or sign up.' })
-  } catch (error) {
-    console.error('Error during login:', error);
-    res.status(500).send('Internal Server Error');
-  }
-});
-
-// reset password with email if user has forgotten password but remembers their email
-app.get('/resetPasswordWithEmail', (req, res) => {
-  res.render('resetPasswordWithEmail.ejs');
-}
-);
-// find a user by email and let them reset their password 
-// TODO: send an email to the user with a link to reset their password
-app.post('/resetPasswordWithEmail', async (req, res) => {
-  const email = req.body.email;
-  const newPassword = req.body.newPassword;
-  try {
-    const hashedPassword = hashPassword(newPassword);
-    await usersModel.updateOne({ email: email }, { password: hashedPassword });
-    res.redirect('/?passwordUpdated=true');
-  } catch (error) {
-    console.error('Error during password reset:', error);
-    res.status(500).send('Internal Server Error');
-  }
-});
 
 // check if a user is logged in
 // user must be logged in to access the following routes
@@ -186,56 +90,20 @@ app.get('/protectedRoute', isUserAuthenticated, (req, res) => {
   }
 });
 // log the user out, destroy the session, and redirect to the home page
-app.get('/logout', isUserAuthenticated, (req, res) => {
-  req.session.destroy();
-  res.clearCookie('connect.sid');
-  res.redirect('/');
-}
-);
+
 
 // user profile
 app.get('/profile', isUserAuthenticated, (req, res) => {
   res.render('profile.ejs', { name: req.session.name, email: req.session.email, type: req.session.type })
 });
 
-// reset user while logged in
-app.get('/resetPassword', isUserAuthenticated, (req, res) => {
-  res.render('resetPassword.ejs');
-});
+const login= require('./routes/login');
+app.use(login);
 
-// find user via email and then reset their password
-app.post('/resetPassword', isUserAuthenticated, async (req, res) => {
-  const newPassword = req.body.newPassword;
-  const email = req.session.email;
 
-  try {
-    const user = await usersModel.findOne({ email: email });
-    const hashedPassword = hashPassword(newPassword);
-    await usersModel.updateOne({ email: email }, { password: hashedPassword });
-    res.redirect('/?passwordUpdated=true');
-  } catch (error) {
-    console.error('Error during password reset:', error);
-  }
-});
 
-app.get('/creatematch', (req, res) => {
-    res.render('creatematch');
-});
-
-app.post('/creatematch', async (req, res) => {
-
-  const { sport, location, length, time, date, players, skill, description } = req.body;
-  try {
-    const newMatch = new matchModel({ sport, location, length, time, date, players, skill, description });
-    await newMatch.save();
-    console.log('Match created:', newMatch);
-    res.redirect('/index');
-  } catch (error) {
-    console.error('Error during match creation:', error);
-    res.status(500).send('Internal Server Error');
-  }
-
-});
+const createMatch = require('./routes/createMatch');
+app.use(createMatch);
 
 
 app.listen(3000, () => {
