@@ -14,11 +14,13 @@ function goToGlobal() {
     window.location.href = "/globalleaderboard";
 }
 
-document.getElementById("backButton").addEventListener("click", goBack);
 
-document.getElementById("localBoard").addEventListener("click", goToLocal);
 
-document.getElementById("globalBoard").addEventListener("click", goToGlobal);
+window.onload = function() {
+    document.getElementById("backButton").addEventListener("click", goBack);
+    document.getElementById("localBoard").addEventListener("click", goToLocal);
+    document.getElementById("globalBoard").addEventListener("click", goToGlobal);
+    document.getElementById("regionalBoard").addEventListener("click", goToRegional);
+  }
 
-document.getElementById("regionalBoard").addEventListener("click", goToRegional);
-
+console.log("leaderboard.js loaded");
