@@ -22,7 +22,13 @@ const signUpSchema = Joi.object({
         'string.max': `Password must less than 13 characters long. Please try again. <button onclick="location.href='/signup'" type="button">Sign Up</button>`,
         'string.empty': `Password is required. Please try again. <button onclick="location.href='/signup'" type="button">Sign Up</button>`,
         'any.required': `Password is required. Please try again. <button onclick="location.href='/signup'" type="button">Sign Up</button>`
+    }),
+    captcha: Joi.string().required().valid('expected captcha value').messages({
+        'string.empty': `Captcha is required. Please try again.`,
+        'any.required': `Captcha is required. Please try again.`,
+        'any.only': `Captcha is incorrect. Please try again.`
     })
+
 });
 // encrypt password to be stored in the database
 function hashPassword(password) {
