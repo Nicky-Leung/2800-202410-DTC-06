@@ -84,3 +84,4 @@ async function createMap() {
 
 }
 createMap();
+console.log('map.js loaded');

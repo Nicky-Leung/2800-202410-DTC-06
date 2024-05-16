@@ -134,7 +134,7 @@ app.get('/index', (req, res) => {
 
 app.get('/information', (req, res) => {
 
-    res.render('information')
+    res.render('components/information')
 });
 
 
