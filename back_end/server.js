@@ -34,27 +34,10 @@ async function main() {
 main().catch(err => console.log(err));
 
 // every user had name email password and type (admin or not admin)
-const usersSchema = new mongoose.Schema({
-  name: String,
-  email: String,
-  password: String,
-  type: String
-});
 
-const usersModel = mongoose.model('gameSetMatch.user', usersSchema);
 
-const createdMatchSchema = new mongoose.Schema({
-  sport: String,
-  location: String,
-  length: Number,
-  time: String,
-  date: String,
-  players: Number,
-  skill: String,
-  description: String
-
-});
-const matchModel = mongoose.model('current_matches', createdMatchSchema);
+const usersModel = require('models/userModel');
+const matchModel = require('models/matchModel');
 
 
 app.use(session({
