@@ -9,6 +9,7 @@ module.exports = {
         'dark-blue': '#175676',
         'sky-blue':'#4BA3C3',
         'baby-blue': '#CCE6F4'
+  
 
       },
     },

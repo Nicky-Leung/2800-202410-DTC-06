@@ -36,8 +36,8 @@ main().catch(err => console.log(err));
 // every user had name email password and type (admin or not admin)
 
 
-const usersModel = require('models/userModel');
-const matchModel = require('models/matchModel');
+const usersModel = require('./models/userModel');
+const matchModel = require('./models/matchModel');
 
 
 app.use(session({
