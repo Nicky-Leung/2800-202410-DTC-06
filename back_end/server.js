@@ -91,6 +91,17 @@ app.get('/protectedRoute', isUserAuthenticated, (req, res) => {
 // log the user out, destroy the session, and redirect to the home page
 
 
+//leaderboard pages
+app.get('/localleaderboard', (req, res) => {
+  res.render('leaderboard_local.ejs')
+});
+app.get('/globalleaderboard', (req, res) => {
+  res.render('leaderboard_global.ejs')
+});
+app.get('/regionalleaderboard', (req, res) => {
+  res.render('leaderboard_regional.ejs')
+});
+
 // user profile
 app.get('/profile', isUserAuthenticated, (req, res) => {
   res.render('profile.ejs', { name: req.session.name, email: req.session.email, type: req.session.type })
