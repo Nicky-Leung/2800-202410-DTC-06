@@ -41,6 +41,20 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(express.static('public'));
 
+app.get('/index.js', (req, res) => {
+  fs.readFile(path.join(__dirname, 'public', 'your-js-file.js'), 'utf8', (err, data) => {
+    if (err) {
+      console.error(err);
+      res.status(500).send('Internal Server Error');
+      return;
+    }
+
+    const replacedData = data.replace('process.env.MapKey', JSON.stringify(process.env.MapKey));
+    res.type('.js');
+    res.send(replacedData);
+  });
+});
+
 // home page
 app.get('/', (req, res) => {
 
@@ -91,6 +105,21 @@ app.get('/protectedRoute', isUserAuthenticated, (req, res) => {
 // log the user out, destroy the session, and redirect to the home page
 
 
+//leaderboard pages
+app.get('/localleaderboard', (req, res) => {
+  res.render('leaderboard_local.ejs')
+});
+app.get('/globalleaderboard', (req, res) => {
+  res.render('leaderboard_global.ejs')
+});
+app.get('/regionalleaderboard', (req, res) => {
+  res.render('leaderboard_regional.ejs')
+});
+
+app.get('/match', (req, res) => {
+  res.render('match.ejs')
+});
+
 // user profile
 app.get('/profile', isUserAuthenticated, (req, res) => {
   res.render('profile.ejs', { name: req.session.name, email: req.session.email, type: req.session.type })
@@ -98,6 +127,9 @@ app.get('/profile', isUserAuthenticated, (req, res) => {
 
 const login= require('./routes/login');
 app.use(login);
+
+const map = require('./routes/map');
+app.use(map);
 
 
 
