@@ -94,16 +94,6 @@ isUserAuthenticated = (req, res, next) => {
 
 // app.use(isUserAuthenticated) // no longer applying this globally
 
-// landing page after login
-app.get('/protectedRoute', isUserAuthenticated, (req, res) => {
-  if (req.session.authenticated) {
-    res.render('protectedRoute.ejs', { name: req.session.name })
-  } else {
-    res.render('notLoggedIn.ejs', { message: 'You must be logged in to access this route!!!' })
-  }
-});
-// log the user out, destroy the session, and redirect to the home page
-
 
 //leaderboard pages
 app.get('/localleaderboard', (req, res) => {

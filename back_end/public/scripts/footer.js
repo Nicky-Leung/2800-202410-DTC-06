@@ -10,3 +10,9 @@ console.log(home);
 home.addEventListener('click', () => {
     window.location.href = '/index';   
 });
+
+home = document.getElementById('profile')
+console.log(home);
+home.addEventListener('click', () => {
+    window.location.href = '/profile';   
+});

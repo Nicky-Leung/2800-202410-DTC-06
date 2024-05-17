@@ -51,7 +51,7 @@ router.post('/login', async (req, res) => {
             req.session.name = result.name;
             req.session.email = result.email;
             req.session.bio = result.bio;
-            return res.redirect('/protectedRoute');
+            return res.redirect('/profile');
         }
         console.log('Access denied');
         res.render('notLoggedIn.ejs', { message: 'Email and/or password not found. Please try again or sign up.' });
