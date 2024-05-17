@@ -80,6 +80,7 @@ app.get('/index', (req, res) => {
 app.get('/information', (req, res) => {
 
   res.render('components/information')
+  res.render('components/information')
 });
 
 
