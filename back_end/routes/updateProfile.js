@@ -10,7 +10,7 @@ router.post('/updateProfile', async (req, res) => {
     // Update session data
     req.session.name = name;
     req.session.bio = bio;
-    res.redirect('/home?profileUpdated=true');
+    res.redirect('/profile?profileUpdated=true');
   } catch (error) {
     console.error('Error during profile update:', error);
     res.status(500).send('Internal Server Error');

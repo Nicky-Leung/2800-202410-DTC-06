@@ -110,6 +110,10 @@ app.get('/match', (req, res) => {
   res.render('match.ejs')
 });
 
+app.get('/matchsummary', (req, res) => {
+  res.render('matchover.ejs')
+});
+
 // user profile
 app.get('/profile', isUserAuthenticated, (req, res) => {
   res.render('profile.ejs', { name: req.session.name, email: req.session.email, type: req.session.type, bio: req.session.bio })
