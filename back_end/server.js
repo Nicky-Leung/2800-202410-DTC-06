@@ -111,7 +111,7 @@ app.get('/match', (req, res) => {
   res.render('match.ejs')
 });
 
-app.get('/matchsummary', (req, res) => {
+app.get('/matchend', (req, res) => {
   res.render('matchover.ejs')
 });
 
