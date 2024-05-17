@@ -1,0 +1,291 @@
+<%- include('templates/header') %>
+
+    <div class="bg-dark-blue flex justify-center items-center min-h-screen p-2 text-white">
+        <div class="mx-auto mt-8 mb-8 max-w-screen-lg">
+            <div class="bg-rose rounded-lg overflow-hidden shadow-lg p-4">
+                <!-- Your content here -->
+                <div class="relative flex flex-col min-w-0 break-words rounded">
+                    <div id="status" class="py-2 px-4 mt-10">
+                        <h1 class="text-5xl font-bold text-center">Victory</h1>
+                        <!-- Placeholder for status either victory or defeat -->
+                    </div>
+                    <br>
+                    <div id="score">
+                        <h1 class="text-5xl font-bold text-center">3-2</h1><!-- Score placeholder -->
+                    </div>
+                </div>
+                <div class="flex justify-center items-center mt-4 mb-5">
+                    <div class="bg-sky-blue h-48 w-48 flex justify-center items-center shadow-md rounded-full">
+                        <div class="text-center m-4 px-4">
+                            <p class="text-3xl font-bold mb-2">+20</p><!-- MMR gained -->
+                            <p class="text-5xl font-bold mb-2">1900</p><!-- Current MMR -->
+                            <p class="text-2xl ">Challenger</p><!-- Current rank -->
+                        </div>
+                    </div>
+                </div>
+                <br>
+                <div id="gameName">
+                    <h1 class="text-2xl mb-5 font-bold text-center">3 vs 3 Basketball game </h1>
+                </div>
+                <div class="flex flex-col sm:flex-row mx-5 justify-center"><!-- Team cards -->
+                    <div class="max-w-sm rounded overflow-hidden shadow-lg mx-4 bg-dark-blue text-center mb-4 sm:mb-0">
+                        <div class="px-6 py-4">
+                            <div class="font-bold text-xl mb-2 text-white">Your Team</div>
+                            <div class="mb-2  flex ">
+                                <span
+                                    class="flex items-center mr-2 bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 m-1">
+                                    <svg xmlns="http://www.w3.org/2000/svg"
+                                        class="icon icon-tabler icon-tabler-user-circle" width="36" height="36"
+                                        viewBox="0 0 24 24" stroke-width="1" stroke="#000000" fill="none"
+                                        stroke-linecap="round" stroke-linejoin="round">
+                                        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                                        <path d="M12 12m-9 0a9 9 0 1 0 18 0a9 9 0 1 0 -18 0" />
+                                        <path d="M12 10m-3 0a3 3 0 1 0 6 0a3 3 0 1 0 -6 0" />
+                                        <path d="M6.168 18.849a4 4 0 0 1 3.832 -2.849h4a4 4 0 0 1 3.834 2.855" />
+                                    </svg>
+                                    <p class=" text-xl">Player 1 </p>
+                                    <svg xmlns="http://www.w3.org/2000/svg"
+                                        class="icon icon-tabler icon-tabler-user-plus" width="36" height="36"
+                                        viewBox="0 0 24 24" stroke-width="1" stroke="#000000" fill="none"
+                                        stroke-linecap="round" stroke-linejoin="round">
+                                        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                                        <path d="M8 7a4 4 0 1 0 8 0a4 4 0 0 0 -8 0" />
+                                        <path d="M16 19h6" />
+                                        <path d="M19 16v6" />
+                                        <path d="M6 21v-2a4 4 0 0 1 4 -4h4" />
+                                    </svg>
+                                    <svg xmlns="http://www.w3.org/2000/svg"
+                                        class="icon icon-tabler icon-tabler-flag flagIcon" width="36" height="36"
+                                        viewBox="0 0 24 24" stroke-width="1" stroke="#d62839" fill="none"
+                                        stroke-linecap="round" stroke-linejoin="round">
+                                        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                                        <path
+                                            d="M5 5a5 5 0 0 1 7 0a5 5 0 0 0 7 0v9a5 5 0 0 1 -7 0a5 5 0 0 0 -7 0v-9z" />
+                                        <path d="M5 21v-7" />
+                                    </svg>
+                                </span>
+                            </div>
+                            <div class="mb-2  flex ">
+                                <span
+                                    class="flex items-center mr-2 bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 m-1">
+                                    <svg xmlns="http://www.w3.org/2000/svg"
+                                        class="icon icon-tabler icon-tabler-user-circle" width="36" height="36"
+                                        viewBox="0 0 24 24" stroke-width="1" stroke="#000000" fill="none"
+                                        stroke-linecap="round" stroke-linejoin="round">
+                                        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                                        <path d="M12 12m-9 0a9 9 0 1 0 18 0a9 9 0 1 0 -18 0" />
+                                        <path d="M12 10m-3 0a3 3 0 1 0 6 0a3 3 0 1 0 -6 0" />
+                                        <path d="M6.168 18.849a4 4 0 0 1 3.832 -2.849h4a4 4 0 0 1 3.834 2.855" />
+                                    </svg>
+                                    <p class=" text-xl">Player 2 </p>
+                                    <svg xmlns="http://www.w3.org/2000/svg"
+                                        class="icon icon-tabler icon-tabler-user-plus" width="36" height="36"
+                                        viewBox="0 0 24 24" stroke-width="1" stroke="#000000" fill="none"
+                                        stroke-linecap="round" stroke-linejoin="round">
+                                        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                                        <path d="M8 7a4 4 0 1 0 8 0a4 4 0 0 0 -8 0" />
+                                        <path d="M16 19h6" />
+                                        <path d="M19 16v6" />
+                                        <path d="M6 21v-2a4 4 0 0 1 4 -4h4" />
+                                    </svg>
+                                    <svg xmlns="http://www.w3.org/2000/svg"
+                                        class="icon icon-tabler icon-tabler-flag flagIcon" width="36" height="36"
+                                        viewBox="0 0 24 24" stroke-width="1" stroke="#d62839" fill="none"
+                                        stroke-linecap="round" stroke-linejoin="round">
+                                        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                                        <path
+                                            d="M5 5a5 5 0 0 1 7 0a5 5 0 0 0 7 0v9a5 5 0 0 1 -7 0a5 5 0 0 0 -7 0v-9z" />
+                                        <path d="M5 21v-7" />
+                                    </svg>
+                                </span>
+                            </div>
+                            <div class="mb-2  flex ">
+                                <span
+                                    class="flex items-center mr-2 bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 m-1">
+                                    <svg xmlns="http://www.w3.org/2000/svg"
+                                        class="icon icon-tabler icon-tabler-user-circle" width="36" height="36"
+                                        viewBox="0 0 24 24" stroke-width="1" stroke="#000000" fill="none"
+                                        stroke-linecap="round" stroke-linejoin="round">
+                                        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                                        <path d="M12 12m-9 0a9 9 0 1 0 18 0a9 9 0 1 0 -18 0" />
+                                        <path d="M12 10m-3 0a3 3 0 1 0 6 0a3 3 0 1 0 -6 0" />
+                                        <path d="M6.168 18.849a4 4 0 0 1 3.832 -2.849h4a4 4 0 0 1 3.834 2.855" />
+                                    </svg>
+                                    <p class=" text-xl">Player 3 </p>
+                                    <svg xmlns="http://www.w3.org/2000/svg"
+                                        class="icon icon-tabler icon-tabler-user-plus" width="36" height="36"
+                                        viewBox="0 0 24 24" stroke-width="1" stroke="#000000" fill="none"
+                                        stroke-linecap="round" stroke-linejoin="round">
+                                        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                                        <path d="M8 7a4 4 0 1 0 8 0a4 4 0 0 0 -8 0" />
+                                        <path d="M16 19h6" />
+                                        <path d="M19 16v6" />
+                                        <path d="M6 21v-2a4 4 0 0 1 4 -4h4" />
+                                    </svg>
+                                    <svg xmlns="http://www.w3.org/2000/svg"
+                                        class="icon icon-tabler icon-tabler-flag flagIcon" width="36" height="36"
+                                        viewBox="0 0 24 24" stroke-width="1" stroke="#d62839" fill="none"
+                                        stroke-linecap="round" stroke-linejoin="round">
+                                        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                                        <path
+                                            d="M5 5a5 5 0 0 1 7 0a5 5 0 0 0 7 0v9a5 5 0 0 1 -7 0a5 5 0 0 0 -7 0v-9z" />
+                                        <path d="M5 21v-7" />
+                                    </svg>
+                                </span>
+                            </div>
+
+
+                        </div>
+                    </div>
+                    <div class="max-w-sm rounded overflow-hidden shadow-lg mx-4 bg-crimson text-center">
+                        <div class="px-6 py-4">
+                            <div class="font-bold text-xl mb-2 text-white">Opponent</div>
+                            <div class="mb-2  flex ">
+                                <span
+                                    class="flex items-center mr-2 bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 m-1">
+                                    <svg xmlns="http://www.w3.org/2000/svg"
+                                        class="icon icon-tabler icon-tabler-user-circle" width="36" height="36"
+                                        viewBox="0 0 24 24" stroke-width="1" stroke="#000000" fill="none"
+                                        stroke-linecap="round" stroke-linejoin="round">
+                                        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                                        <path d="M12 12m-9 0a9 9 0 1 0 18 0a9 9 0 1 0 -18 0" />
+                                        <path d="M12 10m-3 0a3 3 0 1 0 6 0a3 3 0 1 0 -6 0" />
+                                        <path d="M6.168 18.849a4 4 0 0 1 3.832 -2.849h4a4 4 0 0 1 3.834 2.855" />
+                                    </svg>
+                                    <p class=" text-xl">Player A </p>
+                                    <svg xmlns="http://www.w3.org/2000/svg"
+                                        class="icon icon-tabler icon-tabler-user-plus" width="36" height="36"
+                                        viewBox="0 0 24 24" stroke-width="1" stroke="#000000" fill="none"
+                                        stroke-linecap="round" stroke-linejoin="round">
+                                        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                                        <path d="M8 7a4 4 0 1 0 8 0a4 4 0 0 0 -8 0" />
+                                        <path d="M16 19h6" />
+                                        <path d="M19 16v6" />
+                                        <path d="M6 21v-2a4 4 0 0 1 4 -4h4" />
+                                    </svg>
+                                    <svg xmlns="http://www.w3.org/2000/svg"
+                                        class="icon icon-tabler icon-tabler-flag flagIcon" width="36" height="36"
+                                        viewBox="0 0 24 24" stroke-width="1" stroke="#d62839" fill="none"
+                                        stroke-linecap="round" stroke-linejoin="round">
+                                        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                                        <path
+                                            d="M5 5a5 5 0 0 1 7 0a5 5 0 0 0 7 0v9a5 5 0 0 1 -7 0a5 5 0 0 0 -7 0v-9z" />
+                                        <path d="M5 21v-7" />
+                                    </svg>
+                                </span>
+                            </div>
+                            <div class="mb-2  flex ">
+                                <span
+                                    class="flex items-center mr-2 bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 m-1">
+                                    <svg xmlns="http://www.w3.org/2000/svg"
+                                        class="icon icon-tabler icon-tabler-user-circle" width="36" height="36"
+                                        viewBox="0 0 24 24" stroke-width="1" stroke="#000000" fill="none"
+                                        stroke-linecap="round" stroke-linejoin="round">
+                                        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                                        <path d="M12 12m-9 0a9 9 0 1 0 18 0a9 9 0 1 0 -18 0" />
+                                        <path d="M12 10m-3 0a3 3 0 1 0 6 0a3 3 0 1 0 -6 0" />
+                                        <path d="M6.168 18.849a4 4 0 0 1 3.832 -2.849h4a4 4 0 0 1 3.834 2.855" />
+                                    </svg>
+                                    <p class=" text-xl">Player B </p>
+                                    <svg xmlns="http://www.w3.org/2000/svg"
+                                        class="icon icon-tabler icon-tabler-user-plus" width="36" height="36"
+                                        viewBox="0 0 24 24" stroke-width="1" stroke="#000000" fill="none"
+                                        stroke-linecap="round" stroke-linejoin="round">
+                                        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                                        <path d="M8 7a4 4 0 1 0 8 0a4 4 0 0 0 -8 0" />
+                                        <path d="M16 19h6" />
+                                        <path d="M19 16v6" />
+                                        <path d="M6 21v-2a4 4 0 0 1 4 -4h4" />
+                                    </svg>
+                                    <svg xmlns="http://www.w3.org/2000/svg"
+                                        class="icon icon-tabler icon-tabler-flag flagIcon" width="36" height="36"
+                                        viewBox="0 0 24 24" stroke-width="1" stroke="#d62839" fill="none"
+                                        stroke-linecap="round" stroke-linejoin="round">
+                                        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                                        <path
+                                            d="M5 5a5 5 0 0 1 7 0a5 5 0 0 0 7 0v9a5 5 0 0 1 -7 0a5 5 0 0 0 -7 0v-9z" />
+                                        <path d="M5 21v-7" />
+                                    </svg>
+                                </span>
+                            </div>
+                            <div class="mb-2  flex ">
+                                <span
+                                    class="flex items-center mr-2 bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 m-1">
+                                    <svg xmlns="http://www.w3.org/2000/svg"
+                                        class="icon icon-tabler icon-tabler-user-circle" width="36" height="36"
+                                        viewBox="0 0 24 24" stroke-width="1" stroke="#000000" fill="none"
+                                        stroke-linecap="round" stroke-linejoin="round">
+                                        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                                        <path d="M12 12m-9 0a9 9 0 1 0 18 0a9 9 0 1 0 -18 0" />
+                                        <path d="M12 10m-3 0a3 3 0 1 0 6 0a3 3 0 1 0 -6 0" />
+                                        <path d="M6.168 18.849a4 4 0 0 1 3.832 -2.849h4a4 4 0 0 1 3.834 2.855" />
+                                    </svg>
+                                    <p class=" text-xl">Player C </p>
+                                    <svg xmlns="http://www.w3.org/2000/svg"
+                                        class="icon icon-tabler icon-tabler-user-plus" width="36" height="36"
+                                        viewBox="0 0 24 24" stroke-width="1" stroke="#000000" fill="none"
+                                        stroke-linecap="round" stroke-linejoin="round">
+                                        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                                        <path d="M8 7a4 4 0 1 0 8 0a4 4 0 0 0 -8 0" />
+                                        <path d="M16 19h6" />
+                                        <path d="M19 16v6" />
+                                        <path d="M6 21v-2a4 4 0 0 1 4 -4h4" />
+                                    </svg>
+                                    <svg xmlns="http://www.w3.org/2000/svg"
+                                        class="icon icon-tabler icon-tabler-flag flagIcon" width="36" height="36"
+                                        viewBox="0 0 24 24" stroke-width="1" stroke="#d62839" fill="none"
+                                        stroke-linecap="round" stroke-linejoin="round">
+                                        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                                        <path
+                                            d="M5 5a5 5 0 0 1 7 0a5 5 0 0 0 7 0v9a5 5 0 0 1 -7 0a5 5 0 0 0 -7 0v-9z" />
+                                        <path d="M5 21v-7" />
+                                    </svg>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- End of Team cards -->
+                    <br>
+                    <br>
+                    <br>
+                    <div class="flex justify-center mt-4">
+                        <button
+                            class="text-2xl bg-crimson hover:bg-white hover:text-crimson text-white font-bold py-2 px-4 rounded"
+                            onclick="location.href='/match'">Rematch</button><!--add the href for match-->
+                        <button class=" text-2xl bg-dark-blue hover:bg-white hover:text-dark-blue text-white font-bold py-2
+                            px-4 rounded ml-4" onclick="location.href='/index'">Home</button>
+
+                    </div>
+                    <br>
+                    <br>
+                </div>
+            </div>
+            <br>
+            <br>
+            <br>
+            <div id="ratingDialog"
+                class="modal hidden fixed inset-0 overflow-auto bg-black bg-opacity-75 flex justify-center items-center text-black">
+                <div
+                    class="modal-content bg-white p-4 sm:p-6 md:p-8 w-full max-w-sm sm:max-w-md md:max-w-2xl mx-4 relative">
+                    <span id="closeBtn"
+                        class="close absolute top-0 right-0 mt-4 mr-4 cursor-pointer text-black text-3xl sm:text-5xl">&times;</span>
+                    <h1 class="text-lg sm:text-xl md:text-2xl font-bold mb-4 text-center">Rate this player's
+                        sportsmanship!</h1>
+                    <div id="icons" class="flex justify-center mb-4">
+                        <!-- Add your icons here -->
+                    </div>
+                    <div class="flex justify-center mt-4">
+                        <button id="submitBtn"
+                            class="bg-crimson hover:bg-white hover:text-crimson hover:border hover:border-black text-white font-bold py-2 px-4 rounded">
+                            Submit
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="/scripts/rateplayer.js"></script>
+
+
+
+    <%- include('templates/footer') %>

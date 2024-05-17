@@ -1,0 +1,74 @@
+<%- include('templates/header') %>
+
+    <body class="bg-white">
+
+        <div class="relative w-full bg-cover bg-center p-6 md:p-12 shadow-md">
+            <div class="absolute inset-0 bg-cover bg-center" style="background-image: url('/images/background.jpg');">
+                <!-- Img is placeholder can change if needed -->
+                <div class="absolute inset-0 bg-black opacity-50"></div> <!--overlay to darken image-->
+            </div>
+            <div class="relative p-6 md:p-12 rounded-lg bg-cover bg-center">
+                <h1 class="text-3xl md:text-5xl font-bold text-center text-white">Game Set Match</h1>
+                <p class="text-lg md:text-xl text-center mt-4 text-white">Connect with players of similar skill level
+                    for an enjoyable
+                    and fair match!</p>
+                <p class="text-lg md:text-xl text-center mt-4 text-white">Sign-up now to play! </p>
+                <div class="flex flex-col items-center mt-4">
+                    <button class="text-white font-bold py-2 px-4 rounded" onclick="location.href='/signup'"
+                        style="background-color: #4ba3c3;">
+                        Sign-up
+                    </button>
+                    <p class="text-gray-100 mt-2">Already have an account? <a href="/login"
+                            style="color: #4ba3c3; ">Log-in</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="max-w-screen-lg mx-auto mt-8 px-4 md:px-0"><!--This is the card section/things under header-->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="rounded-lg overflow-hidden shadow-md text-white" style="background-color: #d62839;">
+                    <!--card num 1 for what app is-->
+                    <div class="p-7">
+                        <h2 class="text-2xl md:text-3xl font-bold text-center  mb-6">What is Game Set match?</h2>
+                        <p class="text-lg leading-relaxed">Game Set Match is an app where users can find similarly
+                            ranked players to play sports
+                            with and track their progression via ranks.</p>
+                    </div>
+                </div>
+                <div class="rounded-lg overflow-hidden shadow-md text-white" style="background-color: #175676;">
+                    <!--card num 2 for how it works-->
+                    <div class="p-7">
+                        <h2 class="text-2xl md:text-3xl font-bold text-center  mb-6">How does it work?</h2>
+                        <p class="text-lg leading-relaxed">
+                        <p class="text-lg leading-relaxed">Users can easily create or join matches, while their ranks
+                            are tracked on
+                            leaderboards and Elo/MMR systems.</p>
+                        </p>
+                    </div>
+                </div>
+                <div class="rounded-lg overflow-hidden shadow-md text-white" style="background-color: #d62839;;">
+                    <!--card num 3 for how matchmaking works-->
+                    <div class="p-7">
+                        <h2 class="text-2xl md:text-3xl font-bold text-center mb-6">How does matchmaking work?</h2>
+                        <p class="text-lg leading-relaxed">Users can book locations to create matches based on their
+                            skill level. Others can
+                            join using the "Find Match" button if their rank is similar.</p>
+
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div><!--card section ends here-->
+        <footer class="text-gray-400 py-4">
+            <div class="max-w-screen-lg mx-auto px-4">
+                <hr class="border-gray-600 mb-4">
+                <div class="text-center">By DTC-06 - 2024</div>
+            </div>
+        </footer>
+
+
+
+    </body>
+
+    </html>

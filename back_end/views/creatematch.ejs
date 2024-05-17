@@ -1,0 +1,44 @@
+<%- include ('templates/header') %>
+
+<div class="flex flex-col justify-evenly bg-rose h-screen text-white">
+
+<h1 class="m-4 text-center">Recreation Centre</h1>
+
+<br>
+
+<form action="/creatematch" method="POST">
+    <div class="flex flex-col items-center justify-center m-2">
+        <label class="text-xl" for="location">Location</label>
+        <input type="text" name="location" id="location" required>
+    </div>
+    <div class="flex flex-col items-center justify-center m-2">
+        <label class="text-xl" for="sport">Sport</label>
+        <input type="text" name="sport" id="sport" required>
+    </div>
+    <div class="flex flex-col items-center justify-center m-2">
+        <label class="text-xl" for="time">Time</label>
+        <input type="text" name="time" id="time" required>
+    </div>
+    <div class="flex flex-col items-center justify-center m-2">
+        <label class="text-xl" for="date">Date</label>
+        <input type="text" name="date" id="date" required>
+    </div>
+    <div class="flex flex-col items-center justify-center m-2">
+        <label class="text-xl" for="maxPlayers">Max Players</label>
+        <input type="text" name="maxPlayers" id="maxPlayers" required>
+    </div>
+    <div class="flex flex-col items-center justify-center m-2">
+        <label class="text-xl" for="description">Description</label>
+        <input type="text" name="description" id="description" required>
+    </div>
+    <div class="flex flex-col items-center justify-center m-4 bg-dark-blue">
+        <button class="text-2xl p-2" type="submit">Create Match</button>
+    </div>
+</form>
+
+</div>
+
+
+
+
+<%- include ('templates/footer') %>

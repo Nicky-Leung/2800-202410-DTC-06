@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login</title>
+  <!-- Include Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+
+<body>
+  <div class="container d-flex justify-content-center align-items-center mt-5 ">
+
+    <div class="card border border-dark">
+      <div class="card-body ">
+        <h1 class="text-center">Login</h1>
+        <br />
+        <form action="/login" method="post">
+          <div class="mb-3">
+            <input type="email" name="email" placeholder="Email" required class="form-control" />
+          </div>
+          <div class="mb-3">
+            <input type="password" name="password" placeholder="Password" required class="form-control" />
+          </div>
+          <button type="submit" class="btn btn-primary">Login</button>
+        </form>
+        <br>
+        <h4 class="text-center"> No account yet? <a href="/signup">Sign-up here!</a></h4>
+      </div>
+    </div>
+  </div>
+
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <!-- Include Bootstrap JS -->
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+
+</html>
