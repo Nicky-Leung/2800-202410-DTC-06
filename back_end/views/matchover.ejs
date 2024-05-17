@@ -1,4 +1,28 @@
 <%-include ('templates/header')%>
-    <div class="bg-green-500 text-black py-2 px-4">
-        <h1 class="text-5xl font-bold text-center">Victory</h1><!--placeholder for status either victory or defeat-->
-    </div>
+
+    <body class="bg-white"><!--change bg color later-->
+        <div class="max-w-md mx-auto bg-baby-blue rounded-xl shadow-md overflow-hidden md:max-w-2xl">
+            <div class="relative flex flex-col min-w-0 break-words bg-blue rounded">
+                <div id="status" class="text-black py-2 px-4">
+                    <h1 class="text-5xl font-bold text-center">Victory</h1>
+                    <!--placeholder for status either victory or defeat-->
+                </div>
+                <br>
+                <div id="score">
+                    <h1 class="text-5xl font-bold text-center">115-23</h1><!--score placeholder-->
+                </div>
+            </div>
+            <br>
+            <div class="flex justify-center items-center mt-4 mb-5">
+                <div class="bg-dark-blue h-48 w-48 flex justify-center items-center shadow-md rounded-full">
+                    <div class="text-center m-4 px-4">
+                        <p class="text-xl font-bold">+20</p><!--mmr gained-->
+                        <p class="text-xl font-bold">1900</p><!--current mmr-->
+                        <p class="text-2xl">Challenger</p><!-- current rank-->
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    </body>
