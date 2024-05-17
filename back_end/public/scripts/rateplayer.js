@@ -101,6 +101,8 @@ function selected() {
             faceIcons.forEach(function (icon) {
                 icon.style.border = "none";
             });
+            console.log(document.getElementById("submitBtn"));
+
 
             this.style.border = "solid 1px black";
         });
