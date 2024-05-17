@@ -64,10 +64,7 @@ app.get('/home', (req, res) => {
   res.render('welcomepage.ejs')
 });
 
-// log in page
-// reset user while logged in
 
-// this is where user creates an account
 
 
 // put welcome page here later
@@ -93,7 +90,6 @@ isUserAuthenticated = (req, res, next) => {
     res.status(401).render('notLoggedIn.ejs', { message: 'Please login first' })
 };
 
-// app.use(isUserAuthenticated) // no longer applying this globally
 
 
 //leaderboard pages
@@ -138,8 +134,14 @@ app.get('/editProfile', isUserAuthenticated, (req, res) => {
   res.render('editProfile.ejs', { name: req.session.name, email: req.session.email, type: req.session.type, bio: req.session.bio })
 });
 
-// move this to a separate file
 
+
+
+const resetPassword = require('./routes/resetPassword');
+const resetPasswordWithEmail = require('./routes/resetPasswordWithEmail');
+
+app.use(resetPassword);
+app.use(resetPasswordWithEmail);
 
 const updateProfile = require('./routes/updateProfile');
 app.use(updateProfile);
