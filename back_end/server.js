@@ -122,7 +122,7 @@ app.get('/match', (req, res) => {
 
 // user profile
 app.get('/profile', isUserAuthenticated, (req, res) => {
-  res.render('profile.ejs', { name: req.session.name, email: req.session.email, type: req.session.type })
+  res.render('profile.ejs', { name: req.session.name, email: req.session.email, type: req.session.type, bio: req.session.bio })
 });
 
 const login = require('./routes/login');
@@ -137,6 +137,17 @@ app.get('/logout', isUserAuthenticated, function (req, res) {
     res.redirect('/');
   });
 });
+
+// page where user can edit profile directly, except email and password
+app.get('/editProfile', isUserAuthenticated, (req, res) => {
+  res.render('editProfile.ejs', { name: req.session.name, email: req.session.email, type: req.session.type, bio: req.session.bio })
+});
+
+// move this to a separate file
+
+
+const updateProfile = require('./routes/updateProfile');
+app.use(updateProfile);
 
 const createMatch = require('./routes/createMatch');
 app.use(createMatch);

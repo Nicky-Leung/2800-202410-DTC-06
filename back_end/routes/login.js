@@ -50,6 +50,7 @@ router.post('/login', async (req, res) => {
             req.session.type = result.type;
             req.session.name = result.name;
             req.session.email = result.email;
+            req.session.bio = result.bio;
             return res.redirect('/protectedRoute');
         }
         console.log('Access denied');
