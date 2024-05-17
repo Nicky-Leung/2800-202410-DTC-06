@@ -120,7 +120,7 @@ app.get('/index', (req, res) => {
 
 app.get('/information', (req, res) => {
 
-    res.render('components/information')
+  res.render('components/information')
 });
 
 
@@ -197,7 +197,10 @@ app.get('/logout', isUserAuthenticated, (req, res) => {
 app.get('/profile', isUserAuthenticated, (req, res) => {
   res.render('profile.ejs', { name: req.session.name, email: req.session.email, type: req.session.type })
 });
-
+app.get('/matchend', (req, res) => {
+  res.render('matchover')
+}
+);
 // reset user while logged in
 app.get('/resetPassword', isUserAuthenticated, (req, res) => {
   res.render('resetPassword.ejs');
@@ -219,7 +222,7 @@ app.post('/resetPassword', isUserAuthenticated, async (req, res) => {
 });
 
 app.get('/creatematch', (req, res) => {
-    res.render('creatematch');
+  res.render('creatematch');
 });
 
 app.post('/creatematch', async (req, res) => {

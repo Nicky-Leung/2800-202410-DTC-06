@@ -8,7 +8,7 @@ var icons = document.getElementById("icons");
 
 icons.innerHTML = `
 <div class="terrible" id="terrible" style="display: flex; flex-direction: column; align-items: center; justify-content: center;">
-    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-mood-cry" width="100" height="100" viewBox="0 0 24 24" stroke-width="1" stroke="#000000" fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-mood-cry" width="75" height="75" viewBox="0 0 24 24" stroke-width="1" stroke="#000000" fill="none" stroke-linecap="round" stroke-linejoin="round">
   <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
   <path d="M9 10l.01 0" />
   <path d="M15 10l.01 0" />
@@ -19,7 +19,7 @@ icons.innerHTML = `
     <span style="margin-top: 8px;">Terrible</span>
 </div>
 <div class="bad" id="bad" style="display: flex; flex-direction: column; align-items: center; justify-content: center;">
-    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-mood-sad" width="100" height="100" viewBox="0 0 24 24" stroke-width="1" stroke="#000000" fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-mood-sad" width="75" height="75" viewBox="0 0 24 24" stroke-width="1" stroke="#000000" fill="none" stroke-linecap="round" stroke-linejoin="round">
         <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
         <path d="M12 12m-9 0a9 9 0 1 0 18 0a9 9 0 1 0 -18 0" />
         <path d="M9 10l.01 0" />
@@ -30,7 +30,7 @@ icons.innerHTML = `
 </div>
 
 <div class="neutral" id="neutral" style="display: flex; flex-direction: column; align-items: center; justify-content: center;">
-    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-mood-empty" width="100" height="100" viewBox="0 0 24 24" stroke-width="1" stroke="#000000" fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-mood-empty" width="75" height="75" viewBox="0 0 24 24" stroke-width="1" stroke="#000000" fill="none" stroke-linecap="round" stroke-linejoin="round">
         <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
         <path d="M12 12m-9 0a9 9 0 1 0 18 0a9 9 0 1 0 -18 0" />
         <path d="M9 10l.01 0" />
@@ -41,7 +41,7 @@ icons.innerHTML = `
 </div>
 
 <div class="goodl" id="good" style="display: flex; flex-direction: column; align-items: center; justify-content: center;">
-    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-mood-smile" width="100" height="100" viewBox="0 0 24 24" stroke-width="1" stroke="#000000" fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-mood-smile" width="75" height="75" viewBox="0 0 24 24" stroke-width="1" stroke="#000000" fill="none" stroke-linecap="round" stroke-linejoin="round">
   <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
   <path d="M12 12m-9 0a9 9 0 1 0 18 0a9 9 0 1 0 -18 0" />
   <path d="M9 10l.01 0" />
@@ -52,7 +52,7 @@ icons.innerHTML = `
 </div>
 
 <div class="happy" id="happy" style="display: flex; flex-direction: column; align-items: center; justify-content: center;">
-    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-mood-happy" width="100" height="100" viewBox="0 0 24 24" stroke-width="1" stroke="#000000" fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-mood-happy" width="75" height="75" viewBox="0 0 24 24" stroke-width="1" stroke="#000000" fill="none" stroke-linecap="round" stroke-linejoin="round">
         <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
         <path d="M12 12m-9 0a9 9 0 1 0 18 0a9 9 0 1 0 -18 0" />
         <path d="M9 9l.01 0" />
