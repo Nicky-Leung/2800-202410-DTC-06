@@ -14,8 +14,7 @@
                 </div>
             </div>
             <div class="flex justify-center items-center mt-4 mb-5">
-                <div
-                    class="bg-crimson border border-black h-48 w-48 flex justify-center items-center shadow-md rounded-full">
+                <div class="bg-crimson  h-48 w-48 flex justify-center items-center shadow-md rounded-full">
                     <div class="text-center m-4 px-4">
                         <p class="text-3xl font-bold mb-2">+20</p><!--mmr gained-->
                         <p class="text-5xl font-bold mb-2">1900</p><!--current mmr-->
@@ -167,18 +166,32 @@
             <br>
             <br>
             <div class="flex justify-center mt-4">
-                <button class="bg-crimson hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Rematch</button>
-                <button class="bg-dark-blue hover:bg-blue-700 text-white font-bold py-2 px-4 rounded ml-4">Home</button>
+                <button
+                    class="bg-crimson hover:bg-white hover:text-crimson text-white font-bold py-2 px-4 rounded">Rematch</button>
+                <button
+                    class="bg-dark-blue hover:bg-white hover:text-dark-blue text-white font-bold py-2 px-4 rounded ml-4">Home</button>
             </div>
             <br>
             <br>
         </div>
-        <div id="ratingDialog" class="modal hidden">
-            <div class="modal-content">
-                <span class="close">&times;</span>
-                <h1>test</h1>
+        <div id="ratingDialog"
+            class="modal hidden fixed inset-0 overflow-auto bg-black bg-opacity-75 flex justify-center items-center text-black">
+            <div class="modal-content bg-white p-8 max-w-2xl">
+                <span id="closeBtn"
+                    class="close absolute top-0 right-0 mt-4 mr-4 cursor-pointer text-white text-5xl">&times;</span>
+                <h1 class="text-2xl font-bold mb-4 text-center">Rate this player's sportsmanship!</h1>
+
+                <div id="icons" class="flex">
+
+                </div>
+                <div class="flex justify-center mt-4">
+                    <button id="submitBtn"
+                        class="bg-crimson hover:bg-white hover:text-crimson hover:border hover:border-black text-white font-bold py-2 px-4 rounded">Submit</button>
+                </div>
             </div>
         </div>
+
+
         <script src="../scripts/rateplayer.js"></script>
 
     </body>
