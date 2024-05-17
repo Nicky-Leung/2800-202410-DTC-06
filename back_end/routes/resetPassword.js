@@ -1,11 +1,20 @@
 const express = require('express');
 const router = express.Router();
+const crypto = require('crypto');
+
 const usersModel = require('../models/userModel');
 
 // reset user while logged in
 router.get('/resetPassword', isUserAuthenticated, (req, res) => {
   res.render('resetPassword.ejs');
 });
+
+// Encrypt password to be stored in the database
+function hashPassword(password) {
+  const hash = crypto.createHash('sha256');
+  hash.update(password);
+  return hash.digest('hex');
+}
 
 // find user via email and then reset their password
 router.post('/resetPassword', isUserAuthenticated, async (req, res) => {
