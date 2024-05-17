@@ -1,33 +1,38 @@
 <%- include('templates/header') %>
 
-    <div class="overflow-hidden pb-96">
-        <div class="text-center pt-5 space-y-3">
-            <h1 class="text-5xl">Match</h1>
-            <h1 class="text-4xl">Rank:</h1>
+    <body class="overflow-hidden bg-rose">
+        <div class=" bg-dark-blue text-white text-center pt-5 pb-5 space-y-3">
+            <h1 class="font-bold text-5xl">Match</h1>
+            <h1 class="font-bold text-4xl">Rank: Challenger</h1>
             <div class="flex flex-row justify-center">
                 <div class="pt-4 flex flex-col space-y-3 mr-3">
-                    <button id="homePlus" class=" text-4xl border-4 px-3 pb-3 rounded-full">+</button>
-                    <button id="homeMinus"class=" text-4xl border-4 px-3 pb-3 rounded-full">-</button>
+                    <button id="homePlus" class="text-white bg-sky-blue text-4xl px-3 pb-3 rounded-full">+</button>
+                    <button id="homeMinus"class="text-white text-4xl bg-rose px-3 pb-3 rounded-full">-</button>
                 </div>
-                <div style="font-size: 96px;" class="mt-3 text-7xl"><span id="home-score">0</span>-<span id="away-score">0</span></div>
+                <div style="font-size: 96px;" class="mt-4 pt-3 text-7xl"><span id="home-score">0</span>-<span id="away-score">0</span></div>
                 <div class="pt-4 flex flex-col space-y-3 ml-3">
-                    <button id="awayPlus" class= "text-4xl border-4 px-3 pb-3 rounded-full">+</button>
-                    <button id="awayMinus" class=" text-4xl border-4 px-3 pb-3 rounded-full">-</button>
+                    <button id="awayPlus" class="text-white bg-rose text-4xl px-3 pb-3 rounded-full">+</button>
+                    <button id="awayMinus" class="text-white bg-sky-blue text-4xl px-3 pb-3 rounded-full">-</button>
                 </div>
             </div>
             <div id="countdown" class="text-6xl"> 60:00</div>
         </div>
         
-        <div class="flex mt-1 flex-row justify-between">
-            <div class="flex flex-col ml-4 p-1 border-4 rounded-lg width-5/12">
-                <div class=" text-center text-2xl">Team</div>
-                <div class="flex flex-row mt-2 border-4 rounded-lg">
-                    <img class="size-10"
-                        src="https://b.fssta.com/uploads/application/nba/headshots/1120.vresize.350.350.medium.77.png"
-                        alt="">
-                    <div class="flex pt-1.5 flex-col pl-0.5">
-                        <div class="text-xs">Lorem ipsum</div>
-                        <div class="text-xs"> Challenger</div>
+        <div class="flex mt-5 flex-row justify-between">
+            <div class="flex bg-dark-blue flex-col ml-4 py-2 px-3 rounded-lg width-5/12">
+                <div class="text-white font-bold text-center text-2xl">Your Team</div>
+                <div class="flex flex-row mt-2 justify-between bg-gray-200 px-2 py-1 rounded-full">
+                    <svg xmlns="http://www.w3.org/2000/svg"
+                    class="icon icon-tabler icon-tabler-user-circle" width="36" height="36"
+                    viewBox="0 0 24 24" stroke-width="1" stroke="#000000" fill="none"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                    <path d="M12 12m-9 0a9 9 0 1 0 18 0a9 9 0 1 0 -18 0" />
+                    <path d="M12 10m-3 0a3 3 0 1 0 6 0a3 3 0 1 0 -6 0" />
+                    <path d="M6.168 18.849a4 4 0 0 1 3.832 -2.849h4a4 4 0 0 1 3.834 2.855" />
+                </svg>
+                    <div class="flex pt-2 flex-col pl-0.5">
+                        <div class=" text-center text-base">Lorem</div>
                     </div>
                     <svg xmlns="http://www.w3.org/2000/svg" class="mt-2 icon icon-tabler icon-tabler-user-plus"
                         width="25" height="25" viewBox="0 0 24 24" stroke-width="1.5" stroke="#000000" fill="none"
@@ -45,13 +50,18 @@
                         <path d="M5 14h14v-9h-14v16" />
                     </svg>
                 </div>
-                <div class="flex flex-row mt-2 border-4 rounded-lg">
-                    <img class="size-10"
-                        src="https://b.fssta.com/uploads/application/nba/headshots/1120.vresize.350.350.medium.77.png"
-                        alt="">
-                    <div class="flex pt-1.5 flex-col pl-0.5">
-                        <div class="text-xs">Lorem ipsum</div>
-                        <div class="text-xs"> Challenger</div>
+                <div class="flex flex-row mt-2 justify-between bg-gray-200 px-2 py-1 rounded-full">
+                    <svg xmlns="http://www.w3.org/2000/svg"
+                    class="icon icon-tabler icon-tabler-user-circle" width="36" height="36"
+                    viewBox="0 0 24 24" stroke-width="1" stroke="#000000" fill="none"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                    <path d="M12 12m-9 0a9 9 0 1 0 18 0a9 9 0 1 0 -18 0" />
+                    <path d="M12 10m-3 0a3 3 0 1 0 6 0a3 3 0 1 0 -6 0" />
+                    <path d="M6.168 18.849a4 4 0 0 1 3.832 -2.849h4a4 4 0 0 1 3.834 2.855" />
+                </svg>
+                    <div class="flex pt-2 flex-col pl-0.5">
+                        <div class=" text-center text-base">Lorem</div>
                     </div>
                     <svg xmlns="http://www.w3.org/2000/svg" class="mt-2 icon icon-tabler icon-tabler-user-plus"
                         width="25" height="25" viewBox="0 0 24 24" stroke-width="1.5" stroke="#000000" fill="none"
@@ -69,61 +79,18 @@
                         <path d="M5 14h14v-9h-14v16" />
                     </svg>
                 </div>
-                <div class="flex flex-row mt-2 border-4 rounded-lg">
-                    <img class="size-10"
-                        src="https://b.fssta.com/uploads/application/nba/headshots/1120.vresize.350.350.medium.77.png"
-                        alt="">
-                    <div class="flex pt-1.5 flex-col pl-0.5">
-                        <div class="text-xs">Lorem ipsum</div>
-                        <div class="text-xs"> Challenger</div>
-                    </div>
-                    <svg xmlns="http://www.w3.org/2000/svg" class="mt-2 icon icon-tabler icon-tabler-user-plus"
-                        width="25" height="25" viewBox="0 0 24 24" stroke-width="1.5" stroke="#000000" fill="none"
-                        stroke-linecap="round" stroke-linejoin="round">
-                        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                        <path d="M8 7a4 4 0 1 0 8 0a4 4 0 0 0 -8 0" />
-                        <path d="M16 19h6" />
-                        <path d="M19 16v6" />
-                        <path d="M6 21v-2a4 4 0 0 1 4 -4h4" />
-                    </svg>
-                    <svg xmlns="http://www.w3.org/2000/svg" class="mt-2 icon icon-tabler icon-tabler-flag-2" width="25"
-                        height="25" viewBox="0 0 24 24" stroke-width="1.5" stroke="#000000" fill="none"
-                        stroke-linecap="round" stroke-linejoin="round">
-                        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                        <path d="M5 14h14v-9h-14v16" />
-                    </svg>
-                </div>
-                <div class="flex flex-row mt-2 border-4 rounded-lg">
-                    <img class="size-10"
-                        src="https://b.fssta.com/uploads/application/nba/headshots/1120.vresize.350.350.medium.77.png"
-                        alt="">
-                    <div class="flex pt-1.5 flex-col pl-0.5">
-                        <div class="text-xs">Lorem ipsum</div>
-                        <div class="text-xs"> Challenger</div>
-                    </div>
-                    <svg xmlns="http://www.w3.org/2000/svg" class="mt-2 icon icon-tabler icon-tabler-user-plus"
-                        width="25" height="25" viewBox="0 0 24 24" stroke-width="1.5" stroke="#000000" fill="none"
-                        stroke-linecap="round" stroke-linejoin="round">
-                        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                        <path d="M8 7a4 4 0 1 0 8 0a4 4 0 0 0 -8 0" />
-                        <path d="M16 19h6" />
-                        <path d="M19 16v6" />
-                        <path d="M6 21v-2a4 4 0 0 1 4 -4h4" />
-                    </svg>
-                    <svg xmlns="http://www.w3.org/2000/svg" class="mt-2 icon icon-tabler icon-tabler-flag-2" width="25"
-                        height="25" viewBox="0 0 24 24" stroke-width="1.5" stroke="#000000" fill="none"
-                        stroke-linecap="round" stroke-linejoin="round">
-                        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                        <path d="M5 14h14v-9h-14v16" />
-                    </svg>
-                </div>
-                <div class="flex flex-row mt-2 border-4 rounded-lg">
-                    <img class="size-10"
-                        src="https://b.fssta.com/uploads/application/nba/headshots/1120.vresize.350.350.medium.77.png"
-                        alt="">
-                    <div class="flex pt-1.5 flex-col pl-0.5">
-                        <div class="text-xs">Lorem ipsum</div>
-                        <div class="text-xs"> Challenger</div>
+                <div class="flex flex-row mt-2 justify-between bg-gray-200 px-2 py-1 rounded-full">
+                    <svg xmlns="http://www.w3.org/2000/svg"
+                    class="icon icon-tabler icon-tabler-user-circle" width="36" height="36"
+                    viewBox="0 0 24 24" stroke-width="1" stroke="#000000" fill="none"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                    <path d="M12 12m-9 0a9 9 0 1 0 18 0a9 9 0 1 0 -18 0" />
+                    <path d="M12 10m-3 0a3 3 0 1 0 6 0a3 3 0 1 0 -6 0" />
+                    <path d="M6.168 18.849a4 4 0 0 1 3.832 -2.849h4a4 4 0 0 1 3.834 2.855" />
+                </svg>
+                    <div class="flex pt-2 flex-col pl-0.5">
+                        <div class=" text-center text-base">Lorem</div>
                     </div>
                     <svg xmlns="http://www.w3.org/2000/svg" class="mt-2 icon icon-tabler icon-tabler-user-plus"
                         width="25" height="25" viewBox="0 0 24 24" stroke-width="1.5" stroke="#000000" fill="none"
@@ -143,15 +110,20 @@
                 </div>
 
             </div>
-            <div class="flex flex-col mr-4 p-1 border-4 rounded-lg width-5/12">
-                <div class=" text-center text-2xl">Opponents</div>
-                <div class="flex flex-row mt-2 border-4 rounded-lg">
-                    <img class="size-10"
-                        src="https://b.fssta.com/uploads/application/nba/headshots/1120.vresize.350.350.medium.77.png"
-                        alt="">
-                    <div class="flex pt-1.5 flex-col pl-0.5">
-                        <div class="text-xs">Lorem ipsum</div>
-                        <div class="text-xs"> Challenger</div>
+            <div class="flex bg-crimson flex-col mr-4 py-2 px-3 rounded-lg width-5/12">
+                <div class=" text-center font-bold text-white text-2xl">Opponents</div>
+                <div class="flex flex-row mt-2 justify-between bg-gray-200 px-2 py-1 rounded-full">
+                    <svg xmlns="http://www.w3.org/2000/svg"
+                    class="icon icon-tabler icon-tabler-user-circle" width="36" height="36"
+                    viewBox="0 0 24 24" stroke-width="1" stroke="#000000" fill="none"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                    <path d="M12 12m-9 0a9 9 0 1 0 18 0a9 9 0 1 0 -18 0" />
+                    <path d="M12 10m-3 0a3 3 0 1 0 6 0a3 3 0 1 0 -6 0" />
+                    <path d="M6.168 18.849a4 4 0 0 1 3.832 -2.849h4a4 4 0 0 1 3.834 2.855" />
+                </svg>
+                    <div class="flex pt-2 flex-col pl-0.5">
+                        <div class=" text-center text-base">Lorem</div>
                     </div>
                     <svg xmlns="http://www.w3.org/2000/svg" class="mt-2 icon icon-tabler icon-tabler-user-plus"
                         width="25" height="25" viewBox="0 0 24 24" stroke-width="1.5" stroke="#000000" fill="none"
@@ -169,13 +141,18 @@
                         <path d="M5 14h14v-9h-14v16" />
                     </svg>
                 </div>
-                <div class="flex flex-row mt-2 border-4 rounded-lg">
-                    <img class="size-10"
-                        src="https://b.fssta.com/uploads/application/nba/headshots/1120.vresize.350.350.medium.77.png"
-                        alt="">
-                    <div class="flex pt-1.5 flex-col pl-0.5">
-                        <div class="text-xs">Lorem ipsum</div>
-                        <div class="text-xs"> Challenger</div>
+                <div class="flex flex-row mt-2 justify-between bg-gray-200 px-2 py-1 rounded-full">
+                    <svg xmlns="http://www.w3.org/2000/svg"
+                    class="icon icon-tabler icon-tabler-user-circle" width="36" height="36"
+                    viewBox="0 0 24 24" stroke-width="1" stroke="#000000" fill="none"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                    <path d="M12 12m-9 0a9 9 0 1 0 18 0a9 9 0 1 0 -18 0" />
+                    <path d="M12 10m-3 0a3 3 0 1 0 6 0a3 3 0 1 0 -6 0" />
+                    <path d="M6.168 18.849a4 4 0 0 1 3.832 -2.849h4a4 4 0 0 1 3.834 2.855" />
+                </svg>
+                    <div class="flex pt-2 flex-col pl-0.5">
+                        <div class=" text-center text-base">Lorem</div>
                     </div>
                     <svg xmlns="http://www.w3.org/2000/svg" class="mt-2 icon icon-tabler icon-tabler-user-plus"
                         width="25" height="25" viewBox="0 0 24 24" stroke-width="1.5" stroke="#000000" fill="none"
@@ -193,61 +170,18 @@
                         <path d="M5 14h14v-9h-14v16" />
                     </svg>
                 </div>
-                <div class="flex flex-row mt-2 border-4 rounded-lg">
-                    <img class="size-10"
-                        src="https://b.fssta.com/uploads/application/nba/headshots/1120.vresize.350.350.medium.77.png"
-                        alt="">
-                    <div class="flex pt-1.5 flex-col pl-0.5">
-                        <div class="text-xs">Lorem ipsum</div>
-                        <div class="text-xs"> Challenger</div>
-                    </div>
-                    <svg xmlns="http://www.w3.org/2000/svg" class="mt-2 icon icon-tabler icon-tabler-user-plus"
-                        width="25" height="25" viewBox="0 0 24 24" stroke-width="1.5" stroke="#000000" fill="none"
-                        stroke-linecap="round" stroke-linejoin="round">
-                        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                        <path d="M8 7a4 4 0 1 0 8 0a4 4 0 0 0 -8 0" />
-                        <path d="M16 19h6" />
-                        <path d="M19 16v6" />
-                        <path d="M6 21v-2a4 4 0 0 1 4 -4h4" />
-                    </svg>
-                    <svg xmlns="http://www.w3.org/2000/svg" class="mt-2 icon icon-tabler icon-tabler-flag-2" width="25"
-                        height="25" viewBox="0 0 24 24" stroke-width="1.5" stroke="#000000" fill="none"
-                        stroke-linecap="round" stroke-linejoin="round">
-                        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                        <path d="M5 14h14v-9h-14v16" />
-                    </svg>
-                </div>
-                <div class="flex flex-row mt-2 border-4 rounded-lg">
-                    <img class="size-10"
-                        src="https://b.fssta.com/uploads/application/nba/headshots/1120.vresize.350.350.medium.77.png"
-                        alt="">
-                    <div class="flex pt-1.5 flex-col pl-0.5">
-                        <div class="text-xs">Lorem ipsum</div>
-                        <div class="text-xs"> Challenger</div>
-                    </div>
-                    <svg xmlns="http://www.w3.org/2000/svg" class="mt-2 icon icon-tabler icon-tabler-user-plus"
-                        width="25" height="25" viewBox="0 0 24 24" stroke-width="1.5" stroke="#000000" fill="none"
-                        stroke-linecap="round" stroke-linejoin="round">
-                        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                        <path d="M8 7a4 4 0 1 0 8 0a4 4 0 0 0 -8 0" />
-                        <path d="M16 19h6" />
-                        <path d="M19 16v6" />
-                        <path d="M6 21v-2a4 4 0 0 1 4 -4h4" />
-                    </svg>
-                    <svg xmlns="http://www.w3.org/2000/svg" class="mt-2 icon icon-tabler icon-tabler-flag-2" width="25"
-                        height="25" viewBox="0 0 24 24" stroke-width="1.5" stroke="#000000" fill="none"
-                        stroke-linecap="round" stroke-linejoin="round">
-                        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                        <path d="M5 14h14v-9h-14v16" />
-                    </svg>
-                </div>
-                <div class="flex flex-row mt-2 border-4 rounded-lg">
-                    <img class="size-10"
-                        src="https://b.fssta.com/uploads/application/nba/headshots/1120.vresize.350.350.medium.77.png"
-                        alt="">
-                    <div class="flex pt-1.5 flex-col pl-0.5">
-                        <div class="text-xs">Lorem ipsum</div>
-                        <div class="text-xs"> Challenger</div>
+                <div class="flex flex-row mt-2 justify-between bg-gray-200 px-2 py-1 rounded-full">
+                    <svg xmlns="http://www.w3.org/2000/svg"
+                    class="icon icon-tabler icon-tabler-user-circle" width="36" height="36"
+                    viewBox="0 0 24 24" stroke-width="1" stroke="#000000" fill="none"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                    <path d="M12 12m-9 0a9 9 0 1 0 18 0a9 9 0 1 0 -18 0" />
+                    <path d="M12 10m-3 0a3 3 0 1 0 6 0a3 3 0 1 0 -6 0" />
+                    <path d="M6.168 18.849a4 4 0 0 1 3.832 -2.849h4a4 4 0 0 1 3.834 2.855" />
+                </svg>
+                    <div class="flex pt-2 flex-col pl-0.5">
+                        <div class=" text-center text-base">Lorem</div>
                     </div>
                     <svg xmlns="http://www.w3.org/2000/svg" class="mt-2 icon icon-tabler icon-tabler-user-plus"
                         width="25" height="25" viewBox="0 0 24 24" stroke-width="1.5" stroke="#000000" fill="none"
@@ -268,9 +202,9 @@
 
             </div>
         </div>
-        <div class=" mt-2 flex flex-row justify-between">
-            <div id="pause" class="ml-4 px-7 py-3 width-5/12 text-5xl rounded-lg border-4">Pause</div>
-            <div class="mr-4 px-12 py-3 width-5/12 text-5xl rounded-lg border-4">End </div>
+        <div class=" mt-3 text-white font-bold flex flex-row justify-between">
+            <div id="pause" class="bg-crimson ml-4 px-7 py-3 width-5/12 text-5xl rounded-lg">Pause</div>
+            <div class="bg-dark-blue mr-4 px-12 py-3 width-5/12 text-5xl rounded-lg">End </div>
         </div>
-    </div>
-     <%- include('templates/footer') %>
+        <%- include('templates/footer') %>
+    </body>
