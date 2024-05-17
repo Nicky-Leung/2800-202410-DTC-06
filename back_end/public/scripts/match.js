@@ -12,7 +12,7 @@ pauseButton.addEventListener('click', function() {
         pauseButton.innerHTML = 'Pause';
         isPaused = false;
     } else {
-        pauseButton.innerHTML = 'Resume';
+        pauseButton.innerHTML = '<div class="pl-3 pr-3 ">Play</div>';
         isPaused = true;
         console.log('paused');
     }
