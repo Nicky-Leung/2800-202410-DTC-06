@@ -79,7 +79,7 @@ app.get('/index', (req, res) => {
 
 app.get('/information', (req, res) => {
 
-    res.render('components/information')
+  res.render('components/information')
 });
 
 
@@ -125,13 +125,18 @@ app.get('/profile', isUserAuthenticated, (req, res) => {
   res.render('profile.ejs', { name: req.session.name, email: req.session.email, type: req.session.type })
 });
 
-const login= require('./routes/login');
+const login = require('./routes/login');
 app.use(login);
 
 const map = require('./routes/map');
 app.use(map);
 
 
+app.get('/logout', isUserAuthenticated, function (req, res) {
+  req.session.destroy(function (err) {
+    res.redirect('/');
+  });
+});
 
 const createMatch = require('./routes/createMatch');
 app.use(createMatch);
