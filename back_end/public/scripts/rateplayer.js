@@ -92,3 +92,18 @@ submit.addEventListener("click", function () {
     ratingDialog.classList.add("hidden");
     alert("Thank you for your feedback!");
 });
+
+function selected() {
+    var faceIcons = document.querySelectorAll("#icons > div");
+
+    faceIcons.forEach(function (icon) {
+        icon.addEventListener("click", function () {
+            faceIcons.forEach(function (icon) {
+                icon.style.border = "none";
+            });
+
+            this.style.border = "solid 1px black";
+        });
+    });
+}
+selected();
