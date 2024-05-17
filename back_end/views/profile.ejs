@@ -1,38 +1,39 @@
-<!DOCTYPE html>
-<html lang="en">
+<%- include ('templates/header') %>
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Home</title>
-  <!-- Include Bootstrap CSS -->
-  
-</head>
+  <body>
+    <div class="flex flex-col text-center items-center">
+      <div class="container d-flex justify-content-center align-items-center mt-5">
+        <div class="card border border-dark">
+          <div class="card-body">
+            <!-- Display the user's profile with name email and type -->
+            <h3>
+              <%=name %>'s Profile
+            </h3>
 
-<body>
-  <div class="container">
-
-    <div class="row justify-content-center">
-      <div class="col-12 col-md-8 col-lg-6">
-        <!-- Display the user's profile with name email and type -->
-        <h3>
-          <%=name %>'s Profile
-        </h3>
-        <ul>
-          <li> Name: <%=name %>
-          </li>
-          <li>Type: <%=type%>
-          </li>
-          <li> Email: <%=email %>
-          </li>
-        </ul>
-        <button onclick="location.href='/resetPassword'" type="button">Reset Password</button>
+            <ul>
+              <li> Name: <%=name %>
+              </li>
+              <li>Type: <%=type%>
+              </li>
+              <li> Email: <%=email %>
+              </li>
+              <li> Bio: <%=bio %>
+              </li>
+            </ul>
+            <button class="btn btn-primary" onclick="location.href='/editProfile'" type="button">Edit Profile
+            </button>
+            <button class="btn btn-primary" onclick="location.href='/resetPassword'" type="button">Reset
+              Password</button>
+          </div>
+        </div>
       </div>
     </div>
 
-  </div>
-  <!-- Include Bootstrap JS -->
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-</body>
+    <!-- Include jQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
-</html>
+    <!-- Include Bootstrap JS -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  </body>
+
+  </html>
