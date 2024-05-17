@@ -5,7 +5,7 @@ HomeScore = 0;
 AwayScore = 0;
 
 const pauseButton = document.getElementById('pause');
-
+const endButton = document.getElementById('end');
 
 pauseButton.addEventListener('click', function() {
     if (isPaused) {
@@ -16,6 +16,10 @@ pauseButton.addEventListener('click', function() {
         isPaused = true;
         console.log('paused');
     }
+});
+
+endButton.addEventListener('click', function() {
+    window.location.href = '/matchend';
 });
 
 const countdownElement = document.getElementById('countdown');
