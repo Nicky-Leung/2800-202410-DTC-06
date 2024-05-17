@@ -2,7 +2,8 @@ rightFooterBtn = document.getElementById('rightFooterBtn')
 console.log(rightFooterBtn);
 
 rightFooterBtn.addEventListener('click', () => {
-    window.location.href = '/localleaderboard';   
+    rightMenu = document.getElementById('rightMenu');
+    rightMenu.classList.toggle('hidden');
 });
 
 home = document.getElementById('home')
