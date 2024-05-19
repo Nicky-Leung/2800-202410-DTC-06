@@ -1,5 +1,5 @@
 
-
+// This script is responsible for creating the map and adding the basketball icon to the map.
 async function createMap() {
     const map = (window.map = new maplibregl.Map({
         container: 'map',
@@ -12,7 +12,7 @@ async function createMap() {
 
 
     }));
-
+    // Add the basketball icon to the map
     map.on('load', () => {
 
         map.loadImage(
@@ -53,8 +53,8 @@ async function createMap() {
             }
         });
 
-        // When a click event occurs on a feature in the places layer, open a popup at the
-        // location of the feature, with description HTML from its properties.
+       // When a click event occurs on a feature in the places layer
+       //opens a UI element populated by /information
         map.on('click', 'places', (event) => {
 
             
