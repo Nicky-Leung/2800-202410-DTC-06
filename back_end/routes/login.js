@@ -46,11 +46,14 @@ router.post('/login', async (req, res) => {
         const result = await usersModel.findOne({ email: req.body.email, password: hashedPassword });
         console.log('Query result:', result);
         if (result) {
+            // Set the current user in the session
+            req.session.currentUser = result;
             req.session.authenticated = true;
             req.session.type = result.type;
             req.session.name = result.name;
             req.session.email = result.email;
             req.session.bio = result.bio;
+            req.session.friends = result.friends
             return res.redirect('/profile');
         }
         console.log('Access denied');

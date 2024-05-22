@@ -84,8 +84,10 @@ app.get('/information', (req, res) => {
 // check if a user is logged in
 // user must be logged in to access the following routes
 isUserAuthenticated = (req, res, next) => {
-  if (req.session.authenticated)
+  if (req.session.authenticated) {
+    req.currentUser = req.session.currentUser;
     next()
+  }
   else
     res.status(401).render('notLoggedIn.ejs', { message: 'Please login first' })
 };
@@ -110,6 +112,59 @@ app.get('/match', (req, res) => {
 app.get('/matchend', (req, res) => {
   res.render('matchover.ejs')
 });
+
+
+
+
+
+
+
+
+app.get('/addFriends', isUserAuthenticated, async (req, res) => {
+  try {
+    const users = await usersModel.find({});
+    const currentUser = req.currentUser;
+    console.log('current user at addfriends', currentUser)
+    res.render('addFriends.ejs', { users: users, currentUser: currentUser });
+  } catch (err) {
+    console.log('error fetching users');
+  }
+});
+
+
+// app.post('/addFriends/befriend', async (req, res) => {
+//   console.log('id:', req.session.id)
+
+//   res.redirect('/addFriends');
+// });
+
+app.post('/addFriends/befriend', isUserAuthenticated, async (req, res) => {
+  console.log('user:', req.currentUser)
+  console.log('friendID:', req.body.friendId)
+
+  try {
+    const currentUser = req.currentUser;
+    if (!currentUser || !currentUser._id) {
+      throw new Error('Current user is not available or does not have an ID.');
+    }
+
+    const friendId = req.body.friendId;
+    if (!friendId) {
+      throw new Error('Friend ID is not provided in the request body.');
+    }
+
+    await usersModel.findByIdAndUpdate(currentUser._id, { $addToSet: { friends: friendId } });
+    await usersModel.findByIdAndUpdate(friendId, { $addToSet: { friends: currentUser._id } });
+
+    res.redirect('/addFriends');
+  } catch (err) {
+    console.error('Error befriending user:', err);
+    res.status(500).send('Error befriending user');
+  }
+});
+
+
+
 
 // user profile
 app.get('/profile', isUserAuthenticated, (req, res) => {
