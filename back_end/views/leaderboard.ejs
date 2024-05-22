@@ -1,13 +1,13 @@
 <%- include('templates/header') %>
-<div style="background-color: #D62839;">
-<div style="background-color: #4BA3C3;" class="pt-10 bg-pacific rounded-b-3xl #4BA3C3">
-        <div style="background-color: #CCE6F4" class="mx-3 my-3 py-2 flex flex-row justify-between px-6 rounded-3xl text-2xl">
-            <div style="background-color: #4BA3C3;" class="rounded-3xl py-1 px-5">Local</div>
-            <div class="rounded-3xl py-1 px-3">Regional</div>
-            <div class="rounded-3xl py-1 px-4">Global</div>
-        </div>
-        <div class="flex flex-row pt-10 ">
-            <button class="ml-5 mt-2 w-22 h-20 border-2 rounded-full">
+    
+<body class="bg-rose">
+        <div class="bg-sky-blue pt-10 bg-pacific rounded-b-3xl #4BA3C3">
+            <div class="mx-3 bg-dark-blue my-3 py-2 flex flex-row justify-between px-6 rounded-3xl text-2xl">
+                <div id="localBoard" class="  bg-baby-blue rounded-3xl py-1 px-4">Local</div>
+                <div id="regionalBoard" class="rounded-3xl ml-2 py-1 px-4">Regional</div>
+                <div id="globalBoard" class="rounded-3xl py-1 px-4">Global</div>
+            </div>
+            <button id="backButton" class="ml-5 mr-5 bg-baby-blue mt-2 w-22 h-20 border-2 rounded-full">
                 <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-chevron-left pr-2"
                     width="80" height="65" viewBox="0 0 24 24" stroke-width="1.5" stroke="#000000" fill="none"
                     stroke-linecap="round" stroke-linejoin="round">
@@ -15,63 +15,54 @@
                     <path d="M15 6l-6 6l6 6" />
                 </svg>
             </button>
-
-            <div class="ml-11 h-32 w-32 rounded-full bg-black flex-none"></div>
-        </div>
-        <div class="flex flex-row justify-between px-9">
-            <div class="flex flex-col text-center items-center">
-                <div class="h-28 w-28 rounded-full bg-black flex-none"></div>
-                <div class="text-lg font-bold">Lorem Ipsum</div>
-                <div class="text-lg font-bold">1000</div>
-            </div>
-            <div class="flex-col flex items-center text-center">
-                <div class="text-lg font-bold">Lorem Ipsum</div>
-                <div class="text-lg font-bold">1000</div>
-                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-crown -translate-y-60"
-                    width="68" height="68" viewBox="0 0 24 24" stroke-width="1.5" stroke="#ffec00" fill="#ffec00"
+            <div class="justify-center flex relative">
+                <svg xmlns="http://www.w3.org/2000/svg" class="translate-y-3 icon icon-tabler icon-tabler-crown" width="65"
+                    height="65" viewBox="0 0 24 24" stroke-width="1.5" stroke="#ffec00" fill="#ffec00"
                     stroke-linecap="round" stroke-linejoin="round">
                     <path stroke="none" d="M0 0h24v24H0z" fill="none" />
                     <path d="M12 6l4 6l5 -4l-2 10h-14l-2 -10l5 4z" />
                 </svg>
-                <div style="background-color: #CCE6F4;" class="h-8 w-8 rounded-full mb-1 text-xl text-center -translate-x-40 -translate-y-11">2</div>
-                <div style="background-color: #CCE6F4;" class="h-8 w-8 rounded-full text-xl text-center bg-white translate-x-20 -translate-y-20">3</div>
             </div>
-            <div class="flex flex-col text-center items-center">
-            <div class="h-28 w-28 rounded-full bg-black flex-none"></div>
-            <div class="text-lg font-bold">Lorem Ipsum</div>
-            <div class="text-lg font-bold">1000</div>
-            
+            <div id="top_1_icon"class="justify-center center flex">
+                <img id="top_1_icon" class="flex flex-row h-32 w-32 rounded-full bg-black flex-none" src="<%=topusers[0].profilePicture %>">
+            </img>
+            </div>
+            <div class="flex flex-row justify-between px-9">
+                <div id="top_2" class="flex flex-col text-center items-center">
+                    <img class="h-28 w-28 rounded-full bg-black flex-none" src="<%=topusers[1].profilePicture %>">
+                </img>
+                    <div class="text-lg font-bold"><%=topusers[1].name%></div>
+                    <div class="text-lg font-bold"><%=topusers[1].rank%></div>
+                    <div class="relative -translate-y-20">
+                        <div class="h-8 w-8 rounded-full text-xl text-center bg-baby-blue">2</div>
+                    </div>
+                </div>
+                <div class="flex-col flex items-center text-center">
+                    <div class="text-lg font-bold"><%=topusers[0].name %></div>
+                    <div class="text-lg font-bold"><%=topusers[0].rank %></div>
+                </div>
+                <div id="top_3"class="flex flex-col text-center items-center">
+                    <img src ="<%=topusers[2].profilePicture %>"class="h-28 w-28 rounded-full bg-black flex-none"></img>
+                    <div class="text-lg font-bold"><%=topusers[2].name %></div>
+                    <div class="text-lg font-bold"><%=topusers[2].name %></div>
+                    <div class="relative -translate-y-20">
+                        <div class="h-8 w-8 rounded-full text-xl text-center bg-baby-blue">3</div>
+                    </div>
+                </div>
             </div>
         </div>
-    </div>
 
+        <div id="non-top3">
 
-    <div style="background-color: #BA324F;" class="normal-ranking px-6 py-2 mt-4 mx-2 flex flex-row justify-between items-center rounded-3xl">
-        <div class="text-4xl">4</div>
-        <div class="h-20 w-20 rounded-full bg-black"></div>
-        <div class="text-2xl font-bold">Lorem Ipsem</div>
-        <div class="text-2xl font-bold">1000</div>
-    </div>
+        <div
+            class="bg-crimson normal-ranking px-6 py-2 mt-4 mx-2 flex flex-row justify-between items-center rounded-3xl">
+            <div class="text-4xl">4</div>
+            <div class="h-20 w-20 rounded-full bg-black"></div>
+            <div class="text-2xl font-bold">Lorem Ipsem</div>
+            <div class="text-2xl font-bold">1000</div>
+        </div>
 
-    <div style="background-color: #BA324F;" class="normal-ranking px-6 py-2 mt-4 mx-2 flex flex-row justify-between items-center rounded-3xl">
-        <div class="text-4xl">4</div>
-        <div class="h-20 w-20 rounded-full bg-black"></div>
-        <div class="text-2xl font-bold">Lorem Ipsem</div>
-        <div class="text-2xl font-bold">1000</div>
-    </div>
+        </div>
+        <%- include('templates/footer') %>
 
-    <div style="background-color: #BA324F;" class="normal-ranking px-6 py-2 mt-4 mx-2 flex flex-row justify-between items-center rounded-3xl">
-        <div class="text-4xl">4</div>
-        <div class="h-20 w-20 rounded-full bg-black"></div>
-        <div class="text-2xl font-bold">Lorem Ipsem</div>
-        <div class="text-2xl font-bold">1000</div>
-    </div>
-
-    <div style="background-color: #BA324F;" class="normal-ranking px-6 py-2 mt-4 mx-2 flex flex-row justify-between items-center rounded-3xl">
-        <div class="text-4xl">4</div>
-        <div class="h-20 w-20 rounded-full bg-black"></div>
-        <div class="text-2xl font-bold">Lorem Ipsem</div>
-        <div class="text-2xl font-bold">1000</div>
-    </div>
-
-</div>
+    </body>
