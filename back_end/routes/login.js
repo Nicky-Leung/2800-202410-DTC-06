@@ -75,7 +75,9 @@ router.post('/signup', async (req, res) => {
     const { name, email, password } = req.body;
     const hashedPassword = hashPassword(password);
     try {
-        const newUser = new usersModel({ name, email, password: hashedPassword, type: 'non-administrator' });
+        const newUser = new usersModel({ name, email, password: hashedPassword, type: 'non-administrator', elo:'400', rank:'Aspirant'
+            , sportsmanship:'500', streak:'false', streakCount:'0', matchHistory:[]
+         });
         await newUser.save();
         console.log('User created:', newUser);
         res.redirect('/login');
