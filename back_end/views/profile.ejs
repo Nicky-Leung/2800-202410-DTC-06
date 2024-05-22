@@ -14,22 +14,22 @@
               style="border-radius: 50%; width: 150px; height: 150px;">
 
             <div class="overlay-card">
-              <p style="color:white" class="ranking">All-Star </p>
+              <p style="color:white" class="ranking">
+                <%= rank %>
+              </p>
             </div>
           </div>
-          <p class="mmr mt-4">MMR: 1800</p>
+          <p class="mmr mt-4">MMR: <%= elo %>
+          </p>
           <p class="lead">
             <%= bio %>
           </p>
           <div id="rating">
-            <i class="fas fa-star" style="color: gold;"></i>
-            <i class="fas fa-star" style="color: gold;"></i>
-            <i class="fas fa-star" style="color: gold;"></i>
-            <i class="fas fa-star" style="color: gold;"></i>
-            <i class="fas fa-star" style="color: gold;"></i>
+            <p>Sportsmanship rating: <%= sportsmanship %>/500</p>
           </div>
           <div id="match-history">
-            match history goes here
+            Match History:
+            <%= matchHistory %>
           </div>
 
           <div class="row">

@@ -24,7 +24,7 @@ router.get('/otherProfile/:userid', isUserAuthenticated, async (req, res) => {
             isFriend = true;
         }
 
-        res.render('otherProfile.ejs', { name: user.name, email: user.email, type: user.type, bio: user.bio, profilePicture: user.profilePicture, isFriend });
+        res.render('otherProfile.ejs', { name: user.name, email: user.email, type: user.type, bio: user.bio, profilePicture: user.profilePicture, isFriend, rank: user.rank, sportsmanship: user.sportsmanship, elo: user.elo, streak: user.streak, streakCount: user.streakCount, matchHistory: user.matchHistory });
     } catch (err) {
         console.log(err);
         res.status(500).send('Internal Server Error');

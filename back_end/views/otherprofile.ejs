@@ -14,22 +14,22 @@
                             style="border-radius: 50%; width: 150px; height: 150px;">
 
                         <div class="overlay-card">
-                            <p style="color:white" class="ranking">All-Star </p>
+                            <p style="color:white" class="ranking">
+                                <%= rank%>
+                            </p>
                         </div>
                     </div>
-                    <p class="mmr mt-4">MMR: 1800</p>
+                    <p class="mmr mt-4">MMR: <%= elo%>
+                    </p>
                     <p class="lead">
                         <%= bio %>
                     </p>
                     <div id="rating">
-                        <i class="fas fa-star" style="color: gold;"></i>
-                        <i class="fas fa-star" style="color: gold;"></i>
-                        <i class="fas fa-star" style="color: gold;"></i>
-                        <i class="fas fa-star" style="color: gold;"></i>
-                        <i class="fas fa-star" style="color: gold;"></i>
+                        <p>Sportsmanship rating: <%= sportsmanship %>/500</p>
                     </div>
                     <div id="match-history">
-                        match history goes here
+                        Match History:
+                        <%= matchHistory %>
                     </div>
 
                     <% if (isFriend) { %>
@@ -48,40 +48,41 @@
 
         <!-- Include Bootstrap JS -->
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+        <%- include ('templates/footer') %>
     </body>
 
-    <%- include ('templates/footer') %>
 
-        <style>
-            .profile-pic-container {
-                position: relative;
-                width: 150px;
-                height: 150px;
-            }
 
-            .profile-pic {
-                width: 100%;
-                height: 100%;
-                border-radius: 50%;
-            }
+    <style>
+        .profile-pic-container {
+            position: relative;
+            width: 150px;
+            height: 150px;
+        }
 
-            .overlay-card {
-                position: absolute;
-                bottom: -20px;
-                left: 50%;
-                transform: translateX(-50%);
-                width: 100px;
-                height: 50px;
-                background-color: blue;
-                border: 2px solid #000;
-                border-radius: 50% / 25%;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                text-align: center;
-                padding: 10px;
-                box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            }
-        </style>
+        .profile-pic {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+        }
 
-        </html>
+        .overlay-card {
+            position: absolute;
+            bottom: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 50px;
+            background-color: blue;
+            border: 2px solid #000;
+            border-radius: 50% / 25%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+
+    </html>

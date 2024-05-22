@@ -23,7 +23,14 @@ router.get('/profile', isUserAuthenticated, async (req, res) => {
             email: req.session.email,
             type: req.session.type,
             bio: req.session.bio,
-            profilePicture: user.profilePicture
+            profilePicture: user.profilePicture,
+            rank: user.rank,
+            sportsmanship: user.sportsmanship,
+            elo: user.elo,
+            streak: user.streak,
+            streakCount: user.streakCount,
+            matchHistory: user.matchHistory
+
         });
     } catch (err) {
         console.log(err);
