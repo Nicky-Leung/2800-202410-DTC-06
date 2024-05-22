@@ -74,11 +74,6 @@ app.get('/index', (req, res) => {
 }
 );
 
-app.get('/information', (req, res) => {
-
-  res.render('components/information')
-  res.render('components/information')
-});
 
 
 // check if a user is logged in
@@ -114,6 +109,8 @@ app.get('/matchend', (req, res) => {
 });
 
 
+const information = require('./routes/information');
+app.use(information);
 
 const addFriends = require('./routes/addFriends')
 app.use(addFriends)
