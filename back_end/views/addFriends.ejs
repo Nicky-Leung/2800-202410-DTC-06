@@ -9,11 +9,13 @@
           <ul>
             <% users.forEach(user=> { %>
               <li class="m-2">
-                <%= user.name %>
-                  <form action="/addFriends/befriend" method="POST" style="display: inline;">
-                    <input type="hidden" name="friendId" value="<%= user._id %>">
-                    <button type="submit" class="btn btn-primary btn-sm">Add friend</button>
-                  </form>
+                <a href="/otherProfile/<%= user._id %>">
+                  <%= user.name %>
+                </a>
+                <form action="/addFriends/befriend" method="POST" style="display: inline;">
+                  <input type="hidden" name="friendId" value="<%= user._id %>">
+                  <button type="submit" class="btn btn-primary btn-sm">Add friend</button>
+                </form>
               </li>
               <% }); %>
           </ul>
