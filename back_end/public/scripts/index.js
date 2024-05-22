@@ -1,12 +1,16 @@
 
 // This script is responsible for creating the map and adding the basketball icon to the map.
 async function createMap() {
+
+    const position = await new Promise((resolve, reject) => {
+        navigator.geolocation.getCurrentPosition(resolve, reject);
+    });
     const map = (window.map = new maplibregl.Map({
         container: 'map',
         style:
             '/map-data',
         zoom: 15,
-        center: [-123.11377687420126, 49.23844728285027],
+        center: [position.coords.longitude, position.coords.latitude],
         pitch: 40,
         antialias: true // create the gl context with MSAA antialiasing, so custom layers are antialiased
 
