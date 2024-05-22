@@ -8,6 +8,7 @@ const usersSchema = new mongoose.Schema({
   bio: String,
   // friends: [{ type: mongoose.Schema.Types.ObjectId, ref: 'User' }],
   friends: Array,
+  profilePicture: String,
 });
 
 const usersModel = mongoose.model('users', usersSchema);

@@ -168,7 +168,7 @@ app.post('/addFriends/befriend', isUserAuthenticated, async (req, res) => {
 
 // user profile
 app.get('/profile', isUserAuthenticated, (req, res) => {
-  res.render('profile.ejs', { name: req.session.name, email: req.session.email, type: req.session.type, bio: req.session.bio })
+  res.render('profile.ejs', { name: req.session.name, email: req.session.email, type: req.session.type, bio: req.session.bio, profilePicture: req.session.profilePicture })
 });
 
 const login = require('./routes/login');
