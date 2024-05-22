@@ -13,7 +13,7 @@ const usersSchema = new mongoose.Schema({
   elo: Number,
   rank: String,
   sportsmanship: Number,
-  streak: True,
+  streak: Boolean,
   streakCount: Number,
   matchHistory: Array,
 
