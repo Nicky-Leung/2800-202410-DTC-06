@@ -1,36 +1,49 @@
 <%- include ('templates/header') %>
 
-<div class="flex flex-col justify-evenly bg-rose h-screen text-white">
-
-<h1 class="m-4 text-center">Recreation Centre</h1>
-
-<br>
+<div class="flex flex-col bg-rose h-screen text-black">
 
 <form action="/creatematch" method="POST">
+
     <div class="flex flex-col items-center justify-center m-2">
-        <label class="text-xl" for="location">Location</label>
-        <input type="text" name="location" id="location" required>
+        <label class="text-xl" for="sport" >Sport</label>
+        <select name="sport" id="sport" class="border border-gray-300 rounded-lg p-2" required>
+            <option value="">Select a sport</option>
+            <option value="soccer">Soccer</option>
+            <option value="basketball">Basketball</option>
+            <option value="tennis">Tennis</option>
+            <!-- Add more options as needed -->
+        </select>
     </div>
+
     <div class="flex flex-col items-center justify-center m-2">
-        <label class="text-xl" for="sport">Sport</label>
-        <input type="text" name="sport" id="sport" required>
+        <label class="text-xl" for="location" >Location</label>
+        <select name="location" id="location" class="border border-gray-300 rounded-lg p-2" required>
+            <option value="">Select a Location</option>
+            <option value='[-123.1139516851732, 49.240942071672755, "Queen Elizabeth Park"]'>Queen Elizabeth</option>
+            <option value='[-123.15688699505088, 49.23473906432217, "Kerrisdale Community Center"]'>Kerrisdale</option>
+            <option value='[-123.0854017447217, 49.24226418562279, "Grays Park"]'>Gray's Park</option>
+        </select>
     </div>
+
+    
     <div class="flex flex-col items-center justify-center m-2">
         <label class="text-xl" for="time">Time</label>
-        <input type="text" name="time" id="time" required>
+        <input type="time" name="time" id="time" required>
     </div>
     <div class="flex flex-col items-center justify-center m-2">
         <label class="text-xl" for="date">Date</label>
-        <input type="text" name="date" id="date" required>
+        <input type="date" name="date" id="date" required>
     </div>
     <div class="flex flex-col items-center justify-center m-2">
-        <label class="text-xl" for="maxPlayers">Max Players</label>
-        <input type="text" name="maxPlayers" id="maxPlayers" required>
+        <label class="text-xl" for="matchType">Match Type</label>
+        <select name="matchType" id="matchType" class="border border-gray-300 rounded-lg p-2" required>
+            <option value="">Select a Match Type</option>
+            <option value="3v3">3 v 3</option>
+            <option value="4v4">4 v 4</option>
+            <option value="5v5">5 v 5</option>
+        </select>
     </div>
-    <div class="flex flex-col items-center justify-center m-2">
-        <label class="text-xl" for="description">Description</label>
-        <input type="text" name="description" id="description" required>
-    </div>
+ 
     <div class="flex flex-col items-center justify-center m-4 bg-dark-blue">
         <button class="text-2xl p-2" type="submit">Create Match</button>
     </div>
