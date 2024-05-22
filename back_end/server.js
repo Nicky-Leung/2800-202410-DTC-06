@@ -97,7 +97,9 @@ isUserAuthenticated = (req, res, next) => {
 //leaderboard pages
 
 const leaderboard = require('./routes/leaderboard');
-app.get('/leaderboard', leaderboard);
+app.get('/localleaderboard', leaderboard);
+app.get('/regionalleaderboard', leaderboard);
+app.get('/globalleaderboard', leaderboard);
 
 app.get('/match', (req, res) => {
   res.render('match.ejs')
