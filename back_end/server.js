@@ -137,6 +137,10 @@ const createMatch = require('./routes/createMatch');
 app.use(createMatch);
 
 
+const matchSessions = require('./routes/matchSessions');
+app.use(matchSessions);
+
+
 app.listen(3000, () => {
   console.log(`Server running on port 3000!!!`)
 })  

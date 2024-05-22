@@ -8,7 +8,6 @@ router.get('/creatematch', (req, res) => {
 
 router.post('/creatematch', async (req, res) => {
 
-
   const { sport, date, matchType } = req.body;
   const time = req.body.time;
   const coordinates = JSON.parse(req.body.location).slice(0, 2);
@@ -35,6 +34,5 @@ router.post('/creatematch', async (req, res) => {
   }
 
 });
-
 
 module.exports = router;
