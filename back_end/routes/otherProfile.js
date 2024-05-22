@@ -20,7 +20,7 @@ router.get('/otherProfile/:userid', isUserAuthenticated, async (req, res) => {
 
         const current = req.currentUser;
         let isFriend = false;
-        if (current && current.friends.includes(req.params.userid)) { // Fix here
+        if (current && current.friends.map(friend => friend.toString()).includes(req.params.userid)) {
             isFriend = true;
         }
 

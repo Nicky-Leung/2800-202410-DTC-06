@@ -33,8 +33,10 @@
                     </div>
 
                     <% if (isFriend) { %>
-                        <button class="btn btn-danger">Remove Friend</button>
+                        <p class="font-weight-bold">You are Friends with this user.</p>
+                        <button class="btn btn-danger">Unfriend</button>
                         <% } else { %>
+                            <p class="font-weight-bold">You are NOT Friends with this user.</p>
                             <button class="btn btn-primary">Add Friend</button>
                             <% } %>
                 </div>
