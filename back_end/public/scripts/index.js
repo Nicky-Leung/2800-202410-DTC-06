@@ -1,18 +1,41 @@
 
-
+// This script is responsible for creating the map and adding the basketball icon to the map.
 async function createMap() {
+
+    sessions = await fetch('/matchSessions')
+    sessions = await sessions.json();
+    console.log(sessions);
+
+    const position = await new Promise((resolve, reject) => {
+        navigator.geolocation.getCurrentPosition(resolve, reject);
+    });
     const map = (window.map = new maplibregl.Map({
         container: 'map',
         style:
             '/map-data',
         zoom: 15,
-        center: [-123.11377687420126, 49.23844728285027],
+        center: [position.coords.longitude, position.coords.latitude],
         pitch: 40,
         antialias: true // create the gl context with MSAA antialiasing, so custom layers are antialiased
 
 
     }));
+    let features = [];
 
+    for (let i = 0; i < sessions.length; i++) {
+        features.push({
+            'type': 'Feature',
+            'properties': {
+                'icon': 'basketball'
+            },
+            'geometry': {
+                'type': 'Point',
+                'coordinates': [sessions[i].location.coordinates[0], sessions[i].location.coordinates[1]]
+            }
+        });
+
+    }
+    // Add the basketball icon to the map
     map.on('load', () => {
 
         map.loadImage(
@@ -26,19 +49,7 @@ async function createMap() {
             'type': 'geojson',
             'data': {
                 'type': 'FeatureCollection',
-                'features': [
-                    {
-                        'type': 'Feature',
-                        'properties': {
-                            'icon': 'basketball'
-                        },
-                        'geometry': {
-                            'type': 'Point',
-                            'coordinates': [-123.11377687420126, 49.23844728285027]
-                        }
-                    },
-                    
-                ]
+                'features': features
             }
         });
         // Add a layer showing the places.
@@ -53,8 +64,8 @@ async function createMap() {
             }
         });
 
-        // When a click event occurs on a feature in the places layer, open a popup at the
-        // location of the feature, with description HTML from its properties.
+       // When a click event occurs on a feature in the places layer
+       //opens a UI element populated by /information
         map.on('click', 'places', (event) => {
 
             

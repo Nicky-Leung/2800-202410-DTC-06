@@ -41,19 +41,6 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(express.static('public'));
 
-app.get('/index.js', (req, res) => {
-  fs.readFile(path.join(__dirname, 'public', 'your-js-file.js'), 'utf8', (err, data) => {
-    if (err) {
-      console.error(err);
-      res.status(500).send('Internal Server Error');
-      return;
-    }
-
-    const replacedData = data.replace('process.env.MapKey', JSON.stringify(process.env.MapKey));
-    res.type('.js');
-    res.send(replacedData);
-  });
-});
 
 // home page
 app.get('/', (req, res) => {
@@ -64,9 +51,22 @@ app.get('/home', (req, res) => {
   res.render('welcomepage.ejs')
 });
 
+const login = require('./routes/login');
+app.use(login);
 
 
 
+isUserAuthenticated = (req, res, next) => {
+  if (req.session.authenticated)
+    next()
+  else
+    res.status(401).render('notLoggedIn.ejs', { message: 'Please login first' })
+};
+
+app.use(isUserAuthenticated);
+
+const indexscript = require('./routes/indexscript');
+app.use(indexscript);
 // put welcome page here later
 
 app.get('/index', (req, res) => {
@@ -144,9 +144,6 @@ app.get('/editProfile', isUserAuthenticated, (req, res) => {
   res.render('editProfile.ejs', { name: req.session.name, email: req.session.email, type: req.session.type, bio: req.session.bio, profilePicture: req.session.profilePicture })
 });
 
-
-
-
 const resetPassword = require('./routes/resetPassword');
 const resetPasswordWithEmail = require('./routes/resetPasswordWithEmail');
 
@@ -158,6 +155,10 @@ app.use(updateProfile);
 
 const createMatch = require('./routes/createMatch');
 app.use(createMatch);
+
+
+const matchSessions = require('./routes/matchSessions');
+app.use(matchSessions);
 
 
 app.listen(3000, () => {
