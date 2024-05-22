@@ -90,15 +90,11 @@ isUserAuthenticated = (req, res, next) => {
 
 
 //leaderboard pages
-app.get('/localleaderboard', (req, res) => {
-  res.render('leaderboard_local.ejs')
-});
-app.get('/globalleaderboard', (req, res) => {
-  res.render('leaderboard_global.ejs')
-});
-app.get('/regionalleaderboard', (req, res) => {
-  res.render('leaderboard_regional.ejs')
-});
+
+const leaderboard = require('./routes/leaderboard');
+app.get('/localleaderboard', leaderboard);
+app.get('/regionalleaderboard', leaderboard);
+app.get('/globalleaderboard', leaderboard);
 
 app.get('/match', (req, res) => {
   res.render('match.ejs')
