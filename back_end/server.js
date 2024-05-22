@@ -167,9 +167,12 @@ app.post('/addFriends/befriend', isUserAuthenticated, async (req, res) => {
 
 
 // user profile
-app.get('/profile', isUserAuthenticated, (req, res) => {
-  res.render('profile.ejs', { name: req.session.name, email: req.session.email, type: req.session.type, bio: req.session.bio, profilePicture: req.session.profilePicture })
-});
+const profile = require('./routes/profile');
+app.use(profile);
+
+//other user's profile
+const otherProfile = require('./routes/otherProfile');
+app.use(otherProfile);
 
 const login = require('./routes/login');
 app.use(login);
@@ -186,7 +189,7 @@ app.get('/logout', isUserAuthenticated, function (req, res) {
 
 // page where user can edit profile directly, except email and password
 app.get('/editProfile', isUserAuthenticated, (req, res) => {
-  res.render('editProfile.ejs', { name: req.session.name, email: req.session.email, type: req.session.type, bio: req.session.bio })
+  res.render('editProfile.ejs', { name: req.session.name, email: req.session.email, type: req.session.type, bio: req.session.bio, profilePicture: req.session.profilePicture })
 });
 
 
