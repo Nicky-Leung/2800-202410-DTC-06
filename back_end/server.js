@@ -126,8 +126,6 @@ app.use(profile);
 const otherProfile = require('./routes/otherProfile');
 app.use(otherProfile);
 
-const login = require('./routes/login');
-app.use(login);
 
 const map = require('./routes/map');
 app.use(map);
