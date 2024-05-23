@@ -23,7 +23,15 @@ router.post('/creatematch', async (req, res) => {
 
         },
         time: fullDate,
-        matchType
+        matchType,
+        score: {
+          home: Number,
+          away: Number
+      },
+      homePlayers: Array,
+      awayPlayers: Array,
+      timeLeft: Number,
+
     });
   try {
     await newMatch.save();
