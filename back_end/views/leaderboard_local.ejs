@@ -31,25 +31,28 @@
                 <div id="top_2" class="flex flex-col text-center items-center">
                     <img class="h-28 w-28 rounded-full bg-black flex-none" src="<%=topusers[1].profilePicture %>">
                 </img>
-                    <div class="text-lg font-bold"><%=topusers[1].name%></div>
+                    <div class="text-lg font-bold"><%-topusers[1].name.replace(/\s/g, `&nbsp;`)%></div>
                     <div class="text-lg font-bold"><%=topusers[1].elo%></div>
                     <div class="relative -translate-y-20">
                         <div class="h-8 w-8 rounded-full text-xl text-center bg-baby-blue">2</div>
                     </div>
                 </div>
                 <div class="flex-col flex items-center text-center">
-                    <div class="text-lg font-bold"><%=topusers[0].name %></div>
+                    <div class="text-lg font-bold"><%-topusers[0].name.replace(/\s/g, `&nbsp;`)%></div>
                     <div class="text-lg font-bold"><%=topusers[0].elo %></div>
                 </div>
                 <div id="top_3"class="flex flex-col text-center items-center">
                     <img src ="<%=topusers[2].profilePicture %>"class="h-28 w-28 rounded-full bg-black flex-none"></img>
-                    <div class="text-lg font-bold"><%=topusers[2].name %></div>
+                    <div class="w-32 overflow-hidden">
+                        <div class="w-24 text-lg truncate font-bold"><%-topusers[2].name.replace(/\s/g, `&nbsp;`) %>
+                        </div>
                     <div class="text-lg font-bold"><%=topusers[2].elo %></div>
-                    <div class="relative -translate-y-20">
-                        <div class="h-8 w-8 rounded-full text-xl text-center bg-baby-blue">3</div>
-                    </div>
+                </div>
+                <div class="relative -translate-y-20">
+                    <div class="h-8 w-8 rounded-full text-xl text-center bg-baby-blue">3</div>
                 </div>
             </div>
+        </div>
         </div>
 
         <div id="non-top3">
@@ -59,7 +62,9 @@
         class="bg-crimson normal-ranking px-6 py-2 mt-4 mx-2 flex flex-row justify-between items-center rounded-3xl">
         <div class="text-4xl"><%=i%></div>
         <img src="<%= allusers[i].profilePicture%>" class="h-20 w-20 rounded-full bg-black"></img>
-        <div class="text-2xl font-bold"><%= allusers[i].name%></div>
+        <div class="w-48 overflow-hidden">
+        <div class="text-2xl font-bold truncate"><%-allusers[i].name.replace(/\s/g, `&nbsp;`) %></div>
+        </div>  
         <div class="text-2xl font-bold"><%= allusers[i].elo%></div>
         </div>
 
