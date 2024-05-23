@@ -148,6 +148,22 @@ const createMatch = require('./routes/createMatch');
 app.use(createMatch);
 
 
+// app.get('/searchFriends', isUserAuthenticated, async (req, res) => {
+//   const query = req.query.query;
+//   let friends = [];
+//   if (query) {
+//     try {
+//       friends = await usersModel.find({ name: new RegExp(query, 'i') }).exec();
+//     } catch (error) {
+//       console.error('Error searching for friends:', error);
+//     }
+//   }
+//   res.render('searchFriends.ejs', { friends });
+// });
+
+const searchFriends = require('./routes/searchFriends')
+app.use(searchFriends)
+
 const matchSessions = require('./routes/matchSessions');
 app.use(matchSessions);
 
