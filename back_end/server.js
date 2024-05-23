@@ -95,15 +95,11 @@ isUserAuthenticated = (req, res, next) => {
 
 
 //leaderboard pages
-app.get('/localleaderboard', (req, res) => {
-  res.render('leaderboard_local.ejs')
-});
-app.get('/globalleaderboard', (req, res) => {
-  res.render('leaderboard_global.ejs')
-});
-app.get('/regionalleaderboard', (req, res) => {
-  res.render('leaderboard_regional.ejs')
-});
+
+const leaderboard = require('./routes/leaderboard');
+app.get('/localleaderboard', leaderboard);
+app.get('/regionalleaderboard', leaderboard);
+app.get('/globalleaderboard', leaderboard);
 
 app.get('/match', (req, res) => {
   res.render('match.ejs')
@@ -112,7 +108,6 @@ app.get('/match', (req, res) => {
 app.get('/matchend', (req, res) => {
   res.render('matchover.ejs')
 });
-
 
 const information = require('./routes/information');
 app.use(information);
@@ -128,10 +123,11 @@ app.use(profile);
 const otherProfile = require('./routes/otherProfile');
 app.use(otherProfile);
 
-
 const map = require('./routes/map');
 app.use(map);
 
+const settings = require('./routes/settings');
+app.use(settings);
 
 app.get('/logout', isUserAuthenticated, function (req, res) {
   req.session.destroy(function (err) {
@@ -157,9 +153,27 @@ const createMatch = require('./routes/createMatch');
 app.use(createMatch);
 
 
+// app.get('/searchFriends', isUserAuthenticated, async (req, res) => {
+//   const query = req.query.query;
+//   let friends = [];
+//   if (query) {
+//     try {
+//       friends = await usersModel.find({ name: new RegExp(query, 'i') }).exec();
+//     } catch (error) {
+//       console.error('Error searching for friends:', error);
+//     }
+//   }
+//   res.render('searchFriends.ejs', { friends });
+// });
+
+const searchFriends = require('./routes/searchFriends')
+app.use(searchFriends)
+
 const matchSessions = require('./routes/matchSessions');
 app.use(matchSessions);
 
+const lobby = require('./routes/lobby');
+app.use(lobby);
 
 app.listen(3000, () => {
   console.log(`Server running on port 3000!!!`)
