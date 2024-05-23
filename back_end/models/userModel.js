@@ -7,7 +7,6 @@ const usersSchema = new mongoose.Schema({
   password: String,
   type: String,
   bio: String,
-  // friends: [{ type: mongoose.Schema.Types.ObjectId, ref: 'User' }],
   friends: Array,
   profilePicture: String,
   elo: Number,
