@@ -123,6 +123,9 @@ app.use(otherProfile);
 const map = require('./routes/map');
 app.use(map);
 
+const settings = require('./routes/settings');
+app.use(settings)
+
 
 app.get('/logout', isUserAuthenticated, function (req, res) {
   req.session.destroy(function (err) {
