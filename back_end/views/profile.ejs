@@ -40,16 +40,51 @@
               Password</button>
           </div>
           <button class="btn btn-primary" onclick="location.href='/logout'" type="button">Log out</button>
-          <button class="btn btn-primary btn-small m-5" onclick="location.href='/addFriends'"> users</a>
+          <button class="btn btn-primary btn-small m-5" onclick="location.href='/addFriends'"> users</button>
+        </div>s
+
+        <div id="easter-egg" class="easter-egg">
+          <img src="/images/lebron.jpeg" alt="lebron" style="width: 50vw; height: 30vh;">
         </div>
       </div>
-    </div>
 
-    <!-- Include jQuery -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+      <!-- Include jQuery -->
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
-    <!-- Include Bootstrap JS -->
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+      <!-- Include Bootstrap JS -->
+      <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+      <script>
+        console.log('Script loaded');
+
+        let keysPressed = {};
+
+        document.addEventListener('keydown', function (event) {
+          keysPressed[event.key.toLowerCase()] = true;
+          console.log('Keys pressed:', keysPressed); // Add this line for debugging
+
+          if (keysPressed['*']) {
+            console.log('Easter egg condition met'); // Add this line for debugging
+            showEasterEgg();
+          }
+        });
+
+        document.addEventListener('keyup', function (event) {
+          keysPressed[event.key.toLowerCase()] = false;
+          console.log('Keys released:', keysPressed); // Add this line for debugging
+        });
+
+        function showEasterEgg() {
+          console.log('Showing Easter egg');
+          const easterEgg = document.getElementById('easter-egg');
+          easterEgg.style.display = 'block';
+
+          setTimeout(() => {
+            easterEgg.style.display = 'none';
+          }, 5000);
+        }
+
+      </script>
   </body>
 
   <%- include ('templates/footer') %>
@@ -84,6 +119,50 @@
         padding: 10px;
         box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 
+      }
+
+
+      @keyframes bounce {
+        0% {
+          transform: translate(-50%, -50%) scale(1);
+        }
+
+        25% {
+          transform: translate(-50%, -50%) translateY(-20px) scale(1.1);
+        }
+
+        50% {
+          transform: translate(-50%, -50%) translateY(0) scale(1);
+        }
+
+        75% {
+          transform: translate(-50%, -50%) translateY(20px) scale(1.1);
+        }
+
+        100% {
+          transform: translate(-50%, -50%) scale(1);
+        }
+      }
+
+      @keyframes spin {
+        0% {
+          transform: translate(-50%, -50%) scale(1) rotate(0deg);
+        }
+
+        100% {
+          transform: translate(-50%, -50%) scale(0.1) rotate(360deg);
+        }
+      }
+
+      .easter-egg {
+        display: none;
+        padding: 20px;
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        z-index: 1000;
+        animation: bounce 0.5s ease-in-out infinite, spin 3s linear infinite;
       }
     </style>
 
