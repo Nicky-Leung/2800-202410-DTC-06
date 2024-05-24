@@ -25,17 +25,17 @@ router.post('/creatematch', async (req, res) => {
         time: fullDate,
         matchType,
         score: {
-          home: Number,
-          away: Number
+          home: 0,
+          away: 0,
       },
       homePlayers: Array,
       awayPlayers: Array,
-      timeLeft: Number,
+      timeLeft: 60,
 
     });
   try {
     await newMatch.save();
-    res.redirect('/index');
+    res.redirect('/lobby');
   } catch (error) {
     console.error('Error during match creation:', error);
     res.status(500).send('Internal Server Error');
