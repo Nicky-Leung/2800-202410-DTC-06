@@ -24,7 +24,9 @@ router.get('/match', async (req, res) => {
             homePlayers: currentMatch.homePlayers,
             awayPlayers: currentMatch.awayPlayers,
             matchType: currentMatch.matchType,
-            sport: currentMatch.sport
+            sport: currentMatch.sport,
+            hostname: currentMatch.homePlayers[0].name,
+            hostrank: currentMatch.homePlayers[0].rank
         });
     } catch (error) {
         console.error('Error fetching match data:', error);
