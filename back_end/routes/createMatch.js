@@ -24,7 +24,6 @@ router.post('/creatematch', async (req, res) => {
         },
         time: fullDate,
         matchType,
-        matchSize,
         score: {
           home: 0,
           away: 0,
@@ -37,6 +36,7 @@ router.post('/creatematch', async (req, res) => {
   try {
     await newMatch.save();
     req.session.activematch = newMatch._id;
+    console.log(req.session.activematch)
     res.redirect('/lobby');
   } catch (error) {
     console.error('Error during match creation:', error);

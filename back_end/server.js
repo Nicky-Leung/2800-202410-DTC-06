@@ -115,6 +115,10 @@ app.get('/matchend', (req, res) => {
   res.render('matchover.ejs')
 });
 
+app.get('/lobbyexit', (req, res) => {
+  res.render('lobby.js')
+});
+
 app.get('/logout', isUserAuthenticated, function (req, res) {
   req.session.destroy(function (err) {
     res.redirect('/');
