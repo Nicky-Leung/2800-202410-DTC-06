@@ -13,6 +13,7 @@
             <p>start <%= matchTime %>
             </p>
             <form action="/lobby" class="m-9">
+                <input type="hidden" name="matchID" value="<%= matchID %>">
                 <button type="submit" class=" m-3 p-2 bg-sky-blue text-white h-12 w-36 rounded-2xl" id="joinMatchBtn">
                    Join Match
                 </button>
