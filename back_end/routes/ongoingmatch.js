@@ -13,6 +13,7 @@ router.get('/match', async (req, res) => {
         } else {
             matchID = req.query.matchID;
             console.log("query");
+            req.session.activematch = matchID;
         }
 
         const currentMatch = await matchModel.findOne({ _id: matchID });
@@ -20,6 +21,8 @@ router.get('/match', async (req, res) => {
         if (!currentMatch) {
             return res.status(404).json({ message: "Match not found" });
         }
+
+        req.session.currentMatch = currentMatch;
 
         res.render('match.ejs', {
             location: currentMatch.location.name,
