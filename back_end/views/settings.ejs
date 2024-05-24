@@ -1,0 +1,38 @@
+<%- include ('templates/header') %>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+  <body>
+    <div class="d-flex flex-column align-items-center text-center">
+      <h4>
+        <%=currentUser.name%>'s Settings
+      </h4>
+      <button class="btn btn-primary m-2" onclick="location.href='/resetPassword'" type="button"><i
+          class="fas fa-key"></i>
+        Reset
+        Password</button>
+      <form id="deleteAccountForm" action="/deleteAccount" method="POST">
+        <!-- Add a hidden input field to hold the user ID -->
+        <input type="hidden" name="userId" value="<%= currentUser._id %>">
+        <button class="btn btn-danger" type="submit">Delete Account</button>
+      </form>
+    </div>
+    <!-- Include jQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <!-- Include Bootstrap JS -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <script>
+      // Submit form when delete button is clicked
+      $('#deleteAccountForm').submit(function (event) {
+        event.preventDefault(); // Prevent default form submission
+        if (confirm('Are you sure you want to delete your account?')) {
+          // If user confirms deletion, submit the form
+          $(this).unbind('submit').submit();
+        }
+      });
+    </script>
+  </body>
+
+  <%- include ('templates/footer') %>

@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const createdMatchSchema = new mongoose.Schema({
+const previousMatchSchema = new mongoose.Schema({
     sport: String,
     location: {
         type: {
@@ -31,6 +31,6 @@ const createdMatchSchema = new mongoose.Schema({
 // This is necessary to enable 2dsphere indexing for location
 createdMatchSchema.index({ location: '2dsphere' });
 
-const matchModel = mongoose.model('current_matches', createdMatchSchema);
+const previousmatchModel = mongoose.model('previous_matches', previousMatchSchema);
 
-module.exports = matchModel;
+module.exports = previousmatchModel;

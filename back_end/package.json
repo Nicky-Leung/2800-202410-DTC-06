@@ -9,7 +9,9 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@api/fsq-developers": "file:.api/apis/fsq-developers",
     "autoprefixer": "^10.4.19",
+    "cloudinary": "^1.41.3",
     "connect-mongodb-session": "^5.0.0",
     "crypto": "^1.0.1",
     "dotenv": "^16.4.5",
@@ -20,6 +22,7 @@
     "maplibre-gl": "^4.2.0",
     "mongoose": "^8.3.5",
     "multer": "^1.4.5-lts.1",
+    "multer-storage-cloudinary": "^4.0.0",
     "node-fetch": "^2.7.0",
     "postcss": "^8.4.38",
     "tailwindcss": "^3.4.3"

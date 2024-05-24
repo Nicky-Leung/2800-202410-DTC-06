@@ -46,11 +46,14 @@ router.post('/login', async (req, res) => {
         const result = await usersModel.findOne({ email: req.body.email, password: hashedPassword });
         console.log('Query result:', result);
         if (result) {
+            // Set the current user in the session
+            req.session.currentUser = result;
             req.session.authenticated = true;
             req.session.type = result.type;
             req.session.name = result.name;
             req.session.email = result.email;
             req.session.bio = result.bio;
+            req.session.friends = result.friends
             return res.redirect('/profile');
         }
         console.log('Access denied');
@@ -72,7 +75,9 @@ router.post('/signup', async (req, res) => {
     const { name, email, password } = req.body;
     const hashedPassword = hashPassword(password);
     try {
-        const newUser = new usersModel({ name, email, password: hashedPassword, type: 'non-administrator' });
+        const newUser = new usersModel({ name, email, password: hashedPassword, type: 'non-administrator', elo:'400', rank:'Aspirant'
+            , sportsmanship:'500', streak:'false', streakCount:'0', matchHistory:[]
+         });
         await newUser.save();
         console.log('User created:', newUser);
         res.redirect('/login');

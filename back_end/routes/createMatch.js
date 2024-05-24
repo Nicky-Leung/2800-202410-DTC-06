@@ -8,18 +8,41 @@ router.get('/creatematch', (req, res) => {
 
 router.post('/creatematch', async (req, res) => {
 
-  const { sport, location, length, time, date, players, skill, description } = req.body;
+  const { sport, date, matchType } = req.body;
+  const time = req.body.time;
+  const coordinates = JSON.parse(req.body.location).slice(0, 2);
+  const locationName = JSON.parse(req.body.location)[2];
+  const fullDate = new Date(`${date}T${time}:00.000Z`);
+
+    const newMatch = new matchModel({
+        sport,
+        location: {
+            type: 'Point',
+            coordinates,
+            name: locationName
+
+        },
+        time: fullDate,
+        matchType,
+        score: {
+          home: 0,
+          away: 0,
+      },
+      homePlayers: [],
+      awayPlayers: [],
+      timeLeft: 60,
+
+    });
   try {
-    const newMatch = new matchModel({ sport, location, length, time, date, players, skill, description });
     await newMatch.save();
-    console.log('Match created:', newMatch);
-    res.redirect('/index');
+    req.session.activematch = newMatch._id;
+    console.log(req.session.activematch)
+    res.redirect('/lobby');
   } catch (error) {
     console.error('Error during match creation:', error);
     res.status(500).send('Internal Server Error');
   }
 
 });
-
 
 module.exports = router;

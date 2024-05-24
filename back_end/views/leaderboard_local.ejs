@@ -3,9 +3,9 @@
 <body class="bg-rose">
         <div class="bg-sky-blue pt-10 bg-pacific rounded-b-3xl #4BA3C3">
             <div class="mx-3 bg-dark-blue my-3 py-2 flex flex-row justify-between px-6 rounded-3xl text-2xl">
-                <div id="localBoard" class="  bg-baby-blue rounded-3xl py-1 px-4">Local</div>
-                <div id="regionalBoard" class="rounded-3xl ml-2 py-1 px-4">Regional</div>
-                <div id="globalBoard" class="rounded-3xl py-1 px-4">Global</div>
+                <div id="localBoard" class="font-bold  bg-baby-blue rounded-3xl py-1 px-4">Local</div>
+                <div id="regionalBoard" class="font-bold rounded-3xl ml-2 py-1 px-4">Regional</div>
+                <div id="globalBoard" class="font-bold rounded-3xl py-1 px-4">Global</div>
             </div>
             <button id="backButton" class="ml-5 mr-5 bg-baby-blue mt-2 w-22 h-20 border-2 rounded-full">
                 <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-chevron-left pr-2"
@@ -23,74 +23,57 @@
                     <path d="M12 6l4 6l5 -4l-2 10h-14l-2 -10l5 4z" />
                 </svg>
             </div>
-            <div class="justify-center center flex">
-                <div class="flex flex-row h-32 w-32 rounded-full bg-black flex-none"></div>
+            <div id="top_1_icon"class="mt-0 pt-0 justify-center center flex">
+                <img id="top_1_icon" class="flex flex-row w-36 rounded-full bg-black flex-none" src="<%=topusers[0].profilePicture %>">
+            </img>
             </div>
             <div class="flex flex-row justify-between px-9">
-                <div class="flex flex-col text-center items-center">
-                    <div class="h-28 w-28 rounded-full bg-black flex-none"></div>
-                    <div class="text-lg font-bold">Lorem Ipsum</div>
-                    <div class="text-lg font-bold">1000</div>
+                <div id="top_2" class="flex flex-col text-center items-center">
+                    <img class="h-28 w-28 rounded-full bg-black flex-none" src="<%=topusers[1].profilePicture %>">
+                </img>
+                    <div class="text-lg font-bold"><%-topusers[1].name.replace(/\s/g, `&nbsp;`)%></div>
+                    <div class="text-lg font-bold"><%=topusers[1].elo%></div>
                     <div class="relative -translate-y-20">
                         <div class="h-8 w-8 rounded-full text-xl text-center bg-baby-blue">2</div>
                     </div>
                 </div>
                 <div class="flex-col flex items-center text-center">
-                    <div class="text-lg font-bold">Lorem Ipsum</div>
-                    <div class="text-lg font-bold">1000</div>
+                    <div class="text-lg font-bold"><%-topusers[0].name.replace(/\s/g, `&nbsp;`)%></div>
+                    <div class="text-lg font-bold"><%=topusers[0].elo %></div>
                 </div>
-                <div class="flex flex-col text-center items-center">
-                    <div class="h-28 w-28 rounded-full bg-black flex-none"></div>
-                    <div class="text-lg font-bold">Lorem Ipsum</div>
-                    <div class="text-lg font-bold">1000</div>
-                    <div class="relative -translate-y-20">
-                        <div class="h-8 w-8 rounded-full text-xl text-center bg-baby-blue">3</div>
-                    </div>
+                <div id="top_3"class="flex flex-col text-center items-center">
+                    <img src ="<%=topusers[2].profilePicture %>"class="h-28 w-28 rounded-full bg-black flex-none"></img>
+                    <div class="w-32 overflow-hidden">
+                        <div class="w-24 text-lg truncate font-bold"><%-topusers[2].name.replace(/\s/g, `&nbsp;`) %>
+                        </div>
+                    <div class="text-lg font-bold"><%=topusers[2].elo %></div>
+                </div>
+                <div class="relative -translate-y-20">
+                    <div class="h-8 w-8 rounded-full text-xl text-center bg-baby-blue">3</div>
                 </div>
             </div>
         </div>
-
-
-        <div
-            class="bg-crimson normal-ranking px-6 py-2 mt-4 mx-2 flex flex-row justify-between items-center rounded-3xl">
-            <div class="text-4xl">4</div>
-            <div class="h-20 w-20 rounded-full bg-black"></div>
-            <div class="text-2xl font-bold">Lorem Ipsem</div>
-            <div class="text-2xl font-bold">1000</div>
         </div>
 
+        <div id="non-top3">
+
+        <% for (let i = 3; i < allusers.length; i++) { %>
         <div
-            class="normal-ranking px-6 py-2 bg-crimson mt-4 mx-2 flex flex-row justify-between items-center rounded-3xl">
-            <div class="text-4xl">4</div>
-            <div class="h-20 w-20 rounded-full bg-black"></div>
-            <div class="text-2xl font-bold">Lorem Ipsem</div>
-            <div class="text-2xl font-bold">1000</div>
+        class="bg-crimson normal-ranking px-6 py-2 mt-4 mx-2 flex flex-row justify-between items-center rounded-3xl">
+        <div class="text-4xl"><%= (i+1) %></div>
+        <img src="<%= allusers[i].profilePicture%>" class="h-20 w-20 rounded-full bg-black"></img>
+        <div class="w-48 overflow-hidden">
+        <div class="text-2xl font-bold truncate"><%-allusers[i].name.replace(/\s/g, `&nbsp;`) %></div>
+        </div>  
+        <div class="text-2xl font-bold"><%= allusers[i].elo%></div>
         </div>
 
-        <div
-            class="normal-ranking px-6 py-2 mt-4 bg-crimson mx-2 flex flex-row justify-between items-center rounded-3xl">
-            <div class="text-4xl">4</div>
-            <div class="h-20 w-20 rounded-full bg-black"></div>
-            <div class="text-2xl font-bold">Lorem Ipsem</div>
-            <div class="text-2xl font-bold">1000</div>
-        </div>
+        <% }; %>
 
-        <div
-            class="normal-ranking bg-crimson px-6 py-2 mt-4 mx-2 flex flex-row justify-between items-center rounded-3xl">
-            <div class="text-4xl">4</div>
-            <div class="h-20 w-20 rounded-full bg-black"></div>
-            <div class="text-2xl font-bold">Lorem Ipsem</div>
-            <div class="text-2xl font-bold">1000</div>
-        </div>        
+
         
-        <div
-            class="normal-ranking bg-crimson px-6 py-2 mt-4 mx-2 flex flex-row justify-between items-center rounded-3xl">
-            <div class="text-4xl">4</div>
-            <div class="h-20 w-20 rounded-full bg-black"></div>
-            <div class="text-2xl font-bold">Lorem Ipsem</div>
-            <div class="text-2xl font-bold">1000</div>
-        </div>
 
+        </div>
         <%- include('templates/footer') %>
 
     </body>
