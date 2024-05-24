@@ -7,6 +7,7 @@ var session = require('express-session');
 require('dotenv').config();
 var mongoDBStore = require('connect-mongodb-session')(session);
 
+
 var store = new mongoDBStore({
   uri: `mongodb+srv://${process.env.DB_User}:${process.env.DB_Password}@cluster0.9kdinuu.mongodb.net/connect_mongodb_session_test?retryWrites=true&w=majority`,
   collection: 'mySessions'
@@ -53,6 +54,10 @@ app.get('/home', (req, res) => {
 
 const login = require('./routes/login');
 app.use(login);
+
+const placeSearch = require('./routes/placeSearch');
+app.use(placeSearch);
+
 
 
 
@@ -147,6 +152,22 @@ app.use(updateProfile);
 const createMatch = require('./routes/createMatch');
 app.use(createMatch);
 
+
+// app.get('/searchFriends', isUserAuthenticated, async (req, res) => {
+//   const query = req.query.query;
+//   let friends = [];
+//   if (query) {
+//     try {
+//       friends = await usersModel.find({ name: new RegExp(query, 'i') }).exec();
+//     } catch (error) {
+//       console.error('Error searching for friends:', error);
+//     }
+//   }
+//   res.render('searchFriends.ejs', { friends });
+// });
+
+const searchFriends = require('./routes/searchFriends')
+app.use(searchFriends)
 
 const matchSessions = require('./routes/matchSessions');
 app.use(matchSessions);

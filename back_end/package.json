@@ -9,6 +9,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@api/fsq-developers": "file:.api/apis/fsq-developers",
     "autoprefixer": "^10.4.19",
     "cloudinary": "^1.41.3",
     "connect-mongodb-session": "^5.0.0",
