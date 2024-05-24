@@ -80,6 +80,7 @@ const createMatch = require('./routes/createMatch');
 const updateProfile = require('./routes/updateProfile');
 const settings = require('./routes/settings');
 const ongoingmatch = require('./routes/ongoingmatch');
+const matchover = require('./routes/matchover');
 
 app.use(login);
 app.use(information);
@@ -101,6 +102,7 @@ app.use(searchFriends)
 app.use(matchSessions);
 app.use(lobby);
 app.use(ongoingmatch);
+app.use(matchover);
 
 
 app.get('/index', (req, res) => {
@@ -111,9 +113,7 @@ app.get('/localleaderboard', leaderboard);
 app.get('/regionalleaderboard', leaderboard);
 app.get('/globalleaderboard', leaderboard);
 
-app.get('/matchend', (req, res) => {
-  res.render('matchover.ejs')
-});
+
 
 app.get('/lobbyexit', (req, res) => {
   res.render('lobby.js')
