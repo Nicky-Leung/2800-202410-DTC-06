@@ -7,7 +7,7 @@ router.get('/addFriends', isUserAuthenticated, async (req, res) => {
     const users = await usersModel.find({});
     const currentUser = req.currentUser;
     console.log('current user', currentUser)
-    res.render({ users: users, currentUser: currentUser });
+    res.render('addFriends.ejs', { users: users, currentUser: currentUser });
   } catch (err) {
     console.log('error fetching users');
   }
