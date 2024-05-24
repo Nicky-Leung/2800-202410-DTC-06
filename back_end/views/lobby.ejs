@@ -1,17 +1,40 @@
 <%- include ('templates/header') %>
 
-    <div class="m-10">
-        <h1 class="text-5xl text-center" >*Sports Center Name*</h1>
+<div class="m-10 mb-24">
+    <h1 class="text-5xl text-center">*Sports Center Name*</h1>
+</div>
+
+<div class="flex flex-row justify-between mx-10">
+    <div id="firstTeam" class="bg-dark-blue">
+        <h1 class="text-center mt-5 text-2xl">First team</h1>
+        <!-- <% firstTeamPlayers.forEach(function(player) { %> -->
+            <div class="playerCards flex flex-row m-5 bg-gray-200 px-2 py-1 rounded-full">
+                <img src="<%= player.avatar %>" class="w-12 h-12 rounded-full">
+                <div class="playerName text-xl p-3 flex flex-row">
+                    <p class="mr-10"><%= player.name %></p>
+                    <p><%= player.score %></p>
+                </div>
+            </div>
+        <!-- <% }); %> -->
     </div>
-
-    <div id="playerCard" class="flex flex-row mt-2 bg-gray-200 px-2 py-1 rounded-full w-64">
-        <!--This is a sample profile picture-->
-        <img src="https://cdn.iconscout.com/icon/free/png-256/avatar-370-456322.png" class="w-12 h-12 rounded-full">
-        <!--Populate name from database in the future, this is just a placeholder-->
-        <div id="playerName" class="text-xl p-3">Player 1</div>
+    <div id="secondTeam" class="bg-crimson">
+        <h1 class="text-center mt-5 text-2xl">Second team</h1>
+        <!-- <% secondTeamPlayers.forEach(function(player) { %> -->
+            <div class="playerCards flex flex-row m-5 bg-gray-200 px-2 py-1 rounded-full">
+                <img src="<%= player.avatar %>" class="w-12 h-12 rounded-full">
+                <div class="playerName text-xl p-3 flex flex-row">
+                    <p class="mr-10"><%= player.name %></p>
+                    <p><%= player.score %></p>
+                </div>
+            </div>
+        <!-- <% }); %> -->
     </div>
+</div>
 
-
-
+<style>
+    body {
+        background-color: #BA324F;
+    }
+</style>
 
 <%- include ('templates/footer') %>
