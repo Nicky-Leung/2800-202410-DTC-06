@@ -79,6 +79,7 @@ const searchFriends = require('./routes/searchFriends')
 const createMatch = require('./routes/createMatch');
 const updateProfile = require('./routes/updateProfile');
 const settings = require('./routes/settings');
+const ongoingmatch = require('./routes/ongoingmatch');
 
 app.use(login);
 app.use(information);
@@ -99,6 +100,7 @@ app.use(createMatch);
 app.use(searchFriends)
 app.use(matchSessions);
 app.use(lobby);
+app.use(ongoingmatch);
 
 
 app.get('/index', (req, res) => {
@@ -108,9 +110,7 @@ app.get('/index', (req, res) => {
 app.get('/localleaderboard', leaderboard);
 app.get('/regionalleaderboard', leaderboard);
 app.get('/globalleaderboard', leaderboard);
-app.get('/match', (req, res) => {
-  res.render('match.ejs')
-});
+
 app.get('/matchend', (req, res) => {
   res.render('matchover.ejs')
 });
