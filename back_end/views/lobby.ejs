@@ -1,34 +1,45 @@
 <%- include ('templates/header') %>
 
 <div class="m-10 mb-24">
-    <h1 class="text-5xl text-center">*Sports Center Name*</h1>
+    <h1 class="text-5xl text-center"><%= location %></h1>
+    <h1 class="text-3xl text-center"><%= sport %></h1>
+    <h1 class="text-3xl text-center"><%= matchType %></h1>
 </div>
 
 <div class="flex flex-row justify-between mx-10">
     <div id="firstTeam" class="bg-dark-blue">
-        <h1 class="text-center mt-5 text-2xl">First team</h1>
-        <!-- <% firstTeamPlayers.forEach(function(player) { %> -->
+        <h1 class="text-center mt-5 text-2xl">Home Team</h1>
+        <% for (let i = 0; i< homePlayers.length; i++) { %>
             <div class="playerCards flex flex-row m-5 bg-gray-200 px-2 py-1 rounded-full">
-                <img src="<%= player.avatar %>" class="w-12 h-12 rounded-full">
+                <img src="<%= homePlayers[i].profilePicture %>" class="w-12 h-12 rounded-full">
                 <div class="playerName text-xl p-3 flex flex-row">
-                    <p class="mr-10"><%= player.name %></p>
-                    <p><%= player.score %></p>
+                    <p class="mr-10"><%= homePlayers[i].name %></p>
+                    <p><%= homePlayers[i].score %></p>
                 </div>
             </div>
-        <!-- <% }); %> -->
+        <% }; %>
     </div>
     <div id="secondTeam" class="bg-crimson">
-        <h1 class="text-center mt-5 text-2xl">Second team</h1>
-        <!-- <% secondTeamPlayers.forEach(function(player) { %> -->
+        <h1 class="text-center mt-5 text-2xl">Away Team</h1>
+        <% for (let i = 0; i< awayPlayers.length; i++) { %>
             <div class="playerCards flex flex-row m-5 bg-gray-200 px-2 py-1 rounded-full">
-                <img src="<%= player.avatar %>" class="w-12 h-12 rounded-full">
+                <img src="<%= awayPlayers[i].profilePicture %>" class="w-12 bg-black h-12 rounded-full">
                 <div class="playerName text-xl p-3 flex flex-row">
-                    <p class="mr-10"><%= player.name %></p>
-                    <p><%= player.score %></p>
+                    <p class="mr-10"><%= awayPlayers[i].name %></p>
                 </div>
             </div>
-        <!-- <% }); %> -->
+        <% }; %>
     </div>
+
+</div>
+
+<div class="flex flex-row justify-between">
+    <form action="/lobbyjoin">
+        <button class="bg-dark-blue text-white p-2 m-5 rounded-lg" type="submit">Start Match</button>
+    </form>
+    <form action="/lobbyexit">
+        <button class="bg-dark-blue text-white p-2 m-5 rounded-lg" type="submit">Exit Lobby</button>
+    </form>
 </div>
 
 <style>
