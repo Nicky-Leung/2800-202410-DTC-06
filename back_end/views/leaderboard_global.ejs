@@ -1,6 +1,6 @@
 <%- include('templates/header') %>
     
-<body class="bg-rose">
+<body class="bg-rose pb-10">
         <div class="bg-sky-blue pt-10 bg-pacific rounded-b-3xl #4BA3C3">
             <div class="mx-3 bg-dark-blue my-3 py-2 flex flex-row justify-between px-6 rounded-3xl text-2xl">
                 <div id="localBoard" class="rounded-3xl font-bold py-1 px-4">Local</div>
@@ -60,7 +60,7 @@
         <% for (let i = 3; i < allusers.length; i++) { %>
         <div
         class="bg-crimson normal-ranking px-6 py-2 mt-4 mx-2 flex flex-row justify-between items-center rounded-3xl">
-        <div class="text-4xl"><%=i%></div>
+        <div class="text-4xl"><%= (i+1) %></div>
         <img src="<%= allusers[i].profilePicture%>" class="h-20 w-20 rounded-full bg-black"></img>
         <div class="w-48 overflow-hidden">
         <div class="text-2xl font-bold truncate"><%-allusers[i].name.replace(/\s/g, `&nbsp;`) %></div>
@@ -74,6 +74,6 @@
         
 
         </div>
-        <%- include('templates/footer') %>
 
     </body>
+    <%- include('templates/footer') %>
