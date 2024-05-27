@@ -60,3 +60,8 @@ async function populateLocation(data, sport) {
 
 
 }
+
+async function createCard() {
+
+
+}
