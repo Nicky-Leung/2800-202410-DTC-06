@@ -27,16 +27,19 @@
             </div>
 
 
-            <div class="flex flex-col items-center justify-center m-4">
+            <div class="flex flex-col flex-wrap items-center justify-center m-4">
                 <div class="p-2 bg-sky-blue rounded-2xl"><button class="text-2xl p-2" type="submit" id="findPlace">Find nearby location</button></div>
             </div>
         </form>
 
         <form action="/creatematch" method="POST" id="matchSetUp" class="hidden">
 
+            <div id= "cardContainer"class="flex flex-row items-center justify-center m-2">
+                </div>
+              
+             
 
-
-            <div class="flex flex-col items-center justify-center m-2">
+            <div class="flex flex-col items-center justify-center m-2 hidden">
                 <label class="text-xl" for="location">Location</label>
                 <select name="location" id="location" class="border border-gray-300 rounded-lg p-2" required>
                     <option value="">Select a Location</option>
@@ -62,8 +65,8 @@
                 </select>
             </div>
 
-            <div class="flex flex-col items-center justify-center m-4 bg-dark-blue">
-                <button class="text-2xl p-2" type="submit">Create Match</button>
+            <div class="flex flex-col items-center justify-center m-4">
+                <div class="  bg-sky-blue p-2 rounded-2xl"><button class="text-2xl p-2" type="submit">Create Match</button></div>
             </div>
         </form>
 
