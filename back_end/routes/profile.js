@@ -38,5 +38,11 @@ router.get('/profile', isUserAuthenticated, async (req, res) => {
     }
 }
 );
+router.get('/getUserpicture', async (req, res) =>
 
+{
+    const user = await usermodel.findOne({ email: req.session.email });
+    profilePicture =  user.profilePicture,
+    res.send(profilePicture)
+});
 module.exports = router;
