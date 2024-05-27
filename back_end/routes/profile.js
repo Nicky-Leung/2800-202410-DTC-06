@@ -42,7 +42,8 @@ router.get('/getUserpicture', async (req, res) =>
 
 {
     const user = await usermodel.findOne({ email: req.session.email });
-    profilePicture =  user.profilePicture,
-    res.send(profilePicture)
+    const profilePicture =  user.profilePicture;
+    const rank = user.rank;
+    res.send({ profilePicture, rank})
 });
 module.exports = router;

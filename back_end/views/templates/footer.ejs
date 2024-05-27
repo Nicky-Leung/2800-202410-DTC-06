@@ -3,12 +3,16 @@
     <div class="flex justify-between items-center backdrop-blur-xs bg-opacity-45 bg-sky-blue text-white h-24">
 
         <div class="m-5" id="profile"> 
-            <div class="">
-                <img id="profileimage" alt="pic goes here" class="rounded-2xl w-14 h-14">
-                
+            <div class="relative w-14 h-14">
+                <img id="profileimage" alt="pic goes here" class="rounded-2xl ">
+                <div class="footer-overlay-card h-8 w-20">
+                    <p style="color:white" id="ranking">
+                    
+                    </p>
     
                
               </div>
+            </div>  
         </div>
         <div id="home"> Icon 2 </div>
         <div class="m-5 relative" id="rightFooterBtn"> <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-baseline-density-medium" width="48" height="48" viewBox="0 0 24 24" stroke-width="1.5" stroke="#000000" fill="none" stroke-linecap="round" stroke-linejoin="round">
@@ -41,3 +45,26 @@
 <script src="scripts/leaderboard.js"></script>
     
 </body>
+
+<style>
+
+.footer-overlay-card {
+        position: absolute;
+        bottom: -15px;
+        left: 50%;
+        transform: translateX(-50%);
+        background-color: blue;
+        border: 2px solid #000;
+        border-radius: 50% / 25%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        padding: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+
+      }
+
+
+
+</style>
