@@ -65,7 +65,7 @@ async function populateLocation(data, sport) {
         cardbuttoncontainer.classList.add('flex', 'justify-center');
         cardbutton = document.createElement('button');
         cardbutton.textContent = "select";
-        cardbutton.classList.add('bg-sky-blue', 'p-2', 'rounded-lg', 'mt-2');
+        cardbutton.classList.add('bg-baby-blue', 'hover:bg-blue-500', 'p-2', 'rounded-lg', 'mt-2');
         cardbuttoncontainer.appendChild(cardbutton);
         cardbutton.setAttribute('id', place.name)
         card.appendChild(cardbuttoncontainer);
@@ -79,7 +79,7 @@ async function populateLocation(data, sport) {
             buttons.forEach((button) => {
                 // If the button is not the clicked button, toggle it back to the original color
                 if (button !== e.target) {
-                    button.classList.add('bg-sky-blue');
+                    button.classList.add('bg-baby-blue');
                     button.classList.remove('bg-blue-500');
                 }
             });
@@ -87,7 +87,7 @@ async function populateLocation(data, sport) {
             // Toggle the color of the clicked button
            
             e.target.classList.add('bg-blue-500');
-            e.target.classList.remove('bg-sky-blue');
+            e.target.classList.remove('bg-baby-blue');
            
             Array.from(locationForm.options).forEach((opt, i) => {
                 if (opt.textContent === place.name) {

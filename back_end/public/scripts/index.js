@@ -5,10 +5,11 @@ async function createMap() {
     sessions = await fetch('/matchSessions')
     sessions = await sessions.json();
     console.log(sessions);
+    defaultPosition = {coords: {latitude: 49.243379625597264, longitude: -123.11167717206233}}
 
     const position = await new Promise((resolve, reject) => {
-        navigator.geolocation.getCurrentPosition(resolve, reject);
-    });
+        navigator.geolocation.getCurrentPosition(resolve, () => reject(defaultPosition));
+    }).catch((defaultPosition) => defaultPosition);
     const map = (window.map = new maplibregl.Map({
         container: 'map',
         style:
