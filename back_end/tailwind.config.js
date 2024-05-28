@@ -7,6 +7,7 @@ module.exports = {
         'sans': ['Roboto', 'sans-serif'],},
       fontWeight: {
         'normal': 100,
+        'semibold': 200, 
         'bold': 300
       },
       backdropBlur: {
