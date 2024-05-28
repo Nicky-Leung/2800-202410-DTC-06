@@ -1,5 +1,6 @@
 async function getPlaces(e) {
     e.preventDefault();
+  
     const position = await new Promise((resolve, reject) => {
         navigator.geolocation.getCurrentPosition(resolve, reject);
     });
@@ -22,6 +23,7 @@ async function getPlaces(e) {
     });
     const data = await response.json();
     populateLocation(data, sport);
+    document.body.classList.add('has-padding')
 
     
 
