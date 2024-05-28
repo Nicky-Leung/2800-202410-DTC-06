@@ -31,6 +31,10 @@ module.exports = {
   
 
       },
+      boxShadow: {
+        'blue': '0 4px 14px 0 rgba(19, 51, 81, 0.39)',
+        'pink': '0 4px 14px 0 rgba(232, 67, 147, 0.39)',
+      },
     },
   },
   variants: {},

@@ -58,7 +58,7 @@
 
         <% for (let i = 3; i < allusers.length; i++) { %>
         <a href="<%= allusers[i].id == currentuser ? '/profile' : '/otherProfile/' + allusers[i]._id %>">        
-        <div class="bg-crimson border-8 text-white border-rose normal-ranking px-6 py-2 mt-1 flex flex-row justify-between items-center rounded-3xl">
+        <div class=" border-2 shadow-md normal-ranking px-6 py-2 mt-1 flex flex-row justify-between items-center rounded-3xl">
         <div class="w-10">
         <div class="text-sm font-bold"><%= (i+1) %></div>
         </div>
