@@ -57,6 +57,7 @@ router.get('/matchend', async (req, res) => {
             homescore: currentMatch.score.home,
             awayscore: currentMatch.score.away,
             currentUser: currentUser,
+            currentuserid: req.session.currentUser ? req.session.currentUser._id : null,
             tie: tie
         });
     } catch (error) {
