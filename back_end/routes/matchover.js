@@ -58,9 +58,9 @@ router.get('/matchend', async (req, res) => {
             awayscore: currentMatch.score.away,
             currentUser: currentUser,
             currentuserid: req.session.currentUser ? req.session.currentUser._id : null, // sending current user id to front end for ejs
-            tie: tie
+            tie: tie,
+            userElo: currentUser.elo
         });
-
     } catch (error) {
         console.error('Error fetching match data:', error);
         res.status(500).json({ message: "Internal Server Error" });
@@ -92,6 +92,7 @@ router.post('/updateElo', async (req, res) => {
         } else {
             return res.status(400).json({ message: "Current user not found in match teams" });// catch error if user is in no team
         }
+        let otherTeam = currentTeam === currentMatch.homePlayers ? currentMatch.awayPlayers : currentMatch.homePlayers;
 
         let winningTeam;
         if (currentMatch.score.home > currentMatch.score.away) {// home wins
@@ -104,9 +105,16 @@ router.post('/updateElo', async (req, res) => {
         const elochange = winningTeam && winningTeam.some(player => player._id.equals(currentUser._id)) ? 20 : -20 // elo change
 
 
+
         await Promise.all(currentTeam.map(async (player) => {
             const user = await usersModel.findById(player._id);
             user.elo += elochange;
+            await user.save();
+        }
+        ));
+        await Promise.all(otherTeam.map(async (player) => {
+            const user = await usersModel.findById(player._id);
+            user.elo -= elochange;
             await user.save();
         }
         ));
