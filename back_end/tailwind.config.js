@@ -4,11 +4,12 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        'sans': ['Roboto', 'sans-serif'],},
+        'sans': ['Roboto', 'sans-serif'],
+      },
       fontWeight: {
         'normal': 100,
-        'semibold': 200, 
-        'bold': 300
+        'semibold': 300,
+        'bold': 400
       },
       backdropBlur: {
         'none': '0',
@@ -21,14 +22,14 @@ module.exports = {
         '2xl': '40px',
         '3xl': '64px',
       },
-      
+
       colors: {
         'crimson': '#D62839',
         'rose': '#BA324F',
         'dark-blue': '#175676',
-        'sky-blue':'#4BA3C3',
+        'sky-blue': '#4BA3C3',
         'baby-blue': '#CCE6F4'
-  
+
 
       },
       boxShadow: {

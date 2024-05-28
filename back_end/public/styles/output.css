@@ -1393,11 +1393,15 @@ video {
 }
 
 .font-bold {
-  font-weight: 300;
+  font-weight: 400;
 }
 
 .font-semibold {
-  font-weight: 200;
+  font-weight: 300;
+}
+
+.font-extrabold {
+  font-weight: 800;
 }
 
 .leading-relaxed {

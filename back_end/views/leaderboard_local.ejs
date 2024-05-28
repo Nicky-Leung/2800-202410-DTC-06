@@ -45,10 +45,11 @@
                         <div class="pt-2 truncate text-sm"><%-topusers[2].name.replace(/\s/g, `&nbsp;`)%></div>
                     </div>
                     <div class="text-sm"><%=topusers[2].elo %></div>
+                    <div class="relative -translate-y-16">
+                        <div class="h-5 w-5 rounded-full font-bold text-md text-center bg-baby-blue">3</div>
+                    </div>
                 </div>
-                <div class="relative -translate-y-28">
-                    <div class="h-5 w-5 rounded-full font-bold text-md text-center bg-baby-blue">3</div>
-                </div>
+
                 
             </div>
         </div>
@@ -63,7 +64,7 @@
         <div class="text-sm font-bold"><%= (i+1) %></div>
         </div>
         <img src="<%= allusers[i].profilePicture%>" class="h-10 w-10  rounded-full bg-black"></img>
-        <div class="w-60 ml-2 overflow-hidden">
+        <div class="w-40 ml-2 overflow-hidden">
         <div class="text-sm truncate"><%-allusers[i].name.replace(/\s/g, `&nbsp;`) %></div>
         </div>  
         <div class="text-sm"><%= allusers[i].elo%></div>
