@@ -55,7 +55,7 @@ router.post('/resetPasswordWithEmail', async (req, res) => {
     // Send password reset email
     const msg = {
       to: email,
-      from: 'gamesetmatch.dtc06@gmail.com',
+      from: 'gamesetmatchdtcsix@gmail.com',
       subject: 'Password Reset',
       html: `Click <a href="${resetLink}">here</a> to reset your password.`,
     };
