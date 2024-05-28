@@ -4,7 +4,10 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        'sans': ['"Proxima Nova"'],},
+        'sans': ['Roboto', 'sans-serif'],},
+      fontWeight: {
+        'normal': 100
+      },
       backdropBlur: {
         'none': '0',
         'xs': '2px',
