@@ -58,11 +58,13 @@
                             <% for(let player of homePlayers) { %>
                                 <div class="mb-2  flex">
                                     <% if(player._id.toString()===currentuserid.toString()) { %>
-                                        <a href="/profile"
+                                        <span
                                             class="flex items-center mr-2 bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 m-1">
-                                            <!-- Display player's avatar/icon -->
-                                            <img src="<%= player.profilePicture %>" class="w-8 h-8 rounded-full mr-2"
-                                                alt="<%= player.name %>" />
+                                            <a href="/profile">
+                                                <!-- Display player's avatar/icon -->
+                                                <img src="<%= player.profilePicture %>"
+                                                    class="w-8 h-8 rounded-full mr-2" alt="<%= player.name %>" />
+                                            </a>
                                             <p class="text-xl">
                                                 <%= player.name.length> 12 ? player.name.substring(0, 12) + '...' :
                                                     player.name %>
@@ -76,13 +78,15 @@
                                                     d="M5 5a5 5 0 0 1 7 0a5 5 0 0 0 7 0v9a5 5 0 0 1 -7 0a5 5 0 0 0 -7 0v-9z" />
                                                 <path d="M5 21v-7" />
                                             </svg>
-                                        </a>
+                                        </span>
                                         <% } else { %>
-                                            <a href="/otherprofile/<%= player._id %>"
+                                            <span
                                                 class="flex items-center mr-2 bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 m-1">
-                                                <!-- Display player's avatar/icon -->
-                                                <img src="<%= player.profilePicture %>"
-                                                    class="w-8 h-8 rounded-full mr-2" alt="<%= player.name %>" />
+                                                <a href="/otherprofile/<%= player._id %>">
+                                                    <!-- Display player's avatar/icon -->
+                                                    <img src="<%= player.profilePicture %>"
+                                                        class="w-8 h-8 rounded-full mr-2" alt="<%= player.name %>" />
+                                                </a>
                                                 <p class="text-xl">
                                                     <%= player.name.length> 12 ? player.name.substring(0, 12) + '...' :
                                                         player.name %>
@@ -96,7 +100,7 @@
                                                         d="M5 5a5 5 0 0 1 7 0a5 5 0 0 0 7 0v9a5 5 0 0 1 -7 0a5 5 0 0 0 -7 0v-9z" />
                                                     <path d="M5 21v-7" />
                                                 </svg>
-                                            </a>
+                                            </span>
                                             <% } %>
 
                                 </div>
@@ -111,11 +115,13 @@
                                 <div class="mb-2  flex">
                                     <% if(player._id.toString()===currentuserid.toString()) { %>
                                         <!--if user click user's card, link to profile not other profile-->
-                                        <a href="/profile"
+                                        <span
                                             class="flex items-center mr-2 bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 m-1">
-                                            <!-- Display player's avatar/icon -->
-                                            <img src="<%= player.profilePicture %>" class="w-8 h-8 rounded-full mr-2"
-                                                alt="<%= player.name %>" />
+                                            <a href="/profile">
+                                                <!-- Display player's avatar/icon -->
+                                                <img src="<%= player.profilePicture %>"
+                                                    class="w-8 h-8 rounded-full mr-2" alt="<%= player.name %>" />
+                                            </a>
                                             <p class="text-xl">
                                                 <%= player.name.length> 12 ? player.name.substring(0, 12) + '...' :
                                                     player.name %>
@@ -129,13 +135,15 @@
                                                     d="M5 5a5 5 0 0 1 7 0a5 5 0 0 0 7 0v9a5 5 0 0 1 -7 0a5 5 0 0 0 -7 0v-9z" />
                                                 <path d="M5 21v-7" />
                                             </svg>
-                                        </a>
+                                        </span>
                                         <% } else { %>
-                                            <a href="/otherprofile/<%= player._id %>"
+                                            <span
                                                 class="flex items-center mr-2 bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 m-1">
-                                                <!-- Display player's avatar/icon -->
-                                                <img src="<%= player.profilePicture %>"
-                                                    class="w-8 h-8 rounded-full mr-2" alt="<%= player.name %>" />
+                                                <a href="/otherprofile/<%= player._id %>">
+                                                    <!-- Display player's avatar/icon -->
+                                                    <img src="<%= player.profilePicture %>"
+                                                        class="w-8 h-8 rounded-full mr-2" alt="<%= player.name %>" />
+                                                </a>
                                                 <p class="text-xl">
                                                     <%= player.name.length> 12 ? player.name.substring(0, 12) + '...' :
                                                         player.name %>
@@ -149,7 +157,7 @@
                                                         d="M5 5a5 5 0 0 1 7 0a5 5 0 0 0 7 0v9a5 5 0 0 1 -7 0a5 5 0 0 0 -7 0v-9z" />
                                                     <path d="M5 21v-7" />
                                                 </svg>
-                                            </a>
+                                            </span>
                                             <% } %>
 
                                 </div>
