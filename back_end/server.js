@@ -7,6 +7,7 @@ var session = require('express-session');
 var mongoDBStore = require('connect-mongodb-session')(session);
 require('dotenv').config();
 
+app.use(express.static('public'));
 app.set('view engine', 'ejs')
 
 // MongoDB connection
@@ -41,7 +42,7 @@ app.use(session({
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
-app.use(express.static('public'));
+
 
 // Middleware to check if user is logged in 
 isUserAuthenticated = (req, res, next) => {
