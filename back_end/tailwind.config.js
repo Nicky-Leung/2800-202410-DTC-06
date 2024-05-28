@@ -3,6 +3,8 @@ module.exports = {
   content: ['views/**/*.{html,ejs,js}', 'public/**/*.js'],
   theme: {
     extend: {
+      fontFamily: {
+        'sans': ['"Proxima Nova"'],},
       backdropBlur: {
         'none': '0',
         'xs': '2px',
