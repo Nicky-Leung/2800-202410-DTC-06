@@ -14,6 +14,7 @@ router.get('/matchend', async (req, res) => {
         } else {
             return res.status(400).json({ message: "Match ID not provided" });
         }
+        player = await usersModel.findById(req.session.currentUser._id);
 
         const currentMatch = await matchModel.findOne({ _id: matchID });
         if (!currentMatch) {
