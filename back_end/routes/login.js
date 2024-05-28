@@ -15,9 +15,9 @@ const signUpSchema = Joi.object({
         'string.empty': 'Email is required. Please try again. <button onclick="location.href=\'/signup\'" type="button">Sign Up</button>',
         'any.required': 'Email is required. Please try again. <button onclick="location.href=\'/signup\'" type="button">Sign Up</button>'
     }),
-    password: Joi.string().min(8).max(12).required().messages({
+    password: Joi.string().min(8).max(16).required().messages({
         'string.min': 'Password must be at least 8 characters long. Please try again. <button onclick="location.href=\'/signup\'" type="button">Sign Up</button>',
-        'string.max': 'Password must be less than 13 characters long. Please try again. <button onclick="location.href=\'/signup\'" type="button">Sign Up</button>',
+        'string.max': 'Password must be less than 17 characters long. Please try again. <button onclick="location.href=\'/signup\'" type="button">Sign Up</button>',
         'string.empty': 'Password is required. Please try again. <button onclick="location.href=\'/signup\'" type="button">Sign Up</button>',
         'any.required': 'Password is required. Please try again. <button onclick="location.href=\'/signup\'" type="button">Sign Up</button>'
     }),
@@ -75,9 +75,10 @@ router.post('/signup', async (req, res) => {
     const { name, email, password } = req.body;
     const hashedPassword = hashPassword(password);
     try {
-        const newUser = new usersModel({ name, email, password: hashedPassword, type: 'non-administrator', elo:'400', rank:'Aspirant'
-            , sportsmanship:'500', streak:'false', streakCount:'0', matchHistory:[]
-         });
+        const newUser = new usersModel({
+            name, email, password: hashedPassword, type: 'non-administrator', elo: '400', rank: 'Aspirant'
+            , sportsmanship: '500', streak: 'false', streakCount: '0', matchHistory: []
+        });
         await newUser.save();
         console.log('User created:', newUser);
         res.redirect('/login');
