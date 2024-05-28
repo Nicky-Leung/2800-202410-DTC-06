@@ -3,6 +3,10 @@ const router = express.Router();
 const usersModel = require('../models/userModel'); // Adjust the path as needed
 const Joi = require('joi');
 const crypto = require('crypto');
+const sgMail = require('@sendgrid/mail');
+
+// SendGrid API key
+sgMail.setApiKey(process.env.SENDGRID_DEV_PASSWORD_RESET_KEY);
 
 // Enforce requirements for name, password, and email
 const signUpSchema = Joi.object({
@@ -81,6 +85,17 @@ router.post('/signup', async (req, res) => {
         });
         await newUser.save();
         console.log('User created:', newUser);
+
+        // Send confirmation email
+        const msg = {
+            to: email,
+            from: 'gamesetmatchdtcsix@gmail.com',
+            subject: 'Sign-Up Confirmation',
+            html: `<p>Thank you for signing up, ${name}!</p><p>Your account has been successfully created.</p>`,
+        };
+        await sgMail.send(msg);
+        console.log('Confirmation email sent');
+
         res.redirect('/login');
     } catch (error) {
         console.error('Error during signup:', error);
@@ -88,6 +103,5 @@ router.post('/signup', async (req, res) => {
     }
 });
 
-// Other routes...
 
 module.exports = router;
