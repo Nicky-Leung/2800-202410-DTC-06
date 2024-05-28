@@ -57,9 +57,8 @@
         <div id="non-top3" class="pb-28">
 
         <% for (let i = 3; i < allusers.length; i++) { %>
-        <a href="/otherProfile/<%= allusers[i]._id %>">
-        <div
-        class="bg-crimson border-8 border-rose normal-ranking px-6 py-2 mt-4 mx-2 flex flex-row justify-between items-center rounded-3xl">
+        <a href="<%= allusers[i].id == currentuser ? '/profile' : '/otherProfile/' + allusers[i]._id %>">        
+        <div class="bg-crimson border-8 border-rose normal-ranking px-6 py-2 mt-4 mx-2 flex flex-row justify-between items-center rounded-3xl">
         <div class="w-2">
         <div class="text-4xl"><%= (i+1) %></div>
         </div>
@@ -72,9 +71,6 @@
         </a>
 
         <% }; %>
-
-
-        
 
         </div>
         <%- include('templates/footer') %>
