@@ -7,8 +7,9 @@ router.get('/localleaderboard', async (req, res) => {
     try {
         const topusers = await usersModel.find({}, {name: 1, rank: 1, elo: 1, profilePicture: 1}).sort({elo: -1}).limit(3);
         const allusers = await usersModel.find({}, {name: 1, rank: 1, elo: 1, profilePicture: 1}).sort({elo: -1});
-        console.log(allusers);
-        res.render('leaderboard_local.ejs',{topusers: topusers, allusers: allusers});
+        currentuser = req.session.currentUser._id;
+        console.log(currentuser);
+        res.render('leaderboard_local.ejs',{topusers: topusers, allusers: allusers, currentuser: currentuser});
       } catch (err) {
         console.log('error fetching users');
       }
