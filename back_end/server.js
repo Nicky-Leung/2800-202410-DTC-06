@@ -6,8 +6,14 @@ const mongoose = require('mongoose');
 var session = require('express-session');
 var mongoDBStore = require('connect-mongodb-session')(session);
 require('dotenv').config();
+app.use(function(req, res, next) {
+  if (path.extname(req.path) === '.js') {
+    res.type('text/javascript');
+  }
+  next();
+});
 
-app.use(express.static('public'));
+app.use(express.static(path.join(__dirname, 'public')));
 app.set('view engine', 'ejs')
 
 // MongoDB connection

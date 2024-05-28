@@ -1,7 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const matchModel = require('../models/matchModel'); // adjust the path as needed
-
+const matchModel = require('../models/matchModel'); 
 router.get('/creatematch', (req, res) => {
     res.render('creatematch');
 });
