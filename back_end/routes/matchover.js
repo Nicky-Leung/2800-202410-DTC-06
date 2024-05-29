@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const matchModel = require('../models/matchModel');
 const usersModel = require('../models/userModel');
+const prevMatchModel = require('../models/previousMatchModel');
 
 router.get('/matchend', async (req, res) => {
     try {
@@ -152,6 +153,42 @@ router.post('/updateSportsmanship', async (req, res) => {
         res.status(500).json({ message: "Internal Server Error" });
     }
 });
+
+router.post('/matchEnd/:matchId', async (req, res) => {
+    try {
+        const matchId = req.params.matchId;
+        const currentMatch = await matchModel.findById(matchId);
+        if (!currentMatch) {
+            return res.status(404).json({ message: "Match not found in current matches" });
+        }
+        const previousMatch = new prevMatchModel({
+            sport: currentMatch.sport,
+            location: currentMatch.location,
+            time: currentMatch.time,
+            date: currentMatch.date,
+            matchType: currentMatch.matchType,
+            rank: currentMatch.rank,
+            elo: currentMatch.elo,
+            score: currentMatch.score,
+            homePlayers: currentMatch.homePlayers,
+            awayPlayers: currentMatch.awayPlayers,
+            timeLeft: currentMatch.timeLeft
+        });
+
+        await previousMatch.save();
+        await matchModel.findByIdAndDelete(matchId); // Corrected typo here
+        console.log('Match ended successfully');
+        res.redirect('/index');
+
+    } catch (error) {
+        console.error('Error ending match:', error);
+        res.status(500).json({ message: "Internal Server Error" });
+    }
+});
+
+
+
+
 
 module.exports = router;
 

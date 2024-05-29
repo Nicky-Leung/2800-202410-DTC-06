@@ -176,34 +176,38 @@
                     <button
                         class="text-2xl bg-sky-blue hover:bg-white hover:text-sky-blue text-white font-bold py-2 px-4 rounded"
                         onclick="location.href='/match'">Rematch</button>
-                    <button
-                        class="text-2xl bg-dark-blue hover:bg-white hover:text-dark-blue text-white font-bold py-2 px-4 rounded ml-4"
-                        onclick="location.href='/index'">Home</button>
+                    <form action="/matchEnd/<%= matchID %>" method="post">
+                        <button type="submit"
+                            class="text-2xl bg-dark-blue hover:bg-white hover:text-dark-blue text-white font-bold py-2 px-4 rounded ml-4">Leave
+                            Match</button>
+                    </form>
                 </div>
-                <br>
-                <br>
+
             </div>
             <br>
             <br>
-            <br>
-            <div id="ratingDialog"
-                class="modal hidden fixed inset-0 overflow-auto bg-black bg-opacity-75 flex justify-center items-center text-black">
-                <div
-                    class="modal-content bg-white p-4 sm:p-6 md:p-8 w-full max-w-sm sm:max-w-md md:max-w-2xl mx-4 relative">
-                    <span id="closeBtn"
-                        class="close absolute top-0 right-0 mt-4 mr-4 cursor-pointer text-black text-3xl sm:text-5xl">&times;</span>
-                    <h1 class="text-lg sm:text-xl md:text-2xl font-bold mb-4 text-center">Rate this player's
-                        sportsmanship!</h1>
-                    <div id="icons" class="flex justify-center mb-4">
-                        <!-- Add your icons here -->
-                    </div>
-                    <div class="flex justify-center mt-4">
-                        <button id="submitBtn"
-                            class="bg-crimson hover:bg-white hover:text-crimson hover:border hover:border-black text-white font-bold py-2 px-4 rounded">Submit</button>
-                    </div>
+        </div>
+        <br>
+        <br>
+        <br>
+        <div id="ratingDialog"
+            class="modal hidden fixed inset-0 overflow-auto bg-black bg-opacity-75 flex justify-center items-center text-black">
+            <div
+                class="modal-content bg-white p-4 sm:p-6 md:p-8 w-full max-w-sm sm:max-w-md md:max-w-2xl mx-4 relative">
+                <span id="closeBtn"
+                    class="close absolute top-0 right-0 mt-4 mr-4 cursor-pointer text-black text-3xl sm:text-5xl">&times;</span>
+                <h1 class="text-lg sm:text-xl md:text-2xl font-bold mb-4 text-center">Rate this player's
+                    sportsmanship!</h1>
+                <div id="icons" class="flex justify-center mb-4">
+                    <!-- Add your icons here -->
+                </div>
+                <div class="flex justify-center mt-4">
+                    <button id="submitBtn"
+                        class="bg-crimson hover:bg-white hover:text-crimson hover:border hover:border-black text-white font-bold py-2 px-4 rounded">Submit</button>
                 </div>
             </div>
         </div>
+    </div>
     </div>
 
     <script src="/scripts/rateplayer.js"></script>
