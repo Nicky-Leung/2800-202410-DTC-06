@@ -58,18 +58,18 @@
         <div id="non-top3" class="pb-28">
 
         <% for (let i = 3; i < allusers.length; i++) { %>
-        <a href="<%= allusers[i].id == currentuser ? '/profile' : '/otherProfile/' + allusers[i]._id %>">        
-        <div class=" border-2 shadow-md normal-ranking px-6 py-2 mt-1 flex flex-row justify-between items-center rounded-3xl">
-        <div class="w-10">
-        <div class="text-sm font-bold"><%= (i+1) %></div>
-        </div>
-        <img src="<%= allusers[i].profilePicture%>" class="h-10 w-10  rounded-full bg-black"></img>
-        <div class="w-40 ml-2 overflow-hidden">
-        <div class="text-sm truncate"><%-allusers[i].name.replace(/\s/g, `&nbsp;`) %></div>
-        </div>  
-        <div class="text-sm"><%= allusers[i].elo%></div>
-        </div>
-        </a>
+            <a href="<%= allusers[i].id == currentuser ? '/profile' : '/otherProfile/' + allusers[i]._id %>">        
+                <div class=" border-2 shadow-md normal-ranking px-6 py-2 mt-1 flex flex-row justify-between items-center rounded-3xl">
+                <div class="w-10">
+                <div class="text-sm text-dark-blue font-bold"><%= (i+1) %></div>
+                </div>
+                <img src="<%= allusers[i].profilePicture%>" class="h-10 w-10  rounded-full bg-black"></img>
+                <div class="w-40 ml-2 overflow-hidden">
+                <div class="text-sm truncate"><%-allusers[i].name.replace(/\s/g, `&nbsp;`) %></div>
+                </div>  
+                <div class="text-sky-blue text-sm"><%= allusers[i].elo%></div>
+                </div>
+                </a>
 
         <% }; %>
 
