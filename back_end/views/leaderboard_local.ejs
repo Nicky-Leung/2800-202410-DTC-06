@@ -1,77 +1,77 @@
 <%- include('templates/header') %>
     
-<body class="bg-rose">
-        <div class="bg-sky-blue pt-10 bg-pacific rounded-b-3xl #4BA3C3">
-            <div class="mx-3 bg-dark-blue my-3 py-2 flex flex-row justify-between px-6 rounded-3xl text-2xl">
-                <div id="localBoard" class="font-bold  bg-baby-blue rounded-3xl py-1 px-4">Local</div>
-                <div id="regionalBoard" class="font-bold rounded-3xl ml-2 py-1 px-4">Regional</div>
-                <div id="globalBoard" class="font-bold rounded-3xl py-1 px-4">Global</div>
+<body class="font-sans  px-4">
+        <div class="bg-sky-blue shadow-md pt-2 rounded-b-3xl">
+            <div class="mx-6 bg-dark-blue py-2 flex flex-row justify-between px-6 rounded-3xl text-sm">
+                <a href="/localleaderboard"><div id="localBoard" class=" bg-baby-blue rounded-xl py-1 px-4">Local</div></a>
+                <a href="/regionalleaderboard"><div id="regionalBoard" class=" rounded-3xl ml-2 py-1 px-4">Regional</div></a>
+                <a href="/globalleaderboard"><div id="globalBoard" class=" rounded-3xl py-1 px-4">Global</div></a>
             </div>
-            <button id="backButton" class="ml-5 mr-5 bg-baby-blue mt-2 w-22 h-20 border-2 rounded-full">
-                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-chevron-left pr-2"
-                    width="80" height="65" viewBox="0 0 24 24" stroke-width="1.5" stroke="#000000" fill="none"
-                    stroke-linecap="round" stroke-linejoin="round">
-                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                    <path d="M15 6l-6 6l6 6" />
-                </svg>
-            </button>
             <div class="justify-center flex relative">
-                <svg xmlns="http://www.w3.org/2000/svg" class="translate-y-3 icon icon-tabler icon-tabler-crown" width="65"
-                    height="65" viewBox="0 0 24 24" stroke-width="1.5" stroke="#ffec00" fill="#ffec00"
+                <svg xmlns="http://www.w3.org/2000/svg" class="translate-y-3 icon icon-tabler icon-tabler-crown" width="30"
+                    height="30" viewBox="0 0 24 24" stroke-width="1.5" stroke="#ffec00" fill="#ffec00"
                     stroke-linecap="round" stroke-linejoin="round">
                     <path stroke="none" d="M0 0h24v24H0z" fill="none" />
                     <path d="M12 6l4 6l5 -4l-2 10h-14l-2 -10l5 4z" />
                 </svg>
             </div>
             <div id="top_1_icon"class="mt-0 pt-0 justify-center center flex">
-                <img id="top_1_icon" class="flex flex-row w-36 rounded-full bg-black flex-none" src="<%=topusers[0].profilePicture %>">
-            </img>
+                <a href="/otherProfile/<%=topusers[0]._id%>">
+                <img id="top_1_icon" class="flex flex-row w-20 h-20 rounded-full border-4 border-dark-blue bg-black flex-none" src="<%=topusers[0].profilePicture %>">
+            </img></a>
             </div>
             <div class="flex flex-row justify-between px-9">
+                <a href="/otherProfile/<%=topusers[1]._id%>">
                 <div id="top_2" class="flex flex-col text-center items-center">
-                    <img class="h-28 w-28 rounded-full bg-black flex-none" src="<%=topusers[1].profilePicture %>">
+                    <img class="w-20 h-20 rounded-full bg-black flex-none border-4 border-dark-blue" src="<%=topusers[1].profilePicture %>">
                 </img>
-                    <div class="text-lg font-bold"><%-topusers[1].name.replace(/\s/g, `&nbsp;`)%></div>
-                    <div class="text-lg font-bold"><%=topusers[1].elo%></div>
-                    <div class="relative -translate-y-20">
-                        <div class="h-8 w-8 rounded-full text-xl text-center bg-baby-blue">2</div>
+                    <div class="pt-2 text-sm"><%-topusers[1].name.replace(/\s/g, `&nbsp;`)%></div>
+                    <div class="text-sm"><%=topusers[1].elo%></div>
+                    <div class="relative -translate-y-16">
+                        <div class="h-5 w-5 rounded-full font-bold text-sm text-center bg-baby-blue">2</div>
                     </div>
                 </div>
+                </a>
+                <a href="/otherProfile/<%=topusers[0]._id%>">
                 <div class="flex-col flex items-center text-center">
-                    <div class="text-lg font-bold"><%-topusers[0].name.replace(/\s/g, `&nbsp;`)%></div>
-                    <div class="text-lg font-bold"><%=topusers[0].elo %></div>
+                    <div class="text-sm"><%-topusers[0].name.replace(/\s/g, `&nbsp;`)%></div>
+                    <div class="text-sm"><%=topusers[0].elo %></div>
                 </div>
+                </a>
+                <a href="/otherProfile/<%=topusers[2]._id%>">
                 <div id="top_3"class="flex flex-col text-center items-center">
-                    <img src ="<%=topusers[2].profilePicture %>"class="h-28 w-28 rounded-full bg-black flex-none"></img>
-                    <div class="w-32 overflow-hidden">
-                        <div class="w-24 text-lg truncate font-bold"><%-topusers[2].name.replace(/\s/g, `&nbsp;`) %>
-                        </div>
-                    <div class="text-lg font-bold"><%=topusers[2].elo %></div>
+                    <img src ="<%=topusers[2].profilePicture %>"class="w-20 h-20 rounded-full bg-black flex-none border-4 border-dark-blue"></img>
+                    <div class="w-20 overflow-hidden">
+                        <div class="pt-2 truncate text-sm"><%-topusers[2].name.replace(/\s/g, `&nbsp;`)%></div>
+                    </div>
+                    <div class="text-sm"><%=topusers[2].elo %></div>
+                    <div class="relative -translate-y-16">
+                        <div class="h-5 w-5 rounded-full font-bold text-md text-center bg-baby-blue">3</div>
+                    </div>
                 </div>
-                <div class="relative -translate-y-20">
-                    <div class="h-8 w-8 rounded-full text-xl text-center bg-baby-blue">3</div>
-                </div>
+
+                
             </div>
         </div>
         </div>
 
-        <div id="non-top3">
+        <div id="non-top3" class="pb-28">
 
         <% for (let i = 3; i < allusers.length; i++) { %>
-        <div
-        class="bg-crimson normal-ranking px-6 py-2 mt-4 mx-2 flex flex-row justify-between items-center rounded-3xl">
-        <div class="text-4xl"><%= (i+1) %></div>
-        <img src="<%= allusers[i].profilePicture%>" class="h-20 w-20 rounded-full bg-black"></img>
-        <div class="w-48 overflow-hidden">
-        <div class="text-2xl font-bold truncate"><%-allusers[i].name.replace(/\s/g, `&nbsp;`) %></div>
-        </div>  
-        <div class="text-2xl font-bold"><%= allusers[i].elo%></div>
+        <a href="<%= allusers[i].id == currentuser ? '/profile' : '/otherProfile/' + allusers[i]._id %>">        
+        <div class=" border-2 shadow-md normal-ranking px-6 py-2 mt-1 flex flex-row justify-between items-center rounded-3xl">
+        <div class="w-10">
+        <div class="text-sm font-bold"><%= (i+1) %></div>
         </div>
+        <img src="<%= allusers[i].profilePicture%>" class="h-10 w-10  rounded-full bg-black"></img>
+        <div class="w-40 ml-2 overflow-hidden">
+        <div class="text-sm truncate"><%-allusers[i].name.replace(/\s/g, `&nbsp;`) %></div>
+        </div>  
+        <div class="text-sm"><%= allusers[i].elo%></div>
+        </div>
+        </a>
 
         <% }; %>
-
-
-        
 
         </div>
         <%- include('templates/footer') %>
