@@ -6,6 +6,8 @@ var closeBtn = document.getElementById("closeBtn");
 
 var icons = document.getElementById("icons");
 
+var ratedUsers = JSON.parse(localStorage.getItem('ratedUsers')) || [];
+
 icons.innerHTML = `
 <div class="terrible" id="terrible" style="display: flex; flex-direction: column; align-items: center; justify-content: center;"> <!-- -elo -->
     <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-mood-cry" width="75" height="75" viewBox="0 0 24 24" stroke-width="1" stroke="#000000" fill="none" stroke-linecap="round" stroke-linejoin="round">
@@ -66,6 +68,12 @@ flagIcons.forEach(function (icon) {
         var playerId = event.currentTarget.closest("[data-player-id]").dataset.playerId; // fetches id
         console.log("Flag icon clicked");
         console.log("Player ID:", playerId);
+
+        if (hasRatedUser(playerId)) {
+            alert("You have already rated this user!");
+            return;
+        }
+
         ratingDialog.classList.remove("hidden");
         ratingDialog.setAttribute("data-player-id", playerId); // add id of flagged player to feedback dialog
     });
@@ -76,6 +84,16 @@ var submit = document.getElementById("submitBtn");
 
 // Get all rating icons
 var faceIcons = document.querySelectorAll("#icons > div");
+
+function saveRatedUsers() {
+    localStorage.setItem('ratedUsers', JSON.stringify(ratedUsers));
+}
+
+function hasRatedUser(playerId) {
+    return ratedUsers.includes(playerId);
+}
+
+
 
 // Add event listener to each rating icon
 faceIcons.forEach(function (icon) {
@@ -101,6 +119,13 @@ submit.addEventListener("click", async function () {
     }
 
     var playerId = ratingDialog.getAttribute("data-player-id");// access the id via attr
+
+    if (hasRatedUser(playerId)) {
+        alert("You have already rated this user!");
+        return;
+    }
+
+
     try {
         const resp = await fetch('/updateSportsmanship', {// this post is in matchover.js
             method: 'POST',
@@ -110,11 +135,18 @@ submit.addEventListener("click", async function () {
             body: JSON.stringify({ userId: playerId, rating: ratingpicked })
         });
         const data = await resp.json();
+        ratedUsers.push(playerId);
+        saveRatedUsers();
+        console.log("Rated users:", ratedUsers);
+
         alert(data.message);
         ratingDialog.classList.add("hidden");
+
+
     }
     catch (err) {
         console.error('Error updating sportsmanship:', err);
         alert('Error updating sportsmanship');
     }
 });
+
