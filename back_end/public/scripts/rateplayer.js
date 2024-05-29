@@ -1,6 +1,7 @@
 // Get the rating dialog element
 var ratingDialog = document.getElementById("ratingDialog");
 
+
 // Get the close button element
 var closeBtn = document.getElementById("closeBtn");
 
@@ -66,8 +67,16 @@ var flagIcons = document.querySelectorAll(".flagIcon");
 flagIcons.forEach(function (icon) {
     icon.addEventListener("click", function () {
         var playerId = event.currentTarget.closest("[data-player-id]").dataset.playerId; // fetches id
+        const currentUserId = document.querySelector('[data-current-user-id]').dataset.currentUserId;// fetches current user id
+
         console.log("Flag icon clicked");
-        console.log("Player ID:", playerId);
+        // console.log("Player ID:", playerId);
+        console.log("Current user ID:", currentUserId);
+
+        if (playerId === currentUserId) {
+            alert("You cannot rate yourself!");
+            return;
+        }
 
         if (hasRatedUser(playerId)) {
             alert("You have already rated this user!");

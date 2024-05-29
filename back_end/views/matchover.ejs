@@ -56,7 +56,8 @@
                         <div class="px-6 py-4">
                             <div class="font-bold text-xl mb-2 text-white">Home Team</div>
                             <% for(let player of homePlayers) { %>
-                                <div class="mb-2  flex" data-player-id="<%= player._id %>">
+                                <div class="mb-2 flex" data-player-id="<%= player._id %>"
+                                    data-current-user-id="<%= currentuserid %>">
                                     <% if (player._id.toString()===currentuserid.toString()) { %>
 
                                         <span
@@ -114,7 +115,8 @@
                         <div class="px-6 py-4">
                             <div class="font-bold text-xl mb-2 text-white">Away Team</div>
                             <% for(let player of awayPlayers) { %>
-                                <div class="mb-2 flex" data-player-id="<%= player._id %>">
+                                <div class="mb-2 flex" data-player-id="<%= player._id %>"
+                                    data-current-user-id="<%= currentuserid %>">
                                     <% if (player._id.toString()===currentuserid.toString()) { %>
                                         <span
                                             class="flex items-center mr-2 bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 m-1">
