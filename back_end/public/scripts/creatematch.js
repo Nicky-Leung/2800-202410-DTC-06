@@ -48,7 +48,7 @@ async function populateLocation(data, sport) {
     Array.from(data.results).forEach((place, index) => {
 
         const option = document.createElement('option');
-        option.value = JSON.stringify([place.geocodes.main.longitude, place.geocodes.main.latitude, place.name]);
+        option.value = JSON.stringify([place.geocodes.main.longitude, place.geocodes.main.latitude, place.name, place.location.formatted_address]);
         option.textContent = place.name;
         locationForm.appendChild(option);
 

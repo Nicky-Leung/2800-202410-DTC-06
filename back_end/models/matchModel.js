@@ -8,6 +8,7 @@ const createdMatchSchema = new mongoose.Schema({
             enum: ['Point'], // 'location.type' must be 'Point'
             required: true
         },
+        address: String,
         coordinates: {
             type: [Number],
             required: true

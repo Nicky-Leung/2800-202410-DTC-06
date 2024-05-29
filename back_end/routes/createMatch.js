@@ -8,9 +8,11 @@ router.get('/creatematch', (req, res) => {
 router.post('/creatematch', async (req, res) => {
 
   const { sport, date, matchType } = req.body;
+  console.log(req.body.location);
   const time = req.body.time;
   const coordinates = JSON.parse(req.body.location).slice(0, 2);
   const locationName = JSON.parse(req.body.location)[2];
+  const address = JSON.parse(req.body.location)[3];
   const fullDate = new Date(`${date}T${time}:00.000Z`);
 
     const newMatch = new matchModel({
@@ -18,6 +20,7 @@ router.post('/creatematch', async (req, res) => {
         location: {
             type: 'Point',
             coordinates,
+            address: address,
             name: locationName
 
         },

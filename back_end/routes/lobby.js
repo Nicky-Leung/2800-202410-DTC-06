@@ -18,12 +18,24 @@ router.get('/lobby', async (req, res) => {
         console.log(currentUser);
         const currentMatch = await matchModel.findOne({ _id: matchID });
         console.log(currentMatch);
+        homeTeamElo = 0;
+        awayTeamElo = 0;
+        for(let i = 0; i < currentMatch.homePlayers.length; i++){
+            homeTeamElo += currentMatch.homePlayers[i].elo;
+        }
+        for(let i = 0; i < currentMatch.awayPlayers.length; i++){
+            awayTeamElo += currentMatch.awayPlayers[i].elo;
+        }
+        homeTeamElo = homeTeamElo / currentMatch.homePlayers.length;
+        awayTeamElo = awayTeamElo / currentMatch.awayPlayers.length;
         if (currentUser && currentMatch) {
             totalPlayers = parseInt(currentMatch.matchType.charAt(0));
             if ((currentMatch.homePlayers.length + currentMatch.awayPlayers.length) == totalPlayers) {
                 res.render('lobby.ejs', {
                     location: currentMatch.location.name,
+                    address: currentMatch.location.address,
                     homePlayers: currentMatch.homePlayers, awayPlayers: currentMatch.awayPlayers,
+                    homeTeamElo: homeTeamElo, awayTeamElo: awayTeamElo,
                     matchType: currentMatch.matchType, sport: currentMatch.sport
                 });
             }
@@ -40,7 +52,10 @@ router.get('/lobby', async (req, res) => {
         console.log(currentMatch);
         res.render('lobby.ejs', {
             location: currentMatch.location.name,
+            address: currentMatch.location.address,
             homePlayers: currentMatch.homePlayers, awayPlayers: currentMatch.awayPlayers,
+            homeTeamElo: homeTeamElo, awayTeamElo: awayTeamElo,
+
             matchType: currentMatch.matchType, sport: currentMatch.sport,
             matchID: currentMatch._id
         });
