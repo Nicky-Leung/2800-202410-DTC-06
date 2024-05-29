@@ -25,6 +25,14 @@ const signUpSchema = Joi.object({
         'string.empty': 'Password is required. Please try again. <button onclick="location.href=\'/signup\'" type="button">Sign Up</button>',
         'any.required': 'Password is required. Please try again. <button onclick="location.href=\'/signup\'" type="button">Sign Up</button>'
     }),
+    city: Joi.string().required().messages({
+        'string.empty': 'City is required. Please try again. <button onclick="location.href=\'/signup\'" type="button">Sign Up</button>',
+        'any.required': 'City is required. Please try again. <button onclick="location.href=\'/signup\'" type="button">Sign Up</button>'
+    }),
+    country: Joi.string().required().messages({
+        'string.empty': 'Country is required. Please try again. <button onclick="location.href=\'/signup\'" type="button">Sign Up</button>',
+        'any.required': 'Country is required. Please try again. <button onclick="location.href=\'/signup\'" type="button">Sign Up</button>'
+    }),
     captcha: Joi.string().required().messages({
         'string.empty': 'Captcha is required. Please try again.',
         'any.required': 'Captcha is required. Please try again.'
@@ -76,12 +84,12 @@ router.get('/signup', (req, res) => {
 router.post('/signup', async (req, res) => {
     const { error } = signUpSchema.validate(req.body);
     if (error) return res.status(400).send(error.details[0].message);
-    const { name, email, password } = req.body;
+    const { name, email, password, city, country } = req.body;
     const hashedPassword = hashPassword(password);
     try {
         const newUser = new usersModel({
             name, email, password: hashedPassword, type: 'non-administrator', elo: '400', rank: 'Aspirant'
-            , sportsmanship: '500', streak: 'false', streakCount: '0', matchHistory: []
+            , sportsmanship: '500', streak: 'false', streakCount: '0', matchHistory: [], city, country
         });
         await newUser.save();
         console.log('User created:', newUser);
