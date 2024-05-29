@@ -2,16 +2,11 @@ const usermodel = require('../models/userModel');
 const express = require('express');
 const router = express.Router();
 
-const isUserAuthenticated = (req, res, next) => {
-    if (req.session.authenticated) {
-        req.currentUser = req.session.currentUser;
-        next();
-    } else {
-        res.status(401).render('notLoggedIn.ejs', { message: 'Please login first' });
-    }
-};
+router.use('/public', express.static('public'));
 
-router.get('/otherProfile/:userid', isUserAuthenticated, async (req, res) => {
+
+
+router.get('/otherProfile/:userid', async (req, res) => {
     try {
         const user = await usermodel.findOne({ _id: req.params.userid });
         if (!user) {
