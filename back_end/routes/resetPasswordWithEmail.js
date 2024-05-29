@@ -85,7 +85,7 @@ router.get('/resetPasswordForm', async (req, res) => {
 
   // if (!passwordResetTokens.has(token)) {
   //   console.log('Token not found in passwordResetTokens map.');
-  //   return res.status(400).send('Invalid or expired token deez nuts');
+  //   return res.status(400).send('Invalid or expired token');
   // }
 
   // const email = passwordResetTokens.get(token);
