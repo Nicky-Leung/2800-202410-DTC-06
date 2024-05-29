@@ -62,13 +62,16 @@ isUserAuthenticated = (req, res, next) => {
 
 
 // Public Routes
+
 app.get('/', (req, res) => {
-  res.render('home.ejs', { passwordUpdated: req.query.passwordUpdated })
-})
-app.get('/home', (req, res) => {
   res.render('welcomepage.ejs')
 });
+app.get('/home', (req, res) => {
+  res.render('home.ejs', { passwordUpdated: req.query.passwordUpdated })
+})
 
+
+//import all protected routes
 const login = require('./routes/login');
 const placeSearch = require('./routes/placeSearch');
 const indexscript = require('./routes/indexscript');

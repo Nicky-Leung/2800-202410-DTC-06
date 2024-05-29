@@ -1,6 +1,4 @@
 
-
-
 async function getprofileimage() {
 
     profileDiv = document.getElementById('profile')
