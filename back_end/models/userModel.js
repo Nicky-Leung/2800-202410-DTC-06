@@ -15,6 +15,8 @@ const usersSchema = new mongoose.Schema({
   streak: Boolean,
   streakCount: Number,
   matchHistory: Array,
+  city: String,
+  country: String,
 
 });
 
