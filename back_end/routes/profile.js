@@ -18,6 +18,7 @@ router.get('/profile', isUserAuthenticated, async (req, res) => {
         if (!user) {
             return res.status(404).send('User not found');
         }
+    
         res.render('profile.ejs', {
             name: req.session.name,
             email: req.session.email,

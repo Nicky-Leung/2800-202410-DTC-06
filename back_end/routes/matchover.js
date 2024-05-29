@@ -175,12 +175,55 @@ router.post('/matchEnd/:matchId', async (req, res) => {
             timeLeft: currentMatch.timeLeft
         });
 
+        matchResult = {
+            sport: currentMatch.sport,
+            homeScore: currentMatch.score.home,
+            awayScore: currentMatch.score.away,
+            matchType: currentMatch.matchType,
+            location: currentMatch.location,
+            time: currentMatch.time,
+            date: currentMatch.date,
+            elo: currentMatch.elo,
+            win: false
+        }
+
+        console.log(matchResult)
+
         await previousMatch.save();
         await matchModel.findByIdAndDelete(matchId); // Corrected typo here
+        for (let i = 0; i < currentMatch.homePlayers.length; i++) {
+            const user = await usersModel.findById(currentMatch.homePlayers[i]._id);
+            console.log(user);
+            user.matchHistory.push(matchResult);
+            if (currentMatch.score.home > currentMatch.score.away) {
+                user.matchHistory[user.matchHistory.length - 1].win = true;
+           
+        }
+            else {
+                user.matchHistory[user.matchHistory.length - 1].win = false;
+         
+            }
+            await user.save();
+        } 
+
+        for (let i = 0; i < currentMatch.awayPlayers.length; i++) {
+            const user = await usersModel.findById(currentMatch.awayPlayers[i]._id);
+            user.matchHistory.push(matchResult);
+            if (currentMatch.score.home < currentMatch.score.away) {
+                user.matchHistory[user.matchHistory.length - 1].win = true;
+         
+                
+            }
+            else {
+                user.matchHistory[user.matchHistory.length - 1].win = false;
+
+            }
+            await user.save();
+        }
         console.log('Match ended successfully');
         res.redirect('/index');
 
-    } catch (error) {
+    } catch(error) {
         console.error('Error ending match:', error);
         res.status(500).json({ message: "Internal Server Error" });
     }
