@@ -60,7 +60,7 @@ router.get('/matchend', async (req, res) => {
             currentUser: currentUser,
             currentuserid: req.session.currentUser ? req.session.currentUser._id : null, // sending current user id to front end for ejs
             tie: tie,
-            userElo: currentUser.elo
+            userElo: currentUser.elo,
         });
     } catch (error) {
         console.error('Error fetching match data:', error);
@@ -127,4 +127,31 @@ router.post('/updateElo', async (req, res) => {
 
 })
 
+router.post('/updateSportsmanship', async (req, res) => {
+    try {
+        const { userId, rating } = req.body;
+        const user = await usersModel.findById(userId);
+
+        let points = 0;
+        if (rating === 'terrible') {
+            points = -20; // -20 for bad sportsmanship
+        } else if (rating === 'happy') {
+            points = 20;  // +20 for good sportsmanship
+        } else {
+            points = 0;   // neutral stays the same
+        }
+
+        const newSportsmanship = user.sportsmanship + points;
+
+        user.sportsmanship = Math.max(Math.min(newSportsmanship, 500), 0); // cap sports to 5 hundo and min to 0
+
+        await user.save();
+        res.status(200).json({ message: "Sportsmanship updated", sportsmanship: user.sportsmanship });
+    } catch (error) {
+        console.error('Error updating sportsmanship:', error);
+        res.status(500).json({ message: "Internal Server Error" });
+    }
+});
+
 module.exports = router;
+
