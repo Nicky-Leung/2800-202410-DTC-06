@@ -1,10 +1,13 @@
 // Get the rating dialog element
 var ratingDialog = document.getElementById("ratingDialog");
 
+
 // Get the close button element
 var closeBtn = document.getElementById("closeBtn");
 
 var icons = document.getElementById("icons");
+
+var ratedUsers = JSON.parse(localStorage.getItem('ratedUsers')) || [];
 
 icons.innerHTML = `
 <div class="terrible" id="terrible" style="display: flex; flex-direction: column; align-items: center; justify-content: center;"> <!-- -elo -->
@@ -63,31 +66,96 @@ var flagIcons = document.querySelectorAll(".flagIcon");
 // Add event listener to each flag icon to open the rating dialog
 flagIcons.forEach(function (icon) {
     icon.addEventListener("click", function () {
+        var playerId = event.currentTarget.closest("[data-player-id]").dataset.playerId; // fetches id
+        const currentUserId = document.querySelector('[data-current-user-id]').dataset.currentUserId;// fetches current user id
+
         console.log("Flag icon clicked");
+        // console.log("Player ID:", playerId);
+        console.log("Current user ID:", currentUserId);
+
+        if (playerId === currentUserId) {
+            alert("You cannot rate yourself!");
+            return;
+        }
+
+        if (hasRatedUser(playerId)) {
+            alert("You have already rated this user!");
+            return;
+        }
+
         ratingDialog.classList.remove("hidden");
+        ratingDialog.setAttribute("data-player-id", playerId); // add id of flagged player to feedback dialog
     });
 });
 
+var ratingpicked;
 var submit = document.getElementById("submitBtn");
 
-submit.addEventListener("click", function () {
-    ratingDialog.classList.add("hidden");
-    alert("Thank you for your feedback!");
+// Get all rating icons
+var faceIcons = document.querySelectorAll("#icons > div");
+
+function saveRatedUsers() {
+    localStorage.setItem('ratedUsers', JSON.stringify(ratedUsers));
+}
+
+function hasRatedUser(playerId) {
+    return ratedUsers.includes(playerId);
+}
+
+
+
+// Add event listener to each rating icon
+faceIcons.forEach(function (icon) {
+    icon.addEventListener("click", function () {
+        // Remove border from all icons
+        faceIcons.forEach(function (icon) {
+            icon.style.border = "none";
+        });
+        // Add border to the clicked icon
+        icon.style.border = "2px solid black";
+        // Update the selected rating
+        ratingpicked = icon.id;
+        console.log("Rating picked:", ratingpicked);
+    });
 });
 
-function selected() {
-    var faceIcons = document.querySelectorAll("#icons > div");
+submit.addEventListener("click", async function () {
 
-    faceIcons.forEach(function (icon) {
-        icon.addEventListener("click", function () {
-            faceIcons.forEach(function (icon) {
-                icon.style.border = "none";
-            });
-            console.log(document.getElementById("submitBtn"));
+    // Check if a rating is picked
+    if (!ratingpicked) {
+        alert("Please select a rating before submitting");
+        return;
+    }
+
+    var playerId = ratingDialog.getAttribute("data-player-id");// access the id via attr
+
+    if (hasRatedUser(playerId)) {
+        alert("You have already rated this user!");
+        return;
+    }
 
 
-            this.style.border = "solid 1px black";
+    try {
+        const resp = await fetch('/updateSportsmanship', {// this post is in matchover.js
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ userId: playerId, rating: ratingpicked })
         });
-    });
-}
-selected();
+        const data = await resp.json();
+        ratedUsers.push(playerId);
+        saveRatedUsers();
+        console.log("Rated users:", ratedUsers);
+
+        alert(data.message);
+        ratingDialog.classList.add("hidden");
+
+
+    }
+    catch (err) {
+        console.error('Error updating sportsmanship:', err);
+        alert('Error updating sportsmanship');
+    }
+});
+

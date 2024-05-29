@@ -1,8 +1,8 @@
 <%- include('templates/header') %>
 
-    <div class="bg-dark-blue flex justify-center items-center min-h-screen p-2 text-white">
-        <div class="mx-auto mt-8 mb-8 max-w-screen-lg">
-            <div class="bg-rose rounded-lg overflow-hidden shadow-lg p-4">
+    <div class="bg-white flex justify-center items-center min-h-screen p-2 text-dark-blue">
+        <div class="mx-auto mt-8 mb-8 max-w-screen-lg border-2 border-dark-blue">
+            <div class=" bg-baby-blue bg-blend-saturation rounded-lg overflow-hidden shadow-lg p-4">
                 <!-- Your content here -->
                 <div class="relative flex flex-col min-w-0 break-words rounded">
                     <div id="status" class="py-2 px-4 mt-10">
@@ -22,7 +22,8 @@
                     </div>
                 </div>
                 <div class="flex justify-center items-center mt-4 mb-5">
-                    <div class="bg-sky-blue h-48 w-48 flex justify-center items-center shadow-md rounded-full">
+                    <div
+                        class="bg-dark-blue border-2 border-sky-blue h-48 w-48 flex justify-center items-center shadow-md rounded-full text-white">
                         <div class="text-center m-4 px-4">
                             <% if (currentTeamWon) { %>
                                 <p class="text-3xl font-bold mb-2">+20</p>
@@ -52,21 +53,24 @@
                 </div>
                 <div class="flex flex-col sm:flex-row mx-5 justify-center">
                     <!-- Team A -->
-                    <div class="max-w-sm rounded overflow-hidden shadow-lg mx-4 bg-dark-blue text-center mb-4 sm:mb-0">
+                    <div class="max-w-sm rounded overflow-hidden shadow-lg mx-4 bg-sky-blue text-center mb-4 sm:mb-0">
                         <div class="px-6 py-4">
                             <div class="font-bold text-xl mb-2 text-white">Home Team</div>
                             <% for(let player of homePlayers) { %>
-                                <div class="mb-2  flex">
-                                    <% if(player._id.toString()===currentuserid.toString()) { %>
+                                <div class="mb-2 flex" data-player-id="<%= player._id %>"
+                                    data-current-user-id="<%= currentuserid %>">
+                                    <% if (player._id.toString()===currentuserid.toString()) { %>
+
                                         <span
                                             class="flex items-center mr-2 bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 m-1">
+                                            <!-- Display current user's avatar/icon -->
                                             <a href="/profile">
-                                                <!-- Display player's avatar/icon -->
                                                 <img src="<%= player.profilePicture %>"
                                                     class="w-8 h-8 rounded-full mr-2" alt="<%= player.name %>" />
                                             </a>
                                             <p class="text-xl">
-                                                <%= player.name.length> 12 ? player.name.substring(0, 12) + '...' :
+                                                <%= player.name.length> 12 ? player.name.substring(0, 12) +
+                                                    '...' :
                                                     player.name %>
                                             </p>
                                             <svg xmlns="http://www.w3.org/2000/svg"
@@ -82,13 +86,14 @@
                                         <% } else { %>
                                             <span
                                                 class="flex items-center mr-2 bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 m-1">
+                                                <!-- Display other player's avatar/icon -->
                                                 <a href="/otherprofile/<%= player._id %>">
-                                                    <!-- Display player's avatar/icon -->
                                                     <img src="<%= player.profilePicture %>"
                                                         class="w-8 h-8 rounded-full mr-2" alt="<%= player.name %>" />
                                                 </a>
                                                 <p class="text-xl">
-                                                    <%= player.name.length> 12 ? player.name.substring(0, 12) + '...' :
+                                                    <%= player.name.length> 12 ? player.name.substring(0, 12) +
+                                                        '...' :
                                                         player.name %>
                                                 </p>
                                                 <svg xmlns="http://www.w3.org/2000/svg"
@@ -102,23 +107,22 @@
                                                 </svg>
                                             </span>
                                             <% } %>
-
                                 </div>
                                 <% } %>
                         </div>
                     </div>
                     <!-- Team B -->
-                    <div class="max-w-sm rounded overflow-hidden shadow-lg mx-4 bg-crimson text-center">
+                    <div class="max-w-sm rounded overflow-hidden shadow-lg mx-4 bg-dark-blue text-center">
                         <div class="px-6 py-4">
                             <div class="font-bold text-xl mb-2 text-white">Away Team</div>
                             <% for(let player of awayPlayers) { %>
-                                <div class="mb-2  flex">
-                                    <% if(player._id.toString()===currentuserid.toString()) { %>
-                                        <!--if user click user's card, link to profile not other profile-->
+                                <div class="mb-2 flex" data-player-id="<%= player._id %>"
+                                    data-current-user-id="<%= currentuserid %>">
+                                    <% if (player._id.toString()===currentuserid.toString()) { %>
                                         <span
                                             class="flex items-center mr-2 bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 m-1">
+                                            <!-- Display current user's avatar/icon -->
                                             <a href="/profile">
-                                                <!-- Display player's avatar/icon -->
                                                 <img src="<%= player.profilePicture %>"
                                                     class="w-8 h-8 rounded-full mr-2" alt="<%= player.name %>" />
                                             </a>
@@ -139,8 +143,8 @@
                                         <% } else { %>
                                             <span
                                                 class="flex items-center mr-2 bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 m-1">
+                                                <!-- Display other player's avatar/icon -->
                                                 <a href="/otherprofile/<%= player._id %>">
-                                                    <!-- Display player's avatar/icon -->
                                                     <img src="<%= player.profilePicture %>"
                                                         class="w-8 h-8 rounded-full mr-2" alt="<%= player.name %>" />
                                                 </a>
@@ -159,9 +163,9 @@
                                                 </svg>
                                             </span>
                                             <% } %>
-
                                 </div>
                                 <% } %>
+
                         </div>
                     </div>
                 </div>
@@ -170,7 +174,7 @@
                 <br>
                 <div class="flex justify-center mt-4">
                     <button
-                        class="text-2xl bg-crimson hover:bg-white hover:text-crimson text-white font-bold py-2 px-4 rounded"
+                        class="text-2xl bg-sky-blue hover:bg-white hover:text-sky-blue text-white font-bold py-2 px-4 rounded"
                         onclick="location.href='/match'">Rematch</button>
                     <button
                         class="text-2xl bg-dark-blue hover:bg-white hover:text-dark-blue text-white font-bold py-2 px-4 rounded ml-4"
