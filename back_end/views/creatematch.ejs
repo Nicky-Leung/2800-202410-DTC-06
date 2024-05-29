@@ -1,43 +1,78 @@
 <%- include ('templates/header') %>
 
-<div class="flex justify-center flex-col text-center">
+    <div class="flex flex-col h-screen text-black">
 
-<p> Recreation Center</p>
+        <form action= "" method = "" id ="placesearch">
 
-<br>
+            <div class="flex flex-col items-center justify-center m-2">
+                <label class="text-xl" for="sport">Sport</label>
+                <select name="sport" id="sport" class="border border-gray-300 rounded-lg p-2" required>
+                    <option value="">Select a sport</option>
+                    <option value="soccer">Soccer</option>
+                    <option value="basketball">Basketball</option>
+                    <option value="tennis">Tennis</option>
+            
+                </select>
+            </div>
 
-<form action="/creatematch" method="POST">
-    <div class="flex flex-col items-center justify-center">
-        <label for="location">Location</label>
-        <input type="text" name="location" id="location" required>
+            <div class="flex flex-col items-center justify-center m-2">
+                <label class="text-xl" for="radius">Radius</label>
+                <select name="radius" id="radius" class="border border-gray-300 rounded-lg p-2" required>
+                    <option value="1000">1 KM</option>
+                    <option value="2000">2 KM </option>
+                    <option value="3000">3 KM</option>
+                    <option value="4000">4 KM</option>
+                    <option value="5000">5 KM</option>
+                </select>
+            </div>
+
+
+            <div class="flex flex-col flex-wrap items-center justify-center m-4">
+                <div class="p-2 bg-baby-blue rounded-2xl"><button class="text-2xl p-2" type="submit" id="findPlace">Find nearby location</button></div>
+            </div>
+        </form>
+
+        <form action="/creatematch" method="POST" id="matchSetUp" class="hidden">
+
+            <div id= "cardContainer"class="grid grid-cols-2  m-5">
+                </div>
+              
+             
+
+            <div class="flex flex-col items-center justify-center m-2 hidden">
+                <label class="text-xl" for="location">Location</label>
+                <select name="location" id="location" class="border border-gray-300 rounded-lg p-2" required>
+                    <option value="">Select a Location</option>
+                </select>
+            </div>
+
+
+            <div class="flex flex-col items-center justify-center m-2">
+                <label class="text-xl" for="time">Time</label>
+                <input type="time" name="time" id="time" required>
+            </div>
+            <div class="flex flex-col items-center justify-center m-2">
+                <label class="text-xl" for="date">Date</label>
+                <input type="date" name="date" id="date" required>
+            </div>
+            <div class="flex flex-col items-center justify-center m-2">
+                <label class="text-xl" for="matchType">Match Type</label>
+                <select name="matchType" id="matchType" class="border border-gray-300 rounded-lg p-2" required>
+                    <option value="">Select a Match Type</option>
+                    <option value="3v3">3 v 3</option>
+                    <option value="4v4">4 v 4</option>
+                    <option value="5v5">5 v 5</option>
+                </select>
+            </div>
+
+            <div class="flex flex-col items-center justify-center m-4">
+                <div class="  bg-baby-blue p-2 rounded-2xl"><button class="text-2xl p-2" type="submit">Create Match</button></div>
+            </div>
+        </form>
+
     </div>
-    <div class="flex flex-col items-center justify-center">
-        <label for="sport">Sport</label>
-        <input type="text" name="sport" id="sport" required>
-    </div>
-    <div class="flex flex-col items-center justify-center">
-        <label for="time">Time</label>
-        <input type="text" name="time" id="time" required>
-    </div>
-    <div class="flex flex-col items-center justify-center">
-        <label for="date">Date</label>
-        <input type="text" name="date" id="date" required>
-    </div>
-    <div class="flex flex-col items-center justify-center">
-        <label for="maxPlayers">Max Players</label>
-        <input type="text" name="maxPlayers" id="maxPlayers" required>
-    </div>
-    <div class="flex flex-col items-center justify-center">
-        <label for="description">Description</label>
-        <input type="text" name="description" id="description" required>
-    </div>
-    <div class="flex flex-col items-center justify-center">
-        <button type="submit">Create Match</button>
-    </div>
-
-</div>
 
 
 
 
-<%- include ('templates/footer') %>
+    <%- include ('templates/footer') %>

@@ -3,6 +3,10 @@ const router = express.Router();
 const usersModel = require('../models/userModel'); // Adjust the path as needed
 const Joi = require('joi');
 const crypto = require('crypto');
+const sgMail = require('@sendgrid/mail');
+
+// SendGrid API key
+sgMail.setApiKey(process.env.SENDGRID_DEV_PASSWORD_RESET_KEY);
 
 // Enforce requirements for name, password, and email
 const signUpSchema = Joi.object({
@@ -15,9 +19,9 @@ const signUpSchema = Joi.object({
         'string.empty': 'Email is required. Please try again. <button onclick="location.href=\'/signup\'" type="button">Sign Up</button>',
         'any.required': 'Email is required. Please try again. <button onclick="location.href=\'/signup\'" type="button">Sign Up</button>'
     }),
-    password: Joi.string().min(8).max(12).required().messages({
+    password: Joi.string().min(8).max(16).required().messages({
         'string.min': 'Password must be at least 8 characters long. Please try again. <button onclick="location.href=\'/signup\'" type="button">Sign Up</button>',
-        'string.max': 'Password must be less than 13 characters long. Please try again. <button onclick="location.href=\'/signup\'" type="button">Sign Up</button>',
+        'string.max': 'Password must be less than 17 characters long. Please try again. <button onclick="location.href=\'/signup\'" type="button">Sign Up</button>',
         'string.empty': 'Password is required. Please try again. <button onclick="location.href=\'/signup\'" type="button">Sign Up</button>',
         'any.required': 'Password is required. Please try again. <button onclick="location.href=\'/signup\'" type="button">Sign Up</button>'
     }),
@@ -46,11 +50,14 @@ router.post('/login', async (req, res) => {
         const result = await usersModel.findOne({ email: req.body.email, password: hashedPassword });
         console.log('Query result:', result);
         if (result) {
+            // Set the current user in the session
+            req.session.currentUser = result;
             req.session.authenticated = true;
             req.session.type = result.type;
             req.session.name = result.name;
             req.session.email = result.email;
             req.session.bio = result.bio;
+            req.session.friends = result.friends
             return res.redirect('/profile');
         }
         console.log('Access denied');
@@ -72,9 +79,23 @@ router.post('/signup', async (req, res) => {
     const { name, email, password } = req.body;
     const hashedPassword = hashPassword(password);
     try {
-        const newUser = new usersModel({ name, email, password: hashedPassword, type: 'non-administrator' });
+        const newUser = new usersModel({
+            name, email, password: hashedPassword, type: 'non-administrator', elo: '400', rank: 'Aspirant'
+            , sportsmanship: '500', streak: 'false', streakCount: '0', matchHistory: []
+        });
         await newUser.save();
         console.log('User created:', newUser);
+
+        // Send confirmation email
+        const msg = {
+            to: email,
+            from: 'gamesetmatchdtcsix@gmail.com',
+            subject: 'Sign-Up Confirmation',
+            html: `<p>Thank you for signing up, ${name}!</p><p>Your account has been successfully created.</p>`,
+        };
+        await sgMail.send(msg);
+        console.log('Confirmation email sent');
+
         res.redirect('/login');
     } catch (error) {
         console.error('Error during signup:', error);
@@ -82,6 +103,5 @@ router.post('/signup', async (req, res) => {
     }
 });
 
-// Other routes...
 
 module.exports = router;

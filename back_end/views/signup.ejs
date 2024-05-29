@@ -1,4 +1,5 @@
 <%- include ('templates/header') %>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 
   <body onload="generate()">
     <div class="container d-flex justify-content-center align-items-center mt-5">
@@ -6,27 +7,39 @@
         <div class="card-body">
           <h1 class="card-title text-center">Sign-up</h1>
           <form id="signupForm" action="/signup" method="post">
-            <div class="mb-3">
+            <div class="mb-3" style="display: flex; align-items: center;">
               <input type="text" name="name" placeholder="Name" class="form-control" required />
+              <p style="color:red; margin-left: 5px;">*</p>
             </div>
-            <div class="mb-3">
+            <div class="mb-3" style="display: flex; align-items: center;">
               <input type="email" name="email" placeholder="Email" class="form-control" required />
+              <p style="color:red; margin-left: 5px;">*</p>
             </div>
-            <div class="mb-3">
-              <input type="password" name="password" placeholder="Password" class="form-control" required />
+            <div class="mb-3" style="display: flex; align-items: center;">
+              <input type="password" name="password" placeholder="Password must be 8-16 characters" class="form-control"
+                required />
+              <p style="color:red; margin-left: 5px;">*</p>
             </div>
             <div id="captcha">
-              <div id="user-input" class="inline">
-                <input type="text" id="submit-captcha" name="captcha" placeholder="Captcha code" required />
+              <div style="display: flex; align-items: center;">
+                <div id="user-input" class="inline">
+                  <input type="text" id="submit-captcha" name="captcha" placeholder="Captcha code" required />
+                </div>
+                <p style="color:red; margin-left: 5px;">*</p>
               </div>
-              <div class="inline" onclick="generate()">
-                <i class="fas fa-sync"></i>
+
+              <div style="display: flex; align-items: center; justify-content: center;">
+                <div class="inline m-1" onclick="generate()">
+                  <i class="fas fa-sync"></i>
+                </div>
+                <div id="image" class="inline" selectable="False"></div>
+                <p id="key"></p>
               </div>
-              <div id="image" class="inline" selectable="False"></div>
-              <p id="key"></p>
+
             </div>
-            <input type="submit" value="Submit" />
-            <button onclick="location.href='/home'" type="button">Go home</button>
+            <p style="font-size: 12px"> <span style="color:red; font-size: 18px">*</span> indicates required field</p>
+            <input class="btn btn-primary" type="submit" value="Submit" />
+            <button onclick="location.href='/home'" type="button" class="btn btn-info">Go home</button>
           </form>
         </div>
       </div>

@@ -1,3 +1,9 @@
 @import 'tailwindcss/base';
 @import 'tailwindcss/components';
 @import 'tailwindcss/utilities';
+
+
+
+  .has-padding {
+    padding-bottom: 30rem; /* Adjust this value to match the height of your footer */
+  }
