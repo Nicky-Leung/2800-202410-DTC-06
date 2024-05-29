@@ -29,7 +29,7 @@ const previousMatchSchema = new mongoose.Schema({
 });
 
 // This is necessary to enable 2dsphere indexing for location
-createdMatchSchema.index({ location: '2dsphere' });
+// createdMatchSchema.index({ location: '2dsphere' });
 
 const previousmatchModel = mongoose.model('previous_matches', previousMatchSchema);
 
