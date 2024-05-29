@@ -74,7 +74,7 @@ app.get('/home', (req, res) => {
 //import all protected routes
 const login = require('./routes/login');
 const placeSearch = require('./routes/placeSearch');
-const indexscript = require('./routes/indexscript');
+
 const leaderboard = require('./routes/leaderboard');
 const information = require('./routes/information');
 const addFriends = require('./routes/addFriends')
@@ -98,7 +98,7 @@ app.use(resetPasswordWithEmail);
 app.use(isUserAuthenticated);
 
 // Protected Routes (User must be logged in)
-app.use(indexscript);
+
 app.use(placeSearch);
 app.use(resetPassword);
 app.use(settings);
