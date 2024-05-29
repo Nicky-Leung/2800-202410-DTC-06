@@ -19,8 +19,6 @@ router.get('/lobby', async (req, res) => {
         const currentMatch = await matchModel.findOne({ _id: matchID });
         console.log(currentMatch);
         if (currentUser && currentMatch) {
-            console.log(currentUser);
-            console.log(currentMatch);
             totalPlayers = parseInt(currentMatch.matchType.charAt(0));
             if ((currentMatch.homePlayers.length + currentMatch.awayPlayers.length) == totalPlayers) {
                 res.render('lobby.ejs', {
