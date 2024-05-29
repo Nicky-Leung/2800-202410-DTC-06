@@ -12,8 +12,8 @@ async function getprofileimage() {
     console.log(profilePictureUrl);
 
     profileImage.src = profilePictureUrl
-    rankElement = document.getElementById('ranking')
-    rankElement.innerHTML = rank
+    // rankElement = document.getElementById('ranking')
+    // rankElement.innerHTML = rank
 
 
 
