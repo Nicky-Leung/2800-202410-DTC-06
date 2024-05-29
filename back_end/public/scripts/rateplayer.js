@@ -68,6 +68,7 @@ flagIcons.forEach(function (icon) {
     icon.addEventListener("click", function () {
         var playerId = event.currentTarget.closest("[data-player-id]").dataset.playerId; // fetches id
         const currentUserId = document.querySelector('[data-current-user-id]').dataset.currentUserId;// fetches current user id
+        var matchId = event.currentTarget.closest("[data-match-id]").dataset.matchId;
 
         console.log("Flag icon clicked");
         // console.log("Player ID:", playerId);
@@ -78,13 +79,14 @@ flagIcons.forEach(function (icon) {
             return;
         }
 
-        if (hasRatedUser(playerId)) {
-            alert("You have already rated this user!");
+        if (hasRatedUser(playerId, matchId)) {
+            alert("You have already rated this user in this match!");
             return;
         }
 
         ratingDialog.classList.remove("hidden");
         ratingDialog.setAttribute("data-player-id", playerId); // add id of flagged player to feedback dialog
+        ratingDialog.setAttribute("data-match-id", matchId);
     });
 });
 
@@ -98,9 +100,10 @@ function saveRatedUsers() {
     localStorage.setItem('ratedUsers', JSON.stringify(ratedUsers));
 }
 
-function hasRatedUser(playerId) {
-    return ratedUsers.includes(playerId);
+function hasRatedUser(playerId, matchId) {
+    return ratedUsers.some(rating => rating.playerId === playerId && rating.matchId === matchId);
 }
+
 
 
 
@@ -128,8 +131,9 @@ submit.addEventListener("click", async function () {
     }
 
     var playerId = ratingDialog.getAttribute("data-player-id");// access the id via attr
+    var matchId = ratingDialog.getAttribute("data-match-id"); // access the match id via attr
 
-    if (hasRatedUser(playerId)) {
+    if (hasRatedUser(playerId, matchId)) {
         alert("You have already rated this user!");
         return;
     }
@@ -144,7 +148,7 @@ submit.addEventListener("click", async function () {
             body: JSON.stringify({ userId: playerId, rating: ratingpicked })
         });
         const data = await resp.json();
-        ratedUsers.push(playerId);
+        ratedUsers.push({ playerId: playerId, matchId: matchId });
         saveRatedUsers();
         console.log("Rated users:", ratedUsers);
 
