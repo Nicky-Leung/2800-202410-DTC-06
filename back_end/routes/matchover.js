@@ -146,7 +146,7 @@ router.post('/updateSportsmanship', async (req, res) => {
         user.sportsmanship = Math.max(Math.min(newSportsmanship, 500), 0); // cap sports to 5 hundo and min to 0
 
         await user.save();
-        res.status(200).json({ message: "Sportsmanship updated", sportsmanship: user.sportsmanship });
+        res.status(200).json({ message: `Sportsmanship updated for ${user.name}`, sportsmanship: user.sportsmanship });
     } catch (error) {
         console.error('Error updating sportsmanship:', error);
         res.status(500).json({ message: "Internal Server Error" });
