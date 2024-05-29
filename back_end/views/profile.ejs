@@ -43,9 +43,74 @@
       </div>
 
 
-      <div id="match-history" class="text-2xl p-2">
+      <div id="match-history" class="text-2xl p-2 text-center">
         Match History:
-        <%= matchHistory %>
+
+        <% for( let index = 0; index < matchHistory.length; index++ ) { %>
+          <div class=" flex bg-gray-50 border-2 shadow-md rounded-xl flex-row text-center items-center">
+            <div class="text-center" >
+              <%
+                let result = matchHistory[index].result;
+                let resultText = result === 'win' ? 'Win' : 'Loss';
+           
+              %>
+          
+              <% if (result === 'win') { %>
+                <div class="bg-green-500 text-white rounded-full px-5 py-2">
+                  <%= resultText %>
+                </div>
+              <% } else { %>
+                <div class="bg-red-500 text-white rounded-full px-5 py-2">
+                  <%= resultText %>
+                </div>
+              <% } %>
+            
+              </div>
+            <!-- match type-->
+            <div class="flex-col w-1/4 text-sm">
+              <div>
+                <%
+                  let sport = matchHistory[index].sport;
+                  let capitalizedSport = sport.charAt(0).toUpperCase() + sport.slice(1);
+                %>
+                <%= capitalizedSport %>
+              </div>
+              <div>
+         
+                <%= matchHistory[index].matchType %>
+              </div>
+            </div>
+            <!-- location -->
+            <div class="flex-col w-1/4 text-sm">
+              <div>
+                <%
+                %>
+                <%= matchHistory[index].location.name %>
+              </div>
+              <div>
+                <%
+                  let date = new Date(matchHistory[index].time);
+                  let formattedDate = date.getFullYear() + '-' + (date.getMonth() + 1) + '-' + date.getDate();
+                %>
+                <%= formattedDate %>
+              </div>
+            </div>
+
+            <!-- win or lose -->
+        
+              <!-- score -->
+              <div >
+                
+                <p class="text-xl ml-5"><%= matchHistory[index].homeScore %> - <%= matchHistory[index].awayScore %></p>
+
+
+             
+            </div>
+          </div>
+        
+        <% } %>
+   
+    
       </div>
 
 
