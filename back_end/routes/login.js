@@ -77,7 +77,8 @@ router.post('/login', async (req, res) => {
 });
 
 router.get('/signup', (req, res) => {
-    res.render('signup.ejs');
+    const success = req.query.success === 'true';
+    res.render('signup.ejs', { success });
 });
 
 // Create a new user and save to the database
@@ -99,12 +100,17 @@ router.post('/signup', async (req, res) => {
             to: email,
             from: 'gamesetmatchdtcsix@gmail.com',
             subject: 'Sign-Up Confirmation',
-            html: `<p>Thank you for signing up, ${name}!</p><p>Your account has been successfully created.</p>`,
+            html: `<p>Thank you for signing up, ${name}!</p><p>Your account has been successfully created.</p>
+            <br>
+            <footer style="border-top: 1px solid #eaeaea; padding-top: 10px; text-align: center; font-size: 12px; color: #888;">
+            <p>&copy; 2024 DTC06 Gamesetmatch. All rights reserved.</p>
+            <p>Contact us at <a href="mailto:gamesetmatchdtcsix@gmail.com">gamesetmatchdtcsix@gmail.com</a></p>
+            <p>Privacy Policy</p>
+            </footer>`,
         };
         await sgMail.send(msg);
         console.log('Confirmation email sent');
-
-        res.redirect('/login');
+        res.redirect('/signUp?success=true');
     } catch (error) {
         console.error('Error during signup:', error);
         res.status(500).send('Internal Server Error');

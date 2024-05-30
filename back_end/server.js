@@ -132,7 +132,7 @@ app.get('/lobbyexit', (req, res) => {
 
 app.get('/logout', isUserAuthenticated, function (req, res) {
   req.session.destroy(function (err) {
-    res.redirect('/home');
+    res.redirect('/');
   });
 });
 app.get('/editProfile', isUserAuthenticated, (req, res) => {
