@@ -18,8 +18,10 @@ const passwordResetTokens = new Map();
 
 // reset password with email if user has forgotten password but remembers their email
 router.get('/resetPasswordWithEmail', (req, res) => {
-  res.render('resetPasswordWithEmail.ejs');
+  const success = req.query.success === 'true';
+  res.render('resetPasswordWithEmail.ejs', { success });
 });
+
 
 // Encrypt password to be stored in database
 function hashPassword(password) {
@@ -57,12 +59,19 @@ router.post('/resetPasswordWithEmail', async (req, res) => {
       to: email,
       from: 'gamesetmatchdtcsix@gmail.com',
       subject: 'Password Reset',
-      html: `Click <a href="${resetLink}">here</a> to reset your password.`,
+      html: `Click <a href="${resetLink}">here</a> to reset your password.
+      <br>
+      <footer style="border-top: 1px solid #eaeaea; padding-top: 10px; text-align: center; font-size: 12px; color: #888;">
+        <p>&copy; 2024 DTC06 Gamesetmatch. All rights reserved.</p>
+        <p>Contact us at <a href="mailto:gamesetmatchdtcsix@gmail.com">gamesetmatchdtcsix@gmail.com</a></p>
+        <p>Privacy Policy</p>
+      </footer>`,
     };
 
     await sgMail.send(msg);
 
     console.log('email sent')
+    res.redirect('/resetPasswordWithEmail?success=true')
   } catch (error) {
     console.error('Error sending password reset email:', error);
     res.status(500).send('Internal Server Error');
