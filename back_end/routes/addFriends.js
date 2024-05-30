@@ -2,16 +2,37 @@ const express = require('express');
 const router = express.Router();
 const usersModel = require('../models/userModel');
 
+// router.get('/addFriends', isUserAuthenticated, async (req, res) => {
+//   try {
+//     const users = await usersModel.find({});
+//     const currentUser = req.currentUser;
+//     console.log('current user', currentUser)
+//     res.render('addFriends.ejs', { users: users, currentUser: currentUser });
+//   } catch (err) {
+//     console.log('error fetching users');
+//   }
+// });
+
 router.get('/addFriends', isUserAuthenticated, async (req, res) => {
   try {
-    const users = await usersModel.find({});
-    const currentUser = req.currentUser;
-    console.log('current user', currentUser)
-    res.render('addFriends.ejs', { users: users, currentUser: currentUser });
+    const currentUser = await usersModel.findById(req.currentUser._id);
+    const friendIds = currentUser.friends;
+
+    // Fetch complete user objects corresponding to friend IDs
+    const friends = await usersModel.find({ _id: { $in: friendIds } });
+
+    console.log('current user:', currentUser);
+    console.log('friends:', friends);
+
+    res.render('addFriends.ejs', { users: friends, currentUser: currentUser });
   } catch (err) {
-    console.log('error fetching users');
+    console.log('error fetching users', err);
+    res.status(500).send('Error fetching friends');
   }
 });
+
+
+
 
 // Add a user to friends
 router.post('/addFriends/befriend', isUserAuthenticated, async (req, res) => {
