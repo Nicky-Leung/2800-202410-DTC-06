@@ -24,7 +24,7 @@ router.get('/lobby', async (req, res) => {
         console.log(currentMatch);
         homeTeamElo = 0;
         awayTeamElo = 0;
-        if (currentMatch.length > 0) {
+        if (currentMatch.homePlayers.length > 0) {
         for(let i = 0; i < currentMatch.homePlayers.length; i++){
             homeTeamElo += currentMatch.homePlayers[i].elo;
         }
