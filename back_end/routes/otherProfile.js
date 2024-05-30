@@ -29,9 +29,11 @@ router.get('/otherProfile/:userid', isUserAuthenticated, async (req, res) => {
         } else {
             console.log('you are NOT friends')
         }
+        if (current._id == req.params.userid) {
+            res.render('profile.ejs', { name: user.name, email: user.email, type: user.type, bio: user.bio, profilePicture: user.profilePicture, isFriend, rank: user.rank, sportsmanship: user.sportsmanship, elo: user.elo, streak: user.streak, streakCount: user.streakCount, matchHistory: user.matchHistory, userid: user._id });
+        }
 
-
-
+        
         res.render('otherProfile.ejs', { name: user.name, email: user.email, type: user.type, bio: user.bio, profilePicture: user.profilePicture, isFriend, rank: user.rank, sportsmanship: user.sportsmanship, elo: user.elo, streak: user.streak, streakCount: user.streakCount, matchHistory: user.matchHistory, userid: user._id });
     } catch (err) {
         console.log(err);
