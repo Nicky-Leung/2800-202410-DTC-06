@@ -5,7 +5,10 @@ const matchModel = require('../models/matchModel');
 
 
   
-// reset password with email if user has forgotten password but remembers their email
+/**
+ * 
+ * Information route that takes the inputed form and displays the information
+ */
 router.post('/information', async (req, res) => { 
     
     matchType = req.body.matchType;

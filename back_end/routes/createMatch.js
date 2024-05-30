@@ -5,6 +5,17 @@ router.get('/creatematch', (req, res) => {
     res.render('creatematch');
 });
 
+/**
+ * Create match route that takes the inputed form and creates a new match in the database
+ * @body {String} sport - The sport of the match
+ * @body {Date} date - The date of the match
+ * @body {String} matchType - The type of the match
+ * @body {String} location - The location of the match in the form of a array with coordinates as the first two index,
+ * the name as the third index and the address as the fourth index
+ * @returns [Postcondition] - Writes the match to the database
+ * @returns [Postcondition] - Redirects to the lobby page
+ * 
+ */
 router.post('/creatematch', async (req, res) => {
 
   const { sport, date, matchType } = req.body;

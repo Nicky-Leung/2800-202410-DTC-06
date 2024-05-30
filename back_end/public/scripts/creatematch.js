@@ -1,3 +1,8 @@
+/**
+ * @description: This function is responsible for getting the user's location and sending a request to the server to get the court of choice nearby.
+ * @param {Event} e: Object that represents the button click event
+ * @returns: [Postconidtion] Populates the location form with the options from the server
+ */
 async function getPlaces(e) {
     e.preventDefault();
   
@@ -39,6 +44,12 @@ findplace = document.getElementById('findPlace');
 console.log(findplace);
 findplace.addEventListener('click', getPlaces);
 
+/**
+ * @description: Populates the location with container with option from the server in cards
+ * @param {Object} data: Object that contains the data from the server
+ * @param {String} sport: String that represents the sport that the user wants to play
+ * @returns: [Postcondition] Populates the cards with the options from the server
+ */
 async function populateLocation(data, sport) {
 
     cardcontainer = document.getElementById('cardContainer');
@@ -118,7 +129,3 @@ async function populateLocation(data, sport) {
 
 }
 
-async function createCard() {
-
-
-}
