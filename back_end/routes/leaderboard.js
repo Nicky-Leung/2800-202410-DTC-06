@@ -5,11 +5,9 @@ const usersModel = require('../models/userModel');
 
 router.get('/localleaderboard', async (req, res) => {
     try {
-        const user = await usersModel.findOne({_id: req.session.currentUser._id}, {city: 1}); 
-        //MongoDB query to find the user's city from current session
-        const topusers = await usersModel.find({city: user.city}, {name: 1, rank: 1, elo: 1, profilePicture: 1}).sort({elo: -1}).limit(3);
+        const topusers = await usersModel.find({city: "Vancouver"}, {name: 1, rank: 1, elo: 1, profilePicture: 1}).sort({elo: -1}).limit(3);
         // MongoDB query to find the top 3 users in the user's city
-        const allusers = await usersModel.find({city: user.city}, {name: 1, rank: 1, elo: 1, profilePicture: 1, city: 'Vancouver'}).sort({elo: -1});
+        const allusers = await usersModel.find({city: "Vancouver"}, {name: 1, rank: 1, elo: 1, profilePicture: 1, city: 'Vancouver'}).sort({elo: -1});
         // MongoDB query to find all users in the user's city to fill out leaderboard
         currentuser = req.session.currentUser._id;
         res.render('leaderboard_local.ejs',{topusers: topusers, allusers: allusers, currentuser: currentuser});
@@ -23,9 +21,9 @@ router.get('/localleaderboard', async (req, res) => {
       try {
           const user = await usersModel.findOne({_id: req.session.currentUser._id}, {country: 1});
           //MongoDB query to find the user's country from current session
-          const topusers = await usersModel.find({country: user.country}, {name: 1, rank: 1, elo: 1, profilePicture: 1}).sort({elo: -1}).limit(3);
+          const topusers = await usersModel.find({country: "Canada"}, {name: 1, rank: 1, elo: 1, profilePicture: 1}).sort({elo: -1}).limit(3);
           // MongoDB query to find the top 3 users in the user's country
-          const allusers = await usersModel.find({country: user.country}, {name: 1, rank: 1, elo: 1, profilePicture: 1}).sort({elo: -1});
+          const allusers = await usersModel.find({country: "Canada"}, {name: 1, rank: 1, elo: 1, profilePicture: 1}).sort({elo: -1});
           currentuser = req.session.currentUser._id;
           // MongoDB query to find all users in the user's country to fill out leaderboard
           res.render('leaderboard_regional.ejs',{topusers: topusers, allusers: allusers, currentuser: currentuser});
