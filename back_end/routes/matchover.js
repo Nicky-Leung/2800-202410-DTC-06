@@ -121,6 +121,7 @@ router.post('/updateElo', async (req, res) => {
         }
         ));
         res.status(200).json({ message: "Elo updated" });
+        res.redirect('/matchend');
     } catch (error) {
         console.error('Error updating elo:', error);
         res.status(500).json({ message: "Internal Server Error" });
@@ -197,22 +198,22 @@ router.post('/matchEnd/:matchId', async (req, res) => {
             user.matchHistory.push(matchResult);
             if (currentMatch.score.home > currentMatch.score.away) {
                 user.matchHistory[user.matchHistory.length - 1].win = true;
-           
-        }
+
+            }
             else {
                 user.matchHistory[user.matchHistory.length - 1].win = false;
-         
+
             }
             await user.save();
-        } 
+        }
 
         for (let i = 0; i < currentMatch.awayPlayers.length; i++) {
             const user = await usersModel.findById(currentMatch.awayPlayers[i]._id);
             user.matchHistory.push(matchResult);
             if (currentMatch.score.home < currentMatch.score.away) {
                 user.matchHistory[user.matchHistory.length - 1].win = true;
-         
-                
+
+
             }
             else {
                 user.matchHistory[user.matchHistory.length - 1].win = false;
@@ -223,7 +224,7 @@ router.post('/matchEnd/:matchId', async (req, res) => {
         console.log('Match ended successfully');
         res.redirect('/index');
 
-    } catch(error) {
+    } catch (error) {
         console.error('Error ending match:', error);
         res.status(500).json({ message: "Internal Server Error" });
     }
