@@ -6,7 +6,7 @@ const mongoose = require('mongoose');
 var session = require('express-session');
 var mongoDBStore = require('connect-mongodb-session')(session);
 require('dotenv').config();
-app.use(function(req, res, next) {
+app.use(function (req, res, next) {
   if (path.extname(req.path) === '.js') {
     res.type('text/javascript');
   }
@@ -42,7 +42,8 @@ app.use(session({
   secret: process.env.SESSION_SECRET,
   resave: false,
   saveUninitialized: true,
-  cookie: { maxAge: 3600000 },
+  // timeout after 10 hours
+  cookie: { maxAge: 36000000 },
   store: store,
 }));
 
@@ -138,10 +139,9 @@ app.get('/editProfile', isUserAuthenticated, (req, res) => {
   res.render('editProfile.ejs', { name: req.session.name, email: req.session.email, type: req.session.type, bio: req.session.bio, profilePicture: req.session.profilePicture })
 });
 
-app.use(function(req, res, next) {
-  res.status(404).send('Sorry, this page does not exist');
+app.use(function (req, res, next) {
+  res.render('404.ejs')
 });
-
 
 app.listen(3000, () => {
   console.log(`Server running on port 3000!`)
