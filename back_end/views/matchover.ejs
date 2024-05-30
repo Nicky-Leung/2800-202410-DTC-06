@@ -27,20 +27,22 @@
                         <div class="text-center m-4 px-4">
                             <% if (currentTeamWon) { %>
                                 <p class="text-3xl font-bold mb-2">+20</p>
-                                <% } else { %>
-                                    <p class="text-3xl font-bold mb-2">-20</p>
-                                    <% } %>
+                                <% } else if (tie) { %>
+                                    <p class="text-3xl font-bold mb-2">±0</p>
+                                    <% } else { %>
+                                        <p class="text-3xl font-bold mb-2">-20</p>
+                                        <% } %>
 
-                                        <p class="text-5xl font-bold mb-2">
-                                            <% if (currentTeamWon) { %>
-                                                <%= player.elo %>
-                                                    <% } else { %>
-                                                        <%= player.elo %>
-                                                            <% } %>
-                                        </p>
-                                        <p class="text-2xl ">
-                                            <%= currentUser.rank%>
-                                        </p>
+                                            <p class="text-5xl font-bold mb-2">
+                                                <% if (currentTeamWon) { %>
+                                                    <%= player.elo %>
+                                                        <% } else { %>
+                                                            <%= player.elo %>
+                                                                <% } %>
+                                            </p>
+                                            <p class="text-2xl ">
+                                                <%= currentUser.rank%>
+                                            </p>
                         </div>
                     </div>
                 </div>
