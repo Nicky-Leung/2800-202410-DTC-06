@@ -3,7 +3,15 @@ const router = express.Router();
 const usersModel = require('../models/userModel');
 
 
-
+/**
+ * GET /addFriends
+ * Route to display the current user's friends.
+ * 
+ * @route GET /addFriends
+ * @middleware isUserAuthenticated - Middleware to check if the user is authenticated
+ * @returns {void} - Renders the addFriends.ejs view with the current user's friends
+ * @throws {500} - Internal Server Error if there is an issue fetching the users
+ */
 router.get('/addFriends', isUserAuthenticated, async (req, res) => {
   try {
     // Find the current user
