@@ -189,9 +189,9 @@ Team Name: DTC-06
 <br>
 Team Members: 
 - Nicky Leung: nicky-leung@outlook.com
-- Nicholas Thucydides
-- Persephone Wong
-- Gurveer Raith
-- Jarell Vicencio
+- Nicholas Thucydides: nicholas.thucydides@gmail.com
+- Persephone Wong: persephone.w315@gmail.com
+- Gurveer Raith: gurveerraith@gmail.com
+- Jarell Vicencio: mjnvicencio@gmail.com
 
 
