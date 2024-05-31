@@ -1,7 +1,9 @@
+/* Captcha css was adapted from an example on GeeksforGeeks. Source: https: //www.geeksforgeeks.org/captcha-generator-using-html-css-and-javscript/ */
+
+
 #image {
   margin-top: 10px;
   width: 100px;
-  ;
   padding: 20px;
   font-weight: 400;
   height: 50px;
@@ -10,7 +12,6 @@
   font-style: italic;
   font-size: 20px;
   border: midnightblue 2px solid;
-
   display: flex;
   justify-content: center;
   align-items: center;
