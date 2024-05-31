@@ -695,16 +695,6 @@ video {
   margin-right: auto;
 }
 
-.mx-20 {
-  margin-left: 5rem;
-  margin-right: 5rem;
-}
-
-.mx-3 {
-  margin-left: 0.75rem;
-  margin-right: 0.75rem;
-}
-
 .mb-0 {
   margin-bottom: 0px;
 }
@@ -874,10 +864,6 @@ video {
   height: 2rem;
 }
 
-.h-9 {
-  height: 2.25rem;
-}
-
 .h-\[150px\] {
   height: 150px;
 }
@@ -926,10 +912,6 @@ video {
   width: 10rem;
 }
 
-.w-44 {
-  width: 11rem;
-}
-
 .w-48 {
   width: 12rem;
 }
@@ -954,10 +936,6 @@ video {
   width: 2rem;
 }
 
-.w-9 {
-  width: 2.25rem;
-}
-
 .w-\[150px\] {
   width: 150px;
 }
@@ -980,10 +958,6 @@ video {
 
 .flex-none {
   flex: none;
-}
-
-.flex-shrink-0 {
-  flex-shrink: 0;
 }
 
 .-translate-x-1\/2 {
@@ -1125,10 +1099,6 @@ video {
   border-radius: 0.75rem;
 }
 
-.rounded-sm {
-  border-radius: 0.125rem;
-}
-
 .rounded-b-3xl {
   border-bottom-right-radius: 1.5rem;
   border-bottom-left-radius: 1.5rem;
@@ -1255,6 +1225,11 @@ video {
   background-color: rgb(255 255 255 / var(--tw-bg-opacity));
 }
 
+.bg-yellow-500 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(234 179 8 / var(--tw-bg-opacity));
+}
+
 .bg-opacity-45 {
   --tw-bg-opacity: 0.45;
 }
@@ -1301,10 +1276,6 @@ video {
 
 .p-\[10px\] {
   padding: 10px;
-}
-
-.p-20 {
-  padding: 5rem;
 }
 
 .px-1 {
@@ -1372,29 +1343,12 @@ video {
   padding-bottom: 1rem;
 }
 
-.px-20 {
-  padding-left: 5rem;
-  padding-right: 5rem;
-}
-
 .pb-2 {
   padding-bottom: 0.5rem;
 }
 
 .pb-28 {
   padding-bottom: 7rem;
-}
-
-.pb-5 {
-  padding-bottom: 1.25rem;
-}
-
-.pl-0 {
-  padding-left: 0px;
-}
-
-.pl-0\.5 {
-  padding-left: 0.125rem;
 }
 
 .pl-3 {
@@ -1421,16 +1375,8 @@ video {
   padding-top: 0.5rem;
 }
 
-.pt-3 {
-  padding-top: 0.75rem;
-}
-
 .pt-4 {
   padding-top: 1rem;
-}
-
-.pt-5 {
-  padding-top: 1.25rem;
 }
 
 .text-center {
@@ -1473,11 +1419,6 @@ video {
 .text-7xl {
   font-size: 4.5rem;
   line-height: 1;
-}
-
-.text-base {
-  font-size: 1rem;
-  line-height: 1.5rem;
 }
 
 .text-lg {
@@ -1550,11 +1491,6 @@ video {
 .text-white {
   --tw-text-opacity: 1;
   color: rgb(255 255 255 / var(--tw-text-opacity));
-}
-
-.text-baby-blue {
-  --tw-text-opacity: 1;
-  color: rgb(204 230 244 / var(--tw-text-opacity));
 }
 
 .antialiased {
