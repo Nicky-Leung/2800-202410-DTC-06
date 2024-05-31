@@ -1,13 +1,28 @@
-<div class="fixed inset-x-0 bottom-0 h-30">
+<div class="fixed inset-x-0 bottom-0 h-30 backdrop-blur-xs bg-opacity-45 bg-sky-blue">
 
-    <div class="flex justify-between items-center backdrop-blur-xs bg-opacity-45 bg-sky-blue text-white h-24">
+    <div class="flex justify-around items-center  text-white h-24">
 
-        <div class="m-5" id="profile"> Icon 1 </div>
-        <div id="home"> Icon 2 </div>
-        <div class="m-5 relative" id="rightFooterBtn"> Icon 3 
+        <div class="" id="profile">
+            <div class="w-14 h-14">
+                <img id="profileimage" alt="pic goes here" class="rounded-full size-14 border-[3px] border-black">
+               
+            </div>  
+        </div>
+        <div id="home"> <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home-2" width="56" height="56" viewBox="0 0 24 24" stroke-width="1.5" stroke="#000000" fill="none" stroke-linecap="round" stroke-linejoin="round">
+            <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+            <path d="M5 12l-2 0l9 -9l9 9l-2 0" />
+            <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+            <path d="M10 12h4v4h-4z" />
+          </svg> </div>
+        <div class=" relative" id="rightFooterBtn"> <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-baseline-density-medium" width="56" height="56" viewBox="0 0 24 24" stroke-width="1.5" stroke="#000000" fill="none" stroke-linecap="round" stroke-linejoin="round">
+            <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+            <path d="M4 20h16" />
+            <path d="M4 12h16" />
+            <path d="M4 4h16" />
+          </svg>
 
             <div class=" absolute bottom-20 right-0 hidden backdrop-blur-xs bg-opacity-45 bg-sky-blue rounded-xl text-white px-4 py-3" id="rightMenu">
-                <a href="/localleaderboard" class="text-white"> Leaderboards </a>
+                <a href="/localleaderboard" class="text-white"> Leaderboards</a>
                 <a href="/creatematch" class="text-white ">Create Match</a>
             </div>
         </div>
@@ -21,11 +36,33 @@
 </div>
 
 <script src="scripts/index.js"></script>
-<script src="scripts/createMatch.js"></script>
+<script src="scripts/creatematch.js"></script>
 <script src="scripts/matchInformation.js"></script>
-<script src="scripts/leaderboard_buttons.js"></script>
 <script src="scripts/match.js"></script>
 <script src="scripts/footer.js"></script>
 <script src="scripts/leaderboard.js"></script>
     
 </body>
+
+<style>
+
+.footer-overlay-card {
+        position: absolute;
+        bottom: -15px;
+        left: 50%;
+        transform: translateX(-50%);
+        background-color: blue;
+        border: 2px solid #000;
+        border-radius: 50% / 25%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        padding: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+
+      }
+
+
+
+</style>

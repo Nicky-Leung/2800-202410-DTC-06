@@ -1,8 +1,8 @@
 <%- include('templates/header') %>
 
-    <div class="bg-dark-blue flex justify-center items-center min-h-screen p-2 text-white">
-        <div class="mx-auto mt-8 mb-8 max-w-screen-lg">
-            <div class="bg-rose rounded-lg overflow-hidden shadow-lg p-4">
+    <div class="bg-white flex justify-center items-center min-h-screen p-2 text-dark-blue">
+        <div class="mx-auto mt-8 mb-8 max-w-screen-lg ">
+            <div class=" bg-baby-blue bg-blend-saturation rounded-lg overflow-hidden shadow-lg p-4">
                 <!-- Your content here -->
                 <div class="relative flex flex-col min-w-0 break-words rounded">
                     <div id="status" class="py-2 px-4 mt-10">
@@ -22,24 +22,27 @@
                     </div>
                 </div>
                 <div class="flex justify-center items-center mt-4 mb-5">
-                    <div class="bg-sky-blue h-48 w-48 flex justify-center items-center shadow-md rounded-full">
+                    <div
+                        class="bg-dark-blue border-2 border-sky-blue h-48 w-48 flex justify-center items-center shadow-md rounded-full text-white">
                         <div class="text-center m-4 px-4">
                             <% if (currentTeamWon) { %>
                                 <p class="text-3xl font-bold mb-2">+20</p>
-                                <% } else { %>
-                                    <p class="text-3xl font-bold mb-2">-20</p>
-                                    <% } %>
+                                <% } else if (tie) { %>
+                                    <p class="text-3xl font-bold mb-2">±0</p>
+                                    <% } else { %>
+                                        <p class="text-3xl font-bold mb-2">-20</p>
+                                        <% } %>
 
-                                        <p class="text-5xl font-bold mb-2">
-                                            <% if (currentTeamWon) { %>
-                                                <%= currentUser.elo + 20 %>
-                                                    <% } else { %>
-                                                        <%= currentUser.elo - 20 %>
-                                                            <% } %>
-                                        </p>
-                                        <p class="text-2xl ">
-                                            <%= currentUser.rank%>
-                                        </p>
+                                            <p class="text-5xl font-bold mb-2">
+                                                <% if (currentTeamWon) { %>
+                                                    <%= player.elo %>
+                                                        <% } else { %>
+                                                            <%= player.elo %>
+                                                                <% } %>
+                                            </p>
+                                            <p class="text-2xl ">
+                                                <%= currentUser.rank%>
+                                            </p>
                         </div>
                     </div>
                 </div>
@@ -52,59 +55,119 @@
                 </div>
                 <div class="flex flex-col sm:flex-row mx-5 justify-center">
                     <!-- Team A -->
-                    <div class="max-w-sm rounded overflow-hidden shadow-lg mx-4 bg-dark-blue text-center mb-4 sm:mb-0">
+                    <div class="max-w-sm rounded overflow-hidden shadow-lg mx-4 bg-sky-blue text-center mb-4 sm:mb-0">
                         <div class="px-6 py-4">
                             <div class="font-bold text-xl mb-2 text-white">Home Team</div>
                             <% for(let player of homePlayers) { %>
-                                <div class="mb-2  flex">
-                                    <span
-                                        class="flex items-center mr-2 bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 m-1">
-                                        <!-- Display player's avatar/icon -->
-                                        <img src="<%= player.profilePicture %>" class="w-8 h-8 rounded-full mr-2"
-                                            alt="<%= player.name %>" />
-                                        <p class="text-xl">
-                                            <%= player.name.length> 12 ? player.name.substring(0, 12) + '...' :
-                                                player.name %>
-                                        </p>
-                                        <svg xmlns="http://www.w3.org/2000/svg"
-                                            class="icon icon-tabler icon-tabler-flag flagIcon" width="36" height="36"
-                                            viewBox="0 0 24 24" stroke-width="1" stroke="#d62839" fill="none"
-                                            stroke-linecap="round" stroke-linejoin="round">
-                                            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                                            <path
-                                                d="M5 5a5 5 0 0 1 7 0a5 5 0 0 0 7 0v9a5 5 0 0 1 -7 0a5 5 0 0 0 -7 0v-9z" />
-                                            <path d="M5 21v-7" />
-                                    </span>
+                                <div class="mb-2 flex" data-player-id="<%= player._id %>"
+                                    data-current-user-id="<%= currentuserid %>" data-match-id="<%= matchID %>">
+                                    <% if (player._id.toString()===currentuserid.toString()) { %>
+
+                                        <span
+                                            class="flex items-center mr-2 bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 m-1">
+                                            <!-- Display current user's avatar/icon -->
+                                            <a href="/profile">
+                                                <img src="<%= player.profilePicture %>"
+                                                    class="w-8 h-8 rounded-full mr-2" alt="<%= player.name %>" />
+                                            </a>
+                                            <p class="text-xl">
+                                                <%= player.name.length> 12 ? player.name.substring(0, 12) +
+                                                    '...' :
+                                                    player.name %>
+                                            </p>
+                                            <svg xmlns="http://www.w3.org/2000/svg"
+                                                class="icon icon-tabler icon-tabler-flag flagIcon" width="36"
+                                                height="36" viewBox="0 0 24 24" stroke-width="1" stroke="#d62839"
+                                                fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                                                <path
+                                                    d="M5 5a5 5 0 0 1 7 0a5 5 0 0 0 7 0v9a5 5 0 0 1 -7 0a5 5 0 0 0 -7 0v-9z" />
+                                                <path d="M5 21v-7" />
+                                            </svg>
+                                        </span>
+                                        <% } else { %>
+                                            <span
+                                                class="flex items-center mr-2 bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 m-1">
+                                                <!-- Display other player's avatar/icon -->
+                                                <a href="/otherprofile/<%= player._id %>">
+                                                    <img src="<%= player.profilePicture %>"
+                                                        class="w-8 h-8 rounded-full mr-2" alt="<%= player.name %>" />
+                                                </a>
+                                                <p class="text-xl">
+                                                    <%= player.name.length> 12 ? player.name.substring(0, 12) +
+                                                        '...' :
+                                                        player.name %>
+                                                </p>
+                                                <svg xmlns="http://www.w3.org/2000/svg"
+                                                    class="icon icon-tabler icon-tabler-flag flagIcon" width="36"
+                                                    height="36" viewBox="0 0 24 24" stroke-width="1" stroke="#d62839"
+                                                    fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                                                    <path
+                                                        d="M5 5a5 5 0 0 1 7 0a5 5 0 0 0 7 0v9a5 5 0 0 1 -7 0a5 5 0 0 0 -7 0v-9z" />
+                                                    <path d="M5 21v-7" />
+                                                </svg>
+                                            </span>
+                                            <% } %>
                                 </div>
                                 <% } %>
                         </div>
                     </div>
                     <!-- Team B -->
-                    <div class="max-w-sm rounded overflow-hidden shadow-lg mx-4 bg-crimson text-center">
+                    <div class="max-w-sm rounded overflow-hidden shadow-lg mx-4 bg-dark-blue text-center">
                         <div class="px-6 py-4">
                             <div class="font-bold text-xl mb-2 text-white">Away Team</div>
                             <% for(let player of awayPlayers) { %>
-                                <div class="mb-2  flex">
-                                    <span
-                                        class="flex items-center mr-2 bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 m-1">
-                                        <!-- Display player's avatar/icon -->
-                                        <img src="<%= player.profilePicture %>" class="w-8 h-8 rounded-full mr-2"
-                                            alt="<%= player.name %>" />
-                                        <p class="text-xl">
-                                            <%= player.name.length> 12 ? player.name.substring(0, 12) + '...' :
-                                                player.name %>
-                                        </p>
-                                        <svg xmlns="http://www.w3.org/2000/svg"
-                                            class="icon icon-tabler icon-tabler-flag flagIcon" width="36" height="36"
-                                            viewBox="0 0 24 24" stroke-width="1" stroke="#d62839" fill="none"
-                                            stroke-linecap="round" stroke-linejoin="round">
-                                            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                                            <path
-                                                d="M5 5a5 5 0 0 1 7 0a5 5 0 0 0 7 0v9a5 5 0 0 1 -7 0a5 5 0 0 0 -7 0v-9z" />
-                                            <path d="M5 21v-7" />
-                                    </span>
+                                <div class="mb-2 flex" data-player-id="<%= player._id %>"
+                                    data-current-user-id="<%= currentuserid %>" data-match-id="<%= matchID %>">
+                                    <% if (player._id.toString()===currentuserid.toString()) { %>
+                                        <span
+                                            class="flex items-center mr-2 bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 m-1">
+                                            <!-- Display current user's avatar/icon -->
+                                            <a href="/profile">
+                                                <img src="<%= player.profilePicture %>"
+                                                    class="w-8 h-8 rounded-full mr-2" alt="<%= player.name %>" />
+                                            </a>
+                                            <p class="text-xl">
+                                                <%= player.name.length> 12 ? player.name.substring(0, 12) + '...' :
+                                                    player.name %>
+                                            </p>
+                                            <svg xmlns="http://www.w3.org/2000/svg"
+                                                class="icon icon-tabler icon-tabler-flag flagIcon" width="36"
+                                                height="36" viewBox="0 0 24 24" stroke-width="1" stroke="#d62839"
+                                                fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                                                <path
+                                                    d="M5 5a5 5 0 0 1 7 0a5 5 0 0 0 7 0v9a5 5 0 0 1 -7 0a5 5 0 0 0 -7 0v-9z" />
+                                                <path d="M5 21v-7" />
+                                            </svg>
+                                        </span>
+                                        <% } else { %>
+                                            <span
+                                                class="flex items-center mr-2 bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 m-1">
+                                                <!-- Display other player's avatar/icon -->
+                                                <a href="/otherprofile/<%= player._id %>">
+                                                    <img src="<%= player.profilePicture %>"
+                                                        class="w-8 h-8 rounded-full mr-2" alt="<%= player.name %>" />
+                                                </a>
+                                                <p class="text-xl">
+                                                    <%= player.name.length> 12 ? player.name.substring(0, 12) + '...' :
+                                                        player.name %>
+                                                </p>
+                                                <svg xmlns="http://www.w3.org/2000/svg"
+                                                    class="icon icon-tabler icon-tabler-flag flagIcon" width="36"
+                                                    height="36" viewBox="0 0 24 24" stroke-width="1" stroke="#d62839"
+                                                    fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                                                    <path
+                                                        d="M5 5a5 5 0 0 1 7 0a5 5 0 0 0 7 0v9a5 5 0 0 1 -7 0a5 5 0 0 0 -7 0v-9z" />
+                                                    <path d="M5 21v-7" />
+                                                </svg>
+                                            </span>
+                                            <% } %>
                                 </div>
                                 <% } %>
+
                         </div>
                     </div>
                 </div>
@@ -113,36 +176,40 @@
                 <br>
                 <div class="flex justify-center mt-4">
                     <button
-                        class="text-2xl bg-crimson hover:bg-white hover:text-crimson text-white font-bold py-2 px-4 rounded"
+                        class="text-2xl bg-sky-blue hover:bg-white hover:text-sky-blue text-white font-bold py-2 px-4 rounded"
                         onclick="location.href='/match'">Rematch</button>
-                    <button
-                        class="text-2xl bg-dark-blue hover:bg-white hover:text-dark-blue text-white font-bold py-2 px-4 rounded ml-4"
-                        onclick="location.href='/index'">Home</button>
+                    <form action="/matchEnd/<%= matchID %>" method="post">
+                        <button type="submit"
+                            class="text-2xl bg-dark-blue hover:bg-white hover:text-dark-blue text-white font-bold py-2 px-4 rounded ml-4">Leave
+                            Match</button>
+                    </form>
                 </div>
-                <br>
-                <br>
+
             </div>
             <br>
             <br>
-            <br>
-            <div id="ratingDialog"
-                class="modal hidden fixed inset-0 overflow-auto bg-black bg-opacity-75 flex justify-center items-center text-black">
-                <div
-                    class="modal-content bg-white p-4 sm:p-6 md:p-8 w-full max-w-sm sm:max-w-md md:max-w-2xl mx-4 relative">
-                    <span id="closeBtn"
-                        class="close absolute top-0 right-0 mt-4 mr-4 cursor-pointer text-black text-3xl sm:text-5xl">&times;</span>
-                    <h1 class="text-lg sm:text-xl md:text-2xl font-bold mb-4 text-center">Rate this player's
-                        sportsmanship!</h1>
-                    <div id="icons" class="flex justify-center mb-4">
-                        <!-- Add your icons here -->
-                    </div>
-                    <div class="flex justify-center mt-4">
-                        <button id="submitBtn"
-                            class="bg-crimson hover:bg-white hover:text-crimson hover:border hover:border-black text-white font-bold py-2 px-4 rounded">Submit</button>
-                    </div>
+        </div>
+        <br>
+        <br>
+        <br>
+        <div id="ratingDialog"
+            class="modal hidden fixed inset-0 overflow-auto bg-black bg-opacity-75 flex justify-center items-center text-black">
+            <div
+                class="modal-content bg-white p-4 sm:p-6 md:p-8 w-full max-w-sm sm:max-w-md md:max-w-2xl mx-4 relative">
+                <span id="closeBtn"
+                    class="close absolute top-0 right-0 mt-4 mr-4 cursor-pointer text-black text-3xl sm:text-5xl">&times;</span>
+                <h1 class="text-lg sm:text-xl md:text-2xl font-bold mb-4 text-center">Rate this player's
+                    sportsmanship!</h1>
+                <div id="icons" class="flex justify-center mb-4">
+                    <!-- Add your icons here -->
+                </div>
+                <div class="flex justify-center mt-4">
+                    <button id="submitBtn"
+                        class="bg-crimson hover:bg-white hover:text-crimson hover:border hover:border-black text-white font-bold py-2 px-4 rounded">Submit</button>
                 </div>
             </div>
         </div>
+    </div>
     </div>
 
     <script src="/scripts/rateplayer.js"></script>

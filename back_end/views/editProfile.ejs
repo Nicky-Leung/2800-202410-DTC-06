@@ -2,30 +2,32 @@
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 
   <body>
-    <div class="flex flex-col text-center items-center">
 
-      <div class="container d-flex justify-content-center align-items-center mt-5">
-        <div class="card border border-dark">
-          <div class="card-body">
-            <h1 class="card-title text-center">Edit Profile</h1>
-            <form action="/updateProfile" method="post" enctype="multipart/form-data">
-              <div class="form-group">
-                <label for="name">Name:</label>
-                <input type="text" id="name" name="name" class="form-control" required>
-              </div>
-              <div class="form-group">
-                <label for="bio">Bio:</label>
-                <textarea id="bio" name="bio" class="form-control" rows="3" required></textarea>
-              </div>
-              <div class="form-group">
-                <label for="profilePicture">Profile Picture:</label>
-                <input type="file" id="profilePicture" name="profilePicture" class="form-control">
-              </div>
-              <button type="submit" class="btn btn-primary">Update Profile</button>
-            </form>
 
-          </div>
+    <div class="container d-flex justify-content-center align-items-center mt-5">
+      <div class="card-body bg-sky-blue rounded-2xl">
+        <div class="card-title text-center">
+          <button class="float-left p-2 bg-baby-blue rounded-lg" onclick="location.href='/profile'" type="button">
+            <i class="fas fa-arrow-left text-2xl"></i>
+          </button>
+          <h1 class="pb-2">Edit Profile</h1>
         </div>
+        <form action="/updateProfile" method="post" enctype="multipart/form-data">
+          <div class="form-group">
+            <label for="name" class="text-2xl">Name:</label>
+            <input type="text" id="name" name="name" class="form-control" placeholder="Enter your name" required>
+          </div>
+          <div class="form-group">
+            <label for="bio" class="text-2xl">Bio:</label>
+            <textarea id="bio" name="bio" class="form-control" rows="3" placeholder="Enter your custom bio"
+              required></textarea>
+          </div>
+          <div class="form-group">
+            <label for="profilePicture" class="text-2xl">Profile Picture:</label>
+            <input type="file" id="profilePicture" name="profilePicture" class="form-control">
+          </div>
+          <button type="submit" class="m-2 p-2 bg-baby-blue rounded-lg text-xl btn btn-primary">Update</button>
+        </form>
       </div>
     </div>
 

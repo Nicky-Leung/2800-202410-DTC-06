@@ -6,7 +6,14 @@ const mongoose = require('mongoose');
 var session = require('express-session');
 var mongoDBStore = require('connect-mongodb-session')(session);
 require('dotenv').config();
+app.use(function (req, res, next) {
+  if (path.extname(req.path) === '.js') {
+    res.type('text/javascript');
+  }
+  next();
+});
 
+app.use(express.static(path.join(__dirname, 'public')));
 app.set('view engine', 'ejs')
 
 // MongoDB connection
@@ -35,13 +42,14 @@ app.use(session({
   secret: process.env.SESSION_SECRET,
   resave: false,
   saveUninitialized: true,
-  cookie: { maxAge: 3600000 },
+  // timeout after 10 hours
+  cookie: { maxAge: 36000000 },
   store: store,
 }));
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
-app.use(express.static('public'));
+
 
 // Middleware to check if user is logged in 
 isUserAuthenticated = (req, res, next) => {
@@ -55,16 +63,19 @@ isUserAuthenticated = (req, res, next) => {
 
 
 // Public Routes
+
 app.get('/', (req, res) => {
-  res.render('home.ejs', { passwordUpdated: req.query.passwordUpdated })
-})
-app.get('/home', (req, res) => {
   res.render('welcomepage.ejs')
 });
+app.get('/home', (req, res) => {
+  res.render('home.ejs', { passwordUpdated: req.query.passwordUpdated })
+})
 
+
+//import all protected routes
 const login = require('./routes/login');
 const placeSearch = require('./routes/placeSearch');
-const indexscript = require('./routes/indexscript');
+
 const leaderboard = require('./routes/leaderboard');
 const information = require('./routes/information');
 const addFriends = require('./routes/addFriends')
@@ -88,7 +99,7 @@ app.use(resetPasswordWithEmail);
 app.use(isUserAuthenticated);
 
 // Protected Routes (User must be logged in)
-app.use(indexscript);
+
 app.use(placeSearch);
 app.use(resetPassword);
 app.use(settings);
@@ -126,6 +137,10 @@ app.get('/logout', isUserAuthenticated, function (req, res) {
 });
 app.get('/editProfile', isUserAuthenticated, (req, res) => {
   res.render('editProfile.ejs', { name: req.session.name, email: req.session.email, type: req.session.type, bio: req.session.bio, profilePicture: req.session.profilePicture })
+});
+
+app.use(function (req, res, next) {
+  res.render('404.ejs')
 });
 
 app.listen(3000, () => {
