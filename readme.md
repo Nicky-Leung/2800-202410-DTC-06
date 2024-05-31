@@ -186,6 +186,7 @@ Feel free to edit contribute and use the code in any way:
 <a id="Contact"></a>
 ## Contact Us
 Team Name: DTC-06
+<br>
 Team Members: 
 - Nicky Leung: nicky-leung@outlook.com
 - Nicholas Thucydides
