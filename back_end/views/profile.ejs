@@ -58,15 +58,19 @@
                 homeScore=matchHistory[index].homeScore; let awayScore=matchHistory[index].awayScore;
                 console.log('Win:', win); let resultText=win ? 'Win' : 'Loss' ; %>
 
-                <% if (win) { %>
-                  <div class="bg-green-500 text-white rounded-full px-5 py-2">
+                <% if (win===true) { %>
+                  <div class="bg-green-500 text-white rounded-full px-5 py-2 w-20 ">
                     <%= resultText %>
                   </div>
-                  <% } else { %>
-                    <div class="bg-red-500 text-white rounded-full px-5 py-2">
+                  <% } else if (win===false && homeScore !==awayScore) { %>
+                    <div class="bg-red-500 text-white rounded-full px-3 py-2 w-20">
                       <%= resultText %>
                     </div>
-                    <% } %>
+                    <% } else if (win===false && homeScore===awayScore) { %>
+                      <div class="bg-yellow-500 text-white rounded-full px-5 py-2 w-20">
+                        Tie
+                      </div>
+                      <% } %>
 
             </div>
             <!-- match type-->
