@@ -54,6 +54,7 @@ router.get('/login', (req, res) => {
 router.post('/login', async (req, res) => {
     console.log('Login request received');
     try {
+        // Encrypt password and the find user with email and password
         const hashedPassword = hashPassword(req.body.password);
         const result = await usersModel.findOne({ email: req.body.email, password: hashedPassword });
         console.log('Query result:', result);
@@ -83,19 +84,23 @@ router.get('/signup', (req, res) => {
 
 // Create a new user and save to the database
 router.post('/signup', async (req, res) => {
+    // Validate user's credentials using signUpSchema
     const { error } = signUpSchema.validate(req.body);
     if (error) return res.status(400).send(error.details[0].message);
     const { name, email, password, city, country } = req.body;
+    // Encrypt the user's password
     const hashedPassword = hashPassword(password);
     try {
+        // Create a new user
         const newUser = new usersModel({
             name, email, password: hashedPassword, type: 'non-administrator', elo: '400', rank: 'Aspirant'
             , sportsmanship: '500', streak: 'false', streakCount: '0', matchHistory: [], city, country
         });
+        // Save new user
         await newUser.save();
         console.log('User created:', newUser);
 
-        // Send confirmation email
+        // Create confirmation email
         const msg = {
             to: email,
             from: 'gamesetmatchdtcsix@gmail.com',
@@ -108,6 +113,7 @@ router.post('/signup', async (req, res) => {
             <p>Privacy Policy</p>
             </footer>`,
         };
+        // Send confirmation email
         await sgMail.send(msg);
         console.log('Confirmation email sent');
         res.redirect('/signUp?success=true');

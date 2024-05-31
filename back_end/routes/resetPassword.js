@@ -4,7 +4,7 @@ const crypto = require('crypto');
 
 const usersModel = require('../models/userModel');
 
-// reset user while logged in
+// Reset user while logged in
 router.get('/resetPassword', isUserAuthenticated, (req, res) => {
   res.render('resetPassword.ejs');
 });
@@ -16,15 +16,20 @@ function hashPassword(password) {
   return hash.digest('hex');
 }
 
-// find user via email and then reset their password
+// Find user via email and then reset their password
 router.post('/resetPassword', isUserAuthenticated, async (req, res) => {
+  // Create new password
   const newPassword = req.body.newPassword;
   const email = req.session.email;
 
   try {
+    // Find the user via email
     const user = await usersModel.findOne({ email: email });
+    // Encrypt the new password
     const hashedPassword = hashPassword(newPassword);
+    // Update the new password in the database
     await usersModel.updateOne({ email: email }, { password: hashedPassword });
+    // Redirect to profile
     res.redirect('/profile');
   } catch (error) {
     console.error('Error during password reset:', error);

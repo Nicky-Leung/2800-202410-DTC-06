@@ -4,11 +4,14 @@ const usersModel = require('../models/userModel');
 
 
 router.get('/settings', isUserAuthenticated, (req, res) => {
+  // Get the current user
   const currentUser = req.currentUser;
+  // Render settings/ejs view for current user
   res.render('settings.ejs', { currentUser: currentUser })
 });
 
 router.post('/deleteAccount', isUserAuthenticated, async (req, res) => {
+  // Get the current user
   const currentUser = req.currentUser;
   console.log('user', currentUser)
   try {

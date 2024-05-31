@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const usermodel = require('../models/userModel');
 
-
+// Middleware to check if user is logged in
 const isUserAuthenticated = (req, res, next) => {
     if (req.session.authenticated) {
         req.currentUser = req.session.currentUser;
@@ -12,13 +12,15 @@ const isUserAuthenticated = (req, res, next) => {
     }
 };
 
+
 router.get('/profile', isUserAuthenticated, async (req, res) => {
     try {
+        // Find user by email
         const user = await usermodel.findOne({ email: req.session.email });
         if (!user) {
             return res.status(404).send('User not found');
         }
-    
+        // Render the user's profile
         res.render('profile.ejs', {
             name: req.session.name,
             email: req.session.email,
@@ -39,12 +41,10 @@ router.get('/profile', isUserAuthenticated, async (req, res) => {
     }
 }
 );
-router.get('/getUserpicture', async (req, res) =>
-
-{
+router.get('/getUserpicture', async (req, res) => {
     const user = await usermodel.findOne({ email: req.session.email });
-    const profilePicture =  user.profilePicture;
+    const profilePicture = user.profilePicture;
     const rank = user.rank;
-    res.send({ profilePicture, rank})
+    res.send({ profilePicture, rank })
 });
 module.exports = router;

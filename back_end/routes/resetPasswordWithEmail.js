@@ -54,7 +54,7 @@ router.post('/resetPasswordWithEmail', async (req, res) => {
     const resetLink = `http://localhost:3000/resetPasswordForm?token=${token}&email=${email}`;
 
 
-    // Send password reset email
+    // Create password reset email
     const msg = {
       to: email,
       from: 'gamesetmatchdtcsix@gmail.com',
@@ -67,12 +67,14 @@ router.post('/resetPasswordWithEmail', async (req, res) => {
         <p>Privacy Policy</p>
       </footer>`,
     };
-
+    // Send password reset email
     await sgMail.send(msg);
 
     console.log('email sent')
+    // Display success message
     res.redirect('/resetPasswordWithEmail?success=true')
   } catch (error) {
+    s
     console.error('Error sending password reset email:', error);
     res.status(500).send('Internal Server Error');
   }
@@ -114,10 +116,12 @@ router.post('/resetPasswordForm', async (req, res) => {
   // }
 
   try {
-    // Update user password in database
+
     console.log('new pw: ', newPassword)
+    // Encrypt new password
     const hashedPassword = hashPassword(newPassword);
     console.log('email:', email)
+    // Update new password in database
     await usersModel.updateOne({ email: email }, { password: hashedPassword });
 
     // Remove token from the map to prevent reuse
