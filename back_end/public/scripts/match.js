@@ -93,7 +93,12 @@ awayMinus.addEventListener('click', () => {
     }
 });
 
+/** 
+ *  @description This function updates the score inthe database by sending a POST request to the server
+ * @returns [Postcondition] Score is updated in the database
+ */
 function updateScoreInDatabase() {
+    // fetches /updateScore route and sends a post request with the matchId, score for home team and score for away team by converting it to JSON
     fetch('/updateScore', {
         method: 'POST',
         headers: {
